@@ -1,0 +1,21 @@
+<header>
+  <table>
+    <tr>
+      <td class="td-nav">
+        <%= link_to "Inicio", root_path, class: 'btn btn-nav ' %>
+      </td>
+      <td class="td-nav"> [---] </td>
+      <td class="td-nav">
+        <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag "logo_80.png", title: "Logo", class: "logo" %>
+        <% end %>
+      </td>
+      <td class="td-nav"> [---] </td>
+      <td class="td-nav"> <%= render 'layouts/userNav' %> </td>
+    </tr>
+
+  </table>
+
+
+
+</header>
