@@ -1,0 +1,95 @@
+class CreateUsuarios < ActiveRecord::Migration
+  def change
+    create_table :usuarios do |t|
+      t.string  :nombre
+      t.string  :apellido
+      t.date    :fecnac
+      t.string  :correo
+      t.string  :telf
+
+      t.timestamps
+    end
+  end
+end
+
+class CreateCouch < ActiveRecord::Migration
+  def change
+    create_table :couchs do |c|
+      c.integer   :tipo
+      c.string    :ubicacion
+      c.integer   :capacidad
+      c.string    :descripcion
+      c.integer   :usuario_id
+      c.boolean   :reservado
+
+      c.timestamps
+    end
+  end
+end
+
+class CreateFoto < ActiveRecord::Migration
+  def change
+    create_table :fotos do |f|
+      f.integer :couch_id
+      f.string  :nombre
+    end
+  end
+end
+
+
+-----
+usuario.rb
+
+class Usuario < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  has_many :couchs
+  has_many :reservas
+
+    enum rol: [:admin, :normal, :premium]
+    after_initialize :definir_rol_por_defecto, :if => :new_record?
+
+    def definir_rol_por_defecto
+      self.rol ||= :normal
+    end
+end
+
+
+-----
+
+seeds
+
+
+juan = Usuario.create(
+    nombre:"Juan",
+    apellido:"Pérez",
+    fecnac:'12/03/1990',
+    correo:"juanperez@hotmail.com",
+    telf:"542215678901"
+    )
+
+diego = Usuario.create(
+    nombre:"Diego",
+    apellido:"García",
+    fecnac:'22/07/1995',
+    correo:"diego_g@gmail.com",
+    telf:"541142857203"
+    )
+
+andres = Usuario.create(
+    nombre:"Andres",
+    apellido:"Martinez",
+    fecnac:'31/10/2000',
+    correo:"am2000@gmail.com",
+    telf:"5422345782734"
+    )
+
+esteban = Usuario.create(
+    nombre:"Pablo Esteban",
+    apellido:"Bigotes",
+    fecnac:'03/01/1989',
+    correo:"estebb@hotmail.com",
+    telf:"542215891010"
+    )
