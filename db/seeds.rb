@@ -6,41 +6,53 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Usuario.destroy_all
+User.destroy_all
 Couch.destroy_all
 Reserva.destroy_all
 Foto.destroy_all
 
-juan = Usuario.create(
+juan = User.create!(
     nombre:"Juan",
     apellido:"Pérez",
     fecnac:'12/03/1990',
-    correo:"juanperez@hotmail.com",
-    telf:"542215678901"
+    email:"juanperez@hotmail.com",
+    telf:"542215678901",
+    rol:'admin',
+    password: "topsecret",
+    password_confirmation: "topsecret"
     )
 
-diego = Usuario.create(
+diego = User.create!(
     nombre:"Diego",
     apellido:"García",
     fecnac:'22/07/1995',
-    correo:"diego_g@gmail.com",
-    telf:"541142857203"
+    email:"diego_g@gmail.com",
+    telf:"541142857203",
+    rol:'normal',
+    password: "diegotuman",
+    password_confirmation: "diegotuman"
     )
 
-andres = Usuario.create(
+andres = User.create(
     nombre:"Andres",
     apellido:"Martinez",
     fecnac:'31/10/2000',
-    correo:"am2000@gmail.com",
-    telf:"5422345782734"
+    email:"am2000@gmail.com",
+    telf:"5422345782734",
+    rol:'normal',
+    password: "andresito4ever",
+    password_confirmation: "andresito4ever"
     )
 
-esteban = Usuario.create(
+esteban = User.create(
     nombre:"Pablo Esteban",
     apellido:"Bigotes",
     fecnac:'03/01/1989',
-    correo:"estebb@hotmail.com",
-    telf:"542215891010"
+    email:"estebb@hotmail.com",
+    telf:"542215891010",
+    rol:'premium',
+    password: "tebis1234",
+    password_confirmation: "tebis1234"
     )
 
 Couch.create(
