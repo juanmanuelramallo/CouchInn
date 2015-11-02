@@ -11,7 +11,10 @@ Couch.destroy_all
 Reserva.destroy_all
 Foto.destroy_all
 
+#------ USERS ---------#
+
 juan = User.create!(
+    id:'1',
     nombre:"Juan",
     apellido:"Pérez",
     fecnac:'12/03/1990',
@@ -23,6 +26,7 @@ juan = User.create!(
     )
 
 diego = User.create!(
+    id:'2',
     nombre:"Diego",
     apellido:"García",
     fecnac:'22/07/1995',
@@ -34,6 +38,7 @@ diego = User.create!(
     )
 
 andres = User.create(
+    id:'3',
     nombre:"Andres",
     apellido:"Martinez",
     fecnac:'31/10/2000',
@@ -45,6 +50,7 @@ andres = User.create(
     )
 
 esteban = User.create(
+    id:'4',
     nombre:"Pablo Esteban",
     apellido:"Bigotes",
     fecnac:'03/01/1989',
@@ -55,7 +61,10 @@ esteban = User.create(
     password_confirmation: "tebis1234"
     )
 
+#----- COUCHES ---------#
+
 Couch.create(
+    id:'1',
     tipo: 'casa',
     ubicacion:"En medio de la nada",
     capacidad:'1',
@@ -65,6 +74,7 @@ Couch.create(
     )
 
 Couch.create(
+    id:'2',
     tipo:'casa',
     ubicacion:"Encima de una palmera",
     capacidad:5,
@@ -74,6 +84,7 @@ Couch.create(
     )
 
 Couch.create(
+    id:'3',
     tipo:'casa',
     ubicacion:"En el centro de la avenida",
     capacidad:8,
@@ -83,6 +94,7 @@ Couch.create(
     )
 
 Couch.create(
+    id:'4',
     tipo: 'choza',
     ubicacion:"Selva misionera",
     capacidad:6,
@@ -93,6 +105,7 @@ No cuenta con ventanas.",
     )
 
 Couch.create(
+    id:'5',
     tipo:'departamento',
     ubicacion:"En el quinto piso de las torres mellizas",
     capacidad:4,
@@ -101,7 +114,26 @@ Couch.create(
     reservado:false
     )
 
+#---- FOTOS -----#
 
+Foto.create(
+    couch_id:'1',
+    nombre:"/couches/c1.jpg")
 
+Foto.create(
+    couch_id:'2',
+    nombre:"/couches/c2.jpg")
+
+Foto.create(
+    couch_id:'3',
+    nombre:"/couches/c3.jpg")
+
+Foto.create(
+    couch_id:'4',
+    nombre:"/couches/c4.jpg")
+
+Foto.create(
+    couch_id:'5',
+    nombre:"/couches/c5.jpg")
 
 
