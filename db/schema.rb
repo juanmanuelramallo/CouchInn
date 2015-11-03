@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102181829) do
+ActiveRecord::Schema.define(version: 20151102212846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20151102181829) do
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "responseCode"
+    t.string   "responseMessage"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "reservas", force: :cascade do |t|
@@ -64,5 +72,16 @@ ActiveRecord::Schema.define(version: 20151102181829) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.date     "fecnac"
+    t.string   "correo"
+    t.string   "telf"
+    t.integer  "rol"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

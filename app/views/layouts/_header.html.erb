@@ -22,7 +22,14 @@
       </td>
 
       <td class="td-nav">
-        <p> ...buscador...</p>
+
+        <% if user_signed_in? %>
+          <% if current_user.rol == 'premium' %>
+            <p> ...buscador...</p>
+          <% else %>
+            <P> <%= link_to "Be premium!", new_payment_path, class: 'btn btn-nav' %> </P>
+          <% end %>
+        <% end -%>
       </td>
 
       <td class="td-nav">

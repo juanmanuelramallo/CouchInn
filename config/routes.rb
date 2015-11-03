@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :payments
   devise_for :users
   get 'couch/index'
 
