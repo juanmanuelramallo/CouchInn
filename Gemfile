@@ -53,3 +53,5 @@ gem 'hirb'
 #gem 'less-rails-bootstrap'
 #gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
+
+gem 'tzinfo-data', platform: [:mingw, :mswin]
