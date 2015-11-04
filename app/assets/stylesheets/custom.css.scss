@@ -7,11 +7,7 @@ body {
   padding-top: 10px;
 }
 
-header {
-    background-color: white;
-    font-size: 16px;
-    height: 100px;
-}
+
 
 .form-control {
   margin-bottom: 5px;
@@ -23,6 +19,7 @@ footer {
 }
 
 .td-nav {
+  padding-top:20px;
   width:270px;
   font-size: 17px;
   text-align: center;
@@ -33,4 +30,28 @@ footer {
 a{
   text-decoration: none;
   color: gray;
+}
+
+.spacer-p{
+  padding-top:115px;
+}
+
+.spacer-li{
+  padding-right:10px;
+}
+
+nav{
+  height:90px;
+}
+
+li.texto{
+  padding-top:20px;
+}
+
+.dropdown-ingresar{
+  padding-top:27px;
+}
+
+.btn-unbordered {
+  border:none;
 }

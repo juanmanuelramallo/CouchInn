@@ -1,45 +1,174 @@
-<header>
-  <table>
-    <tr>
-      <td class="td-nav">
-        <%= link_to "Inicio", root_path, class: 'btn btn-nav ' %>
-      </td>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 
-      <td class="td-nav">
-        <% if user_signed_in? %>
-          <%= link_to 'Notificaciones', root_path, class: 'btn btn-nav' %>
-        <% end %>
-      </td>
+    </div>
 
-      <td class="td-nav">
-        <p></p>
-      </td>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-      <td class="td-nav">
-        <%= link_to root_path, class: 'navbar-brand' do %>
+
+    <!-- ************* USER SIGNED IN *************** -->
+    <% if user_signed_in? %>
+
+        <ul class="nav navbar-nav">
+        <li class="active texto inicio">
+
+          <%= link_to "Inicio", root_path %> <span class="sr-only">(current)</span>
+
+        </li>
+
+        <li class="texto">
+            <%= link_to "Crear couch🏡", root_path %>
+
+        </li>
+
+        <li class="texto">
+          <%= link_to "Notificaciones", root_path %>
+        </li>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+          <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag "logo_80.png", title: "Logo", class: "logo" %>
         <% end %>
-      </td>
+        </li>
 
-      <td class="td-nav">
+        <li class="texto">
+          <%= link_to "Be premium", new_payment_path %>
+        </li>
 
-        <% if user_signed_in? %>
-          <% if current_user.rol == 'premium' %>
-            <p> ...buscador...</p>
-          <% else %>
-            <P> <%= link_to "Be premium!", new_payment_path, class: 'btn btn-nav' %> </P>
-          <% end %>
-        <% end -%>
-      </td>
 
-      <td class="td-nav">
+        <li class="active texto">
 
-        <%= link_to "Crear couch", root_path, class: 'btn btn-nav' %>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Casa con vista al mar">
+            </div>
+              <button type="submit" class="btn btn-default btn-unbordered">🔍</button>
+          </form>
 
-      </td>
+        </li>
 
-      <td class="td-nav"> <%= render 'layouts/userNav' %> </td>
-    </tr>
 
-  </table>
-</header>
+
+        <li class="dropdown texto">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Perfil <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+            <li>
+
+              <%= link_to 'Editar Perfil', edit_user_registration_path %>
+
+            </li>
+
+            <li> Mis couches </li>
+
+            <li> Ayuda </li>
+
+            <li> Acerca de </li>
+
+            <li role="separator" class="divider"></li>
+            <li>
+
+              <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+
+            </li>
+
+          </ul> <!-- fin del dropdown-->
+        </li>   <!-- fin del dropdown-->
+
+        <li class="spacer-li"> </li>
+
+      </ul>
+
+      </ul> <!-- navbar right -->
+
+    </div><!-- /.navbar-collapse -->
+
+
+    <% else %> <!-- ******** END USER SIGNED IN ********** -->
+
+
+      <ul class="nav navbar-nav">
+        <li class="active texto inicio">
+
+          <%= link_to "Inicio", root_path %> <span class="sr-only">(current)</span>
+
+        </li>
+
+        <li class="texto disabled">
+            <%= link_to "Crear couch🏡", root_path %>
+
+        </li>
+
+        <li class="texto disabled">
+          <%= link_to "Notificaciones", root_path %>
+        </li>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+          <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag "logo_80.png", title: "Logo", class: "logo" %>
+        <% end %>
+        </li>
+
+
+
+        <li class="active texto disabled">
+
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group disabled">
+              <input type="text" class="form-control disabled" placeholder="Casa con vista al mar">
+            </div>
+              <button type="" class="btn btn-default btn-unbordered disabled">🔍</button>
+          </form>
+
+        </li>
+
+        <li class="texto">
+            <%= link_to "Ingresar", new_user_session_path %>
+        </li>
+
+        <li class="dropdown dropdown-ingresar">
+          <!-- Split button -->
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#"> Ayuda </a></li>
+            <li><a href="#"> Acerca de </a></li>
+          </ul>
+
+        </li>   <!-- fin del dropdown-->
+
+        <li class="spacer-li"> </li>
+
+      </ul>
+
+      </ul> <!-- navbar right -->
+
+    </div><!-- /.navbar-collapse -->
+
+
+    <%end%>
+
+
+
+  </div><!-- /.container-fluid -->
+
+</nav>
