@@ -50,6 +50,6 @@ gem 'pundit'
 
 gem 'hirb'
 
-gem 'less-rails-bootstrap'
-gem 'therubyracer'
+#gem 'less-rails-bootstrap'
+#gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
