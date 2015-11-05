@@ -1,29 +1,58 @@
-<h2>Sign up</h2>
+<div style="padding-top:50px"></div>
+
+<div class="col-lg-3 col-lg-offset-4">
+<h1><span class="label label-default">Registrarme</span></h1>
+</div>
+
+<div style="padding-top:55px"></div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="row">
+
+<div class="col-lg-4 col-lg-offset-4">
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">📧</span>
+  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"miemail@loquesea.com", 'aria-describedby':"basic-addon1"%>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
+  <div class="spacer-div"></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon2">🔑</span>
+
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"characters minimum" %>
+
+  </div>
+  <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+
+  <div class="spacer-div"></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon2">🔑</span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Repetir la contraseña" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <div class="spacer-div"></div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrarme", class:"btn btn-success"%>
   </div>
+
+  </div>
+
+</div> <!-- ROW -->
+
 <% end %>
 
+
+<div style="padding-top:20px"></div>
+
+<div class="col-lg-4 col-lg-offset-4">
 <%= render "devise/shared/links" %>
+</div>
+
