@@ -7,8 +7,6 @@ body {
   padding-top: 10px;
 }
 
-
-
 .form-control {
   margin-bottom: 5px;
 }
@@ -29,7 +27,11 @@ footer {
 
 a{
   text-decoration: none;
-  color: gray;
+
+}
+
+.spacer-div{
+  padding-top:15px;
 }
 
 .spacer-p{
@@ -55,3 +57,9 @@ li.texto{
 .btn-unbordered {
   border:none;
 }
+
+
+.btn-primary{
+  color:white;
+}
+

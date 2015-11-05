@@ -15,23 +15,39 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-    <!-- ************* USER SIGNED IN *************** -->
-    <% if user_signed_in? %>
-
         <ul class="nav navbar-nav">
         <li class="active texto inicio">
 
-          <%= link_to "Inicio", root_path %> <span class="sr-only">(current)</span>
+          <%= link_to "Inicio", root_path, class:"btn btn-nav btn-default btn-unbordered" %> <span class="sr-only">(current)</span>
 
         </li>
 
-        <li class="texto">
-            <%= link_to "Crear couch🏡", root_path %>
+        <li class="texto active">
+
+          <% if user_signed_in? %>
+
+            <%= link_to "Crear couch🏡", root_path, class:"btn btn-nav btn-default btn-unbordered" %>
+
+          <% else %>
+
+            <%= link_to "Crear couch🏡", root_path, class:"disabled btn btn-nav btn-default btn-unbordered" %>
+
+          <% end %>
 
         </li>
 
-        <li class="texto">
-          <%= link_to "Notificaciones", root_path %>
+        <li class="texto active">
+
+          <% if user_signed_in? %>
+
+          <%= link_to "Notificaciones", root_path, class:"btn btn-nav btn-default btn-unbordered" %>
+
+          <% else %>
+
+          <%= link_to "Notificaciones", root_path, class:"disabled btn btn-nav btn-default btn-unbordered" %>
+
+          <% end %>
+
         </li>
 
       </ul>
@@ -40,30 +56,60 @@
 
         <li>
           <%= link_to root_path, class: 'navbar-brand' do %>
-        <%= image_tag "logo_80.png", title: "Logo", class: "logo" %>
+        <%= image_tag "logo_80.png", title: "Logo", class: "img-responsive logo" %>
         <% end %>
         </li>
 
-        <li class="texto">
-          <%= link_to "Be premium", new_payment_path %>
+        <li style="padding:15px"></li>
+
+        <li class="texto active">
+
+          <% if user_signed_in? %>
+
+          <%= link_to "Be premium", new_payment_path, class:"btn btn-default btn-unbordered" %>
+
+          <% else %>
+
+          <%= link_to "Be premium", new_payment_path, class:"disabled btn btn-default btn-unbordered" %>
+
+          <% end %>
+
         </li>
 
 
         <li class="active texto">
 
           <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
+            <div class="input-group">
+
+            <% if user_signed_in? %>
+
               <input type="text" class="form-control" placeholder="Casa con vista al mar">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">🔍</button>
+              </span>
+
+            <% else %>
+
+              <input type="text" class="form-control disabled" placeholder="Tenes que ingresar para buscar">
+              <span class="input-group-btn">
+                <button class="disabled btn btn-default">🔍</button>
+              </span>
+
+            <% end %>
             </div>
-              <button type="submit" class="btn btn-default btn-unbordered">🔍</button>
+
           </form>
 
         </li>
 
+        <li class="dropdown texto active">
+
+        <% if user_signed_in? %>
 
 
-        <li class="dropdown texto">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Perfil <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle btn btn-default btn-unbordered" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Perfil <span class="caret"></span></a>
+
           <ul class="dropdown-menu">
 
             <li>
@@ -86,63 +132,11 @@
             </li>
 
           </ul> <!-- fin del dropdown-->
-        </li>   <!-- fin del dropdown-->
 
-        <li class="spacer-li"> </li>
+        <% else %>
 
-      </ul>
-
-      </ul> <!-- navbar right -->
-
-    </div><!-- /.navbar-collapse -->
-
-
-    <% else %> <!-- ******** END USER SIGNED IN ********** -->
-
-
-      <ul class="nav navbar-nav">
-        <li class="active texto inicio">
-
-          <%= link_to "Inicio", root_path %> <span class="sr-only">(current)</span>
-
-        </li>
-
-        <li class="texto disabled">
-            <%= link_to "Crear couch🏡", root_path %>
-
-        </li>
-
-        <li class="texto disabled">
-          <%= link_to "Notificaciones", root_path %>
-        </li>
-
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-
-        <li class="spacer-li"> </li>
-
-        <li>
-          <%= link_to root_path, class: 'navbar-brand' do %>
-        <%= image_tag "logo_80.png", title: "Logo", class: "logo" %>
-        <% end %>
-        </li>
-
-
-
-        <li class="active texto disabled">
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group disabled">
-              <input type="text" class="form-control disabled" placeholder="Casa con vista al mar">
-            </div>
-              <button type="" class="btn btn-default btn-unbordered disabled">🔍</button>
-          </form>
-
-        </li>
-
-        <li class="texto">
-            <%= link_to "Ingresar", new_user_session_path %>
+          <li class="active texto">
+            <%= link_to "Ingresar", new_user_session_path, class:"btn btn-default btn-unbordered" %>
         </li>
 
         <li class="dropdown dropdown-ingresar">
@@ -160,15 +154,17 @@
 
         <li class="spacer-li"> </li>
 
+        <% end %>
+
+        </li>   <!-- fin del dropdown-->
+
+        <li class="spacer-li"> </li>
+
       </ul>
 
       </ul> <!-- navbar right -->
 
     </div><!-- /.navbar-collapse -->
-
-
-    <%end%>
-
 
 
   </div><!-- /.container-fluid -->
