@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<div class="navbar">
+<nav class="navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -16,35 +17,41 @@
 
 
         <ul class="nav navbar-nav">
-        <li class="active texto inicio">
 
-          <%= link_to "Inicio", root_path, class:"btn btn-nav btn-default btn-unbordered" %> <span class="sr-only">(current)</span>
+          <li class="texto">
 
-        </li>
+            <%= link_to "Inicio", root_path, class:"" %> <span class="sr-only">(current)</span>
 
-        <li class="texto active">
+          </li>
 
           <% if user_signed_in? %>
 
-            <%= link_to "Crear couch🏡", root_path, class:"btn btn-nav btn-default btn-unbordered" %>
+          <li class="texto"> <!-- CREAR COUCH -->
 
-          <% else %>
+              <%= link_to "Crear couch🏡", root_path, class:"" %>
 
-            <%= link_to "Crear couch🏡", root_path, class:"disabled btn btn-nav btn-default btn-unbordered" %>
+            <% else %>
+
+          <li class="texto disabled"> <!-- CREAR COUCH -->
+
+              <%= link_to "Crear couch🏡", root_path, disabled:true %>
 
           <% end %>
 
         </li>
 
-        <li class="texto active">
 
-          <% if user_signed_in? %>
+        <% if user_signed_in? %>
 
-          <%= link_to "Notificaciones", root_path, class:"btn btn-nav btn-default btn-unbordered" %>
+        <li class="texto"> <!-- NOTIFICACIONES -->
+
+          <%= link_to "Notificaciones", root_path, class:"" %>
 
           <% else %>
 
-          <%= link_to "Notificaciones", root_path, class:"disabled btn btn-nav btn-default btn-unbordered" %>
+        <li class="texto disabled"> <!-- NOTIFICACIONES -->
+
+          <%= link_to "Notificaciones", root_path, disabled:true %>
 
           <% end %>
 
@@ -54,35 +61,23 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li>
+        <li> <!-- LOGO -->
+
           <%= link_to root_path, class: 'navbar-brand' do %>
-        <%= image_tag "logo_80.png", title: "Logo", class: "img-responsive logo" %>
+        <%= image_tag "logo_80.png", style: "", title: "Logo", class: "img-responsive logo" %>
         <% end %>
-        </li>
-
-        <li style="padding:15px"></li>
-
-        <li class="texto active">
-
-          <% if user_signed_in? %>
-
-          <%= link_to "Be premium", new_payment_path, class:"btn btn-default btn-unbordered" %>
-
-          <% else %>
-
-          <%= link_to "Be premium", new_payment_path, class:"disabled btn btn-default btn-unbordered" %>
-
-          <% end %>
 
         </li>
 
+        <li style="padding:15px"></li> <!-- ESPACIADO -->
 
-        <li class="active texto">
+
+        <% if user_signed_in? %>
+
+        <li class="texto"> <!-- BUSCADOR -->
 
           <form class="navbar-form navbar-left" role="search">
             <div class="input-group">
-
-            <% if user_signed_in? %>
 
               <input type="text" class="form-control" placeholder="Casa con vista al mar">
               <span class="input-group-btn">
@@ -91,9 +86,14 @@
 
             <% else %>
 
-              <input type="text" class="form-control disabled" placeholder="Tenes que ingresar para buscar">
+        <li class="texto disabled"> <!-- BUSCADOR -->
+
+          <form class="navbar-form navbar-left" role="search">
+            <div class="input-group">
+
+              <input type="text" disabled="true" class="form-control disabled" placeholder="Tenes que ingresar para buscar">
               <span class="input-group-btn">
-                <button class="disabled btn btn-default">🔍</button>
+                <button class="btn btn-default" disabled="true">🔍</button>
               </span>
 
             <% end %>
@@ -103,12 +103,29 @@
 
         </li>
 
-        <li class="dropdown texto active">
+        <% if user_signed_in? %>
+
+        <li class="texto"> <!-- BE PREMIUM -->
+
+          <%= link_to "Be premium", new_payment_path, class:"" %>
+
+          <% else %>
+
+        <li class="texto disabled"> <!-- BE PREMIUM -->
+
+          <%= link_to "Be premium", new_payment_path, disabled:true %>
+
+          <% end %>
+
+        </li>
+
+
+        <li class="dropdown texto"> <!-- DROPDOWN PERFIL -->
 
         <% if user_signed_in? %>
 
 
-          <a href="#" class="dropdown-toggle btn btn-default btn-unbordered" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Perfil <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Perfil <span class="caret"></span></a>
 
           <ul class="dropdown-menu">
 
@@ -135,8 +152,8 @@
 
         <% else %>
 
-          <li class="active texto">
-            <%= link_to "Ingresar", new_user_session_path, class:"btn btn-default btn-unbordered" %>
+          <li class="texto">
+            <%= link_to "Ingresar", new_user_session_path, class:"" %>
         </li>
 
         <li class="dropdown dropdown-ingresar">
@@ -170,3 +187,5 @@
   </div><!-- /.container-fluid -->
 
 </nav>
+
+</div>

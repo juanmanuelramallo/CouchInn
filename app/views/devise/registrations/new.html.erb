@@ -6,7 +6,9 @@
 
 <div style="padding-top:55px"></div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+<%= form_for @user, as: :user, url: registration_path(@user) do |f| %>
+
 <%= devise_error_messages! %>
 
 <div class="row">
@@ -14,8 +16,23 @@
 <div class="col-lg-4 col-lg-offset-4">
 
   <div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">😏</span>
+
+  <%= f.text_field :nombre, autofocus: true, class:"form-control", placeholder:"mi nombre", 'aria-describedby':"basic-addon3"%>
+  </div>
+
+  <div class="spacer-div"></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon4">😁</span>
+  <%= f.text_field :apellido, autofocus: true, class:"form-control", placeholder:"mi apellido", 'aria-describedby':"basic-addon4"%>
+  </div>
+
+  <div class="spacer-div"></div>
+
+  <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">📧</span>
-  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"miemail@loquesea.com", 'aria-describedby':"basic-addon1"%>
+  <%= f.email_field :email, class:"form-control", placeholder:"miemail@loquesea.com", 'aria-describedby':"basic-addon1"%>
   </div>
 
   <div class="spacer-div"></div>

@@ -21,6 +21,8 @@ juan = User.create!(
     email:"juanperez@hotmail.com",
     telf:"542215678901",
     rol:'admin',
+    pais:'Argentina',
+    ciudad:'La Plata',
     password: "topsecret",
     password_confirmation: "topsecret"
     )

@@ -1,6 +1,6 @@
 h1, h2, h3, h4, h5, p, a {
   font-family: verdana;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 body {
@@ -25,11 +25,6 @@ footer {
 
 }
 
-a{
-  text-decoration: none;
-
-}
-
 .spacer-div{
   padding-top:15px;
 }
@@ -42,8 +37,8 @@ a{
   padding-right:10px;
 }
 
-nav{
-  height:90px;
+.navbar-default{
+  height:85px;
 }
 
 li.texto{
@@ -58,10 +53,20 @@ li.texto{
   border:none;
 }
 
-.btn-primary{
-  color:white;
-}
-
 em{
   color:grey;
+}
+
+select{
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.navbar-ct-custom{
+  background-color:#DEDEDE;
+}
+
+disabled{
+  color:white;
 }
