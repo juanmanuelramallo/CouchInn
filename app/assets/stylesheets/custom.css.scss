@@ -5,6 +5,12 @@ h1, h2, h3, h4, h5, p, a {
 
 body {
   padding-top: 10px;
+
+  background: url('bg_wall.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .form-control {
@@ -38,7 +44,7 @@ footer {
 }
 
 .navbar-default{
-  height:85px;
+  height:95px;
 }
 
 li.texto{
@@ -63,22 +69,33 @@ select{
   border-color: #adadad;
 }
 
-.navbar-ct-custom{
-  background-color:#DEDEDE;
-}
-
 disabled{
   color:white;
 }
 
-.background-image{
-  fill:true;
+.image {
+   position: relative;
+   width: 100%; /* for IE 6 */
 }
 
-#grid[data-columns]::before {
-  content: '3 .column.size-1of3';
+h2 {
+   position: relative;
+   top: -200px ;
+   left: 0;
+   width: 100%;
 }
 
-/* These are the classes that are going to be applied: */
-.column { float: left; }
-.size-1of3 { width: 33.333%; }
+h2 span {
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+

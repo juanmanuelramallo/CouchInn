@@ -16,7 +16,7 @@
 
   <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">📧</span>
-  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"miemail@loquesea.com", 'aria-describedby':"basic-addon1"%>
+  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"miemail@loquesea.com" %>
   </div>
 
   <div class="spacer-div"></div>
@@ -39,9 +39,9 @@
   <% if devise_mapping.rememberable? -%>
     <div class="input-group">
     <span class="input-group-addon">
-      <%= f.check_box :remember_me , class:"checkbox" , 'aria-label':"..."%>
+      <%= f.check_box :remember_me , class:"checkbox" %>
     </span>
-      <%= f.label :remember_me, type:"text", class:"form-control", 'aria-label':"..." %>
+      <%= f.label :remember_me, type:"text", class:"form-control"%>
     </div>
   <% end -%>
 

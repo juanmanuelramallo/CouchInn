@@ -120,22 +120,22 @@ Couch.create(
 
 Foto.create(
     couch_id:'1',
-    nombre:"/couches/c1.jpg")
+    nombre:"couches/c1.jpg")
 
 Foto.create(
     couch_id:'2',
-    nombre:"/couches/c2.jpg")
+    nombre:"couches/c2.jpg")
 
 Foto.create(
     couch_id:'3',
-    nombre:"/couches/c3.jpg")
+    nombre:"couches/c3.jpg")
 
 Foto.create(
     couch_id:'4',
-    nombre:"/couches/c4.jpg")
+    nombre:"couches/c4.jpg")
 
 Foto.create(
     couch_id:'5',
-    nombre:"/couches/c5.jpg")
+    nombre:"couches/c5.jpg")
 
 

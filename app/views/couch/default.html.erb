@@ -1,5 +1,31 @@
-<div class="main-page">
+<div style="padding-top:25px"></div>
+
+<div class="row">
+
+  <div class="col-md-8 col-centered">
+
+    <div class="image" style="padding-top:20px">
+
+      <% couches = Couch.all %>
+      <% fotos = Foto.all %>
+
+      <% couches.each do |c| %>
+
+        <% fotosCouch = Foto.where("couch_id=#{c.id}") %>
+
+      <%= image_tag fotosCouch.first.nombre, :class=>"img-responsive img-rounded" %>
+
+      <h2>
+        <span> tipo <%= c.tipo %> <span class='spacer'> </span>
+        <br />
+        <span class='spacer'></span> <%= c.capacidad%> pers. </span>
+      </h2>
+
+      <% end %>
 
 
+    </div>
+
+  </div>
 
 </div>
