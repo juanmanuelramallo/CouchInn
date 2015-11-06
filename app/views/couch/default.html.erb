@@ -15,11 +15,18 @@
 
       <%= image_tag fotosCouch.first.nombre, :class=>"img-responsive img-rounded" %>
 
-      <h2>
-        <span> tipo <%= c.tipo %> <span class='spacer'> </span>
-        <br />
-        <span class='spacer'></span> <%= c.capacidad%> pers. </span>
-      </h2>
+      <div class="containter-info">
+
+        <div class="cube">
+          <span class=""> <strong> <%= c.tipo %> </strong>
+          </br> con capacidad para <%= c.capacidad%> persona(s) </span>
+        </div>
+
+        <div class="cube">
+          <p class="descripcion"> <%= c.descripcion.first(120) %> </p>
+        </div>
+
+      </div>
 
       <% end %>
 
