@@ -19,12 +19,14 @@
 
         <div class="cube">
           <span class=""> <strong> <%= c.tipo %> </strong>
-          </br> con capacidad para <%= c.capacidad%> persona(s) </span>
+          </br> para <%= c.capacidad%> persona(s) </span>
         </div>
 
         <div class="cube">
-          <p class="descripcion"> <%= c.descripcion.first(120) %> </p>
+          <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
         </div>
+
+        <%= link_to "Ver más...", c , class:"cube btn"%>
 
       </div>
 

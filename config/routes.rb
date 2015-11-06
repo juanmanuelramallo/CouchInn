@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
 
   resources :payments
+  resources :couches
   devise_for :users
-  get 'couch/index'
+  get 'couches/index'
 
-  get 'couch/default'
+  get 'couches/default'
 
-  get 'couch/show'
+  get 'couches/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'couch#default'
+  root 'couches#default'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

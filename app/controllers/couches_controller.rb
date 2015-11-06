@@ -1,4 +1,4 @@
-class CouchController < ApplicationController
+class CouchesController < ApplicationController
   before_action :get_couch, only:[:edit, :update, :destroy, :show]
 
   def get_couch
