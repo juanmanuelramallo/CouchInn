@@ -3,7 +3,7 @@ class Couch < ActiveRecord::Base
   has_many :reservas
   has_many :fotos
 
-  enum tipo: [:casa, :departamento, :choza, :motorhome]
+  enum tipo: [:Casa, :Departamento, :Choza, :Motorhome]
 
   #enum tipo: [:casa, :departamento, :choza, :motorhome]
 

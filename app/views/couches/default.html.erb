@@ -14,28 +14,39 @@
 
         <% fotoPrincipal = Foto.where("couch_id=#{c.id}").first %>
 
-      <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+        <% if fotoPrincipal.nil? %>
 
-      <div class="containter-info">
+          <%= image_tag "sofa-outline.png", class:"img-responsive img-rounded" %>
 
-        <div class="cube">
-          <span class=""> <strong> <%= c.tipo %> </strong>
-          </br> para <%= c.capacidad%> persona(s) </span>
-        </div>
+        <% else %>
 
-        <div class="cube">
+          <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
 
-          <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
-        </div>
+        <% end %>
 
-         </div>
+        <div class="containter-info">
 
-        <%= link_to "Ver más...", c , class:"cube btn"%>
+          <div class="cube">
+            <span class=""> <strong> <%= c.tipo %> </strong>
+            </br> para <%= c.capacidad%> persona(s) </span>
+          </div>
 
-      </div>
+          <div class="cube">
+
+            <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
+
+          </div>
+
+          <div>
+
+            <%= link_to "Ver más...", c , class:"cube btn"%>
+
+          </div>
 
       <% end %>
 
+
+        </div>
 
     </div>
 

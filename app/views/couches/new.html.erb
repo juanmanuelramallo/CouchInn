@@ -1,35 +1,9 @@
-<h1> Crear nuevo Couch</h1>
-<hr style="height:5px" color="green"/>
-	<%= form_for @couch do |f| %>
-		<div class=”field”>
-			<%= f.label :usuario_id, "Usuario" %><br />
-			<%= collection_select(:couch, :usuario_id, User.all, :id, :email, {}, { class: 'form-control'}) %>
-		</div>
-		<br />
-		<div class=”field”>
-			<%= f.label :ubicacion %><br />
-			<%= f.text_field :ubicacion, placeholder: 'Ingrese la ubicacion'  %>
-  		</div>
-  		<br />
-  		<%= f.label :tipo %><br />		
-  		<%= f.select(:tipo, ["Casa", "Departamento","Motorhome","Choza","Carpa"], {}, { :tipo => "tipo" }) %>
-  		<br />
-  		<br />
-  		<div class=”field”>
-			<%= f.label :capacidad %><br />
-			<%= f.select(:capacidad, ["1", "2","3","4","5","6","7","8"], {}, { :capacidad => "capacidad" }) %>
-  		</div>
-  		<br />
-  		<div class=”field”>
-		<%= f.label :descripcion %>
-  		<%= f.text_area :descripcion, size: "60x12", class: 'form-control', label: 'descripcion', placeholder: 'Ingrese la descripcion' %>
-  		</div>
-  	
-  		<p>
-		<%= f.submit "Agregar Nuevo Post" %>
-		</p>
+<div class="col-md-4 col-md-offset-4">
 
-	<% end %>
-<p>
-	
-<br />
+  <h1><span class="label label-default title">Crear nuevo Couch </span> </h1>
+
+  <div class="spacer-div"></div>
+
+	   <%= render 'couches/couch', show:false %>
+
+  </div>
