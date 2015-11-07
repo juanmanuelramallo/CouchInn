@@ -5,5 +5,7 @@ class Couch < ActiveRecord::Base
 
   enum tipo: [:casa, :departamento, :choza, :motorhome]
 
+  #enum tipo: [:casa, :departamento, :choza, :motorhome]
+
 end
 

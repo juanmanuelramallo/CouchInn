@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   get 'couches/show'
 
+  get 'couches/new'
+
+  get 'couches/create'
+
+  get 'couches/edit'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
