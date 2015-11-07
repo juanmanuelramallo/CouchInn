@@ -1,0 +1,51 @@
+
+<%= form_for @payment, :html => { :class => 'form' } do |f| %>
+
+
+<div class="col-lg-5 col-lg-offset-3">
+<div class="form-group">
+  <%= f.label :amount, 'Precio',  :type =>'label', :for =>'priceField'%>
+  <div>
+    <%= f.text_field :amount, :type=>'input',:class => 'form-control' , :value => '9,99 (USD)' , :readonly => true, :id => 'priceField'%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :cardNumber,'Número de tarjeta de credito', :type=>'label', :for=>'cardNumberField' %>
+  <div class="controls">
+    <%= f.text_field :cardNumber, :class => 'form-control', :id=>'cardNumberField', :placeholder=>'123412341234' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :cardCVV,'CVV', :type=>'label', :for=>'cardCVVField' %>
+  <div class="controls">
+    <%= f.text_field :cardCVV, :class => 'form-control', :id=>'cardCVVField', :placeholder=>'123' %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :cardExpiryMonth,'Mes de expiración'%>
+  <div class="controls">
+    <%= f.select(:cardExpiryMonth, options_for_select(cc_months), :id=>"",:class=>"form-control")%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :cardExpiryYear,'Año de expiración', :class => 'control-label' %>
+  <div class="dropdown">
+    <%= f.select(:cardExpiryYear, options_for_select(cc_years))%>
+  </div>
+</div>
+
+<div class="spacer">
+  <p> </p>
+</div>
+
+<div class="form-actions">
+  <%= f.submit 'Efectuar pago', :class => 'btn btn-primary' %>
+  <%= link_to "Cancelar", root_path, :class => 'btn btn-' %>
+</div>
+<% end %>
+
+</div>

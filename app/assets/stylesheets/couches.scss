@@ -1,0 +1,18 @@
+// Place all the styles related to the couches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#owl-show .item{
+  margin: 3px;
+}
+#owl-show .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.img-show-couch{
+  width:40%;
+  max-height:240px;
+
+}

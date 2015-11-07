@@ -1,0 +1,41 @@
+<body class="default">
+<div style="padding-top:25px"></div>
+
+<div class="row">
+
+  <div class="col-md-8 col-centered">
+
+    <div class="image" style="padding-top:20px">
+
+      <% couches = Couch.all %>
+      <% fotos = Foto.all %>
+
+      <% couches.each do |c| %>
+
+        <% fotoPrincipal = Foto.where("couch_id=#{c.id}").first %>
+
+
+      <div class="containter-info">
+
+        <div class="cube">
+          <span class=""> <strong> <%= c.tipo %> </strong>
+          </br> para <%= c.capacidad%> persona(s) </span>
+        </div>
+
+        <div class="cube">
+         </div>
+
+        <%= link_to "Ver más...", c , class:"cube btn"%>
+
+      </div>
+
+      <% end %>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
