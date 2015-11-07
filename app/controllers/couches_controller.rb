@@ -5,6 +5,10 @@ class CouchesController < ApplicationController
     @couch = Couch.find(params[:id])
   end
 
+  def get_id
+    @c_id = Couch.id
+  end
+
   def create
     couch = Couch.create(params.require(:tipo, :capacidad).permit(:ubicacion, :descripcion));
 

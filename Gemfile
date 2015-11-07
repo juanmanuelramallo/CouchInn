@@ -55,3 +55,5 @@ gem 'hirb'
 gem 'twitter-bootstrap-rails'
 
 gem 'tzinfo-data', platform: [:mingw, :mswin]
+
+gem 'owlcarousel-rails'

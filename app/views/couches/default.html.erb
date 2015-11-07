@@ -1,3 +1,4 @@
+<body class="default">
 <div style="padding-top:25px"></div>
 
 <div class="row">
@@ -11,9 +12,9 @@
 
       <% couches.each do |c| %>
 
-        <% fotosCouch = Foto.where("couch_id=#{c.id}") %>
+        <% fotoPrincipal = Foto.where("couch_id=#{c.id}").first %>
 
-      <%= image_tag fotosCouch.first.nombre, :class=>"img-responsive img-rounded" %>
+      <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
 
       <div class="containter-info">
 
@@ -38,3 +39,5 @@
   </div>
 
 </div>
+
+</body>

@@ -138,4 +138,19 @@ Foto.create(
     couch_id:'5',
     nombre:"couches/c5.jpg")
 
+Foto.create(
+    couch_id:'1',
+    nombre:"couches/c1-1.jpg")
+
+Foto.create(
+    couch_id:'1',
+    nombre:"couches/c1-2.jpg")
+
+Foto.create(
+    couch_id:'1',
+    nombre:"couches/c1-3.jpg")
+
+Foto.create(
+    couch_id:'1',
+    nombre:"couches/c1-4.jpg")
 
