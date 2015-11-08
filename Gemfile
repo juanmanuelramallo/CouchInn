@@ -1,5 +1,6 @@
 
 source 'https://rubygems.org'
+ruby "2.2.3"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -58,3 +59,7 @@ gem 'twitter-bootstrap-rails'
 gem 'tzinfo-data', platform: [:mingw, :mswin]
 
 gem 'owlcarousel-rails'
+
+gem 'rails_12factor'
+
+gem 'puma'
