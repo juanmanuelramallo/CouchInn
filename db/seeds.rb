@@ -67,7 +67,7 @@ esteban = User.create(
 
 Couch.create(
     id:'1',
-    tipo: 'casa',
+    tipo: 'Casa',
     ubicacion:"En medio de la nada",
     capacidad:'1',
     descripcion:"Hermosa casa, ideal para tener un momento de relax y tranquilidad. Tengo una habitación extra para alojar visitantes.",
@@ -77,7 +77,7 @@ Couch.create(
 
 Couch.create(
     id:'2',
-    tipo:'casa',
+    tipo:'Casa',
     ubicacion:"Encima de una palmera",
     capacidad:5,
     descripcion:"Casa avión. Cuenta con 1 baño, 2 habitaciones y 83 ventanas para disfrutar de una hermosa vista.",
@@ -87,7 +87,7 @@ Couch.create(
 
 Couch.create(
     id:'3',
-    tipo:'casa',
+    tipo:'Casa',
     ubicacion:"En el centro de la avenida",
     capacidad:8,
     descripcion:"Original casa dada vuelta. Cuenta con 2 baños, living, wifi, y 4 habitaciones. ",
@@ -97,7 +97,7 @@ Couch.create(
 
 Couch.create(
     id:'4',
-    tipo: 'choza',
+    tipo: 'Choza',
     ubicacion:"Selva misionera",
     capacidad:6,
     descripcion:"Acogedora choza en la selva misionera. Cuenta con capacidad para 6 personas. Se encuentra en una aldea, ideal para compartir momentos con la tribu.
@@ -108,7 +108,7 @@ No cuenta con ventanas.",
 
 Couch.create(
     id:'5',
-    tipo:'departamento',
+    tipo:'Departamento',
     ubicacion:"En el quinto piso de las torres mellizas",
     capacidad:4,
     descripcion:"Hermosa vista desde el balcón, baños amplios y con aire acondicionado",
