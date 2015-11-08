@@ -10,9 +10,17 @@
       <% couches = Couch.all %>
       <% fotos = Foto.all %>
 
+
+      <% if couches.nil? %>
+
+
+      <% else %>
+
+
       <% couches.each do |c| %>
 
         <% fotoPrincipal = Foto.where("couch_id=#{c.id}").first %>
+
 
         <% if fotoPrincipal.nil? %>
 
@@ -23,6 +31,7 @@
           <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
 
         <% end %>
+
 
         <div class="containter-info">
 
@@ -44,6 +53,8 @@
           </div>
 
       <% end %>
+
+      <% end %> <!-- if -->
 
 
         </div>
