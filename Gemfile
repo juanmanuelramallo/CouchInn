@@ -63,3 +63,5 @@ gem 'owlcarousel-rails'
 gem 'rails_12factor'
 
 gem 'puma'
+
+gem 'execjs'
