@@ -5,6 +5,10 @@
 
   <div class="col-md-8 col-centered">
 
+    <% if !current_user.blank? %>
+    <h1 class="label label-primary"> <%= current_user.rol %> </h1>
+    <% end %>
+
     <div class="image" style="padding-top:20px">
 
       <% couches = Couch.all %>

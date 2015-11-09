@@ -1,8 +1,6 @@
 <%= form_for @couch do |f| %>
 
-    <% if !show %>
-    <% @couch.usuario_id = current_user.id %>
-    <% end %>
+
       <div class="form-group">
 
         <%= f.label :ubicacion, class:"label label-default", type:"label",:for=>'ubicacion'%>

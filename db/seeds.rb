@@ -24,7 +24,8 @@ juan = User.create!(
     pais:'Argentina',
     ciudad:'La Plata',
     password: "topsecret",
-    password_confirmation: "topsecret"
+    password_confirmation: "topsecret",
+    genero:'masculino'
     )
 
 diego = User.create!(
@@ -36,7 +37,8 @@ diego = User.create!(
     telf:"541142857203",
     rol:'normal',
     password: "diegotuman",
-    password_confirmation: "diegotuman"
+    password_confirmation: "diegotuman",
+    genero:'masculino'
     )
 
 andres = User.create(
@@ -48,7 +50,8 @@ andres = User.create(
     telf:"5422345782734",
     rol:'normal',
     password: "andresito4ever",
-    password_confirmation: "andresito4ever"
+    password_confirmation: "andresito4ever",
+    genero:'masculino'
     )
 
 esteban = User.create(
@@ -60,7 +63,8 @@ esteban = User.create(
     telf:"542215891010",
     rol:'premium',
     password: "tebis1234",
-    password_confirmation: "tebis1234"
+    password_confirmation: "tebis1234",
+    genero:'masculino'
     )
 
 #----- COUCHES ---------#

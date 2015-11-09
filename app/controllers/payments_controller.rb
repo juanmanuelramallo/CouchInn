@@ -26,11 +26,10 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
 
-      current_user.rol = 'premium'
-
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        current_user.premium!
+        format.html { redirect_to root_path, notice: 'El pago fue concretado correctamente. Ahora sos premium!' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }

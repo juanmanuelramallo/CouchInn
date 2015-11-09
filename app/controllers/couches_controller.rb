@@ -34,6 +34,7 @@ class CouchesController < ApplicationController
   def create
   @couch = Couch.create(params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad))
   @couch.reservado = false
+  @couch.usuario_id = current_user.id
 
    respond_to do |format|
       if @couch.save
