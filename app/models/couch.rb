@@ -1,5 +1,5 @@
 class Couch < ActiveRecord::Base
-  belongs_to :usuario
+  belongs_to :user
   has_many :reservas
   has_many :fotos
 

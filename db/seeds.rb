@@ -14,7 +14,6 @@ Foto.destroy_all
 #------ USERS ---------#
 
 juan = User.create!(
-    id:'1',
     nombre:"Juan",
     apellido:"Pérez",
     fecnac:'12/03/1990',
@@ -29,7 +28,6 @@ juan = User.create!(
     )
 
 diego = User.create!(
-    id:'2',
     nombre:"Diego",
     apellido:"García",
     fecnac:'22/07/1995',
@@ -42,7 +40,6 @@ diego = User.create!(
     )
 
 andres = User.create(
-    id:'3',
     nombre:"Andres",
     apellido:"Martinez",
     fecnac:'31/10/2000',
@@ -55,7 +52,6 @@ andres = User.create(
     )
 
 esteban = User.create(
-    id:'4',
     nombre:"Pablo Esteban",
     apellido:"Bigotes",
     fecnac:'03/01/1989',

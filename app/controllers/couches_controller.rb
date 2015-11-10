@@ -14,7 +14,9 @@ class CouchesController < ApplicationController
   end
 
   def index
-    @couch = Couch.all
+    @couch = Couch.joins(:user).order('rol desc', 'created_at desc')
+    @foto = Foto.all
+
   end
 
   def show
@@ -34,7 +36,7 @@ class CouchesController < ApplicationController
   def create
   @couch = Couch.create(params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad))
   @couch.reservado = false
-  @couch.usuario_id = current_user.id
+  @couch.user_id = current_user.id
 
    respond_to do |format|
       if @couch.save

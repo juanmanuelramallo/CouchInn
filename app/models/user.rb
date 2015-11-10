@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  default_scope -> {order("rol")}
+
   has_many :couches
   has_many :reservas
 
