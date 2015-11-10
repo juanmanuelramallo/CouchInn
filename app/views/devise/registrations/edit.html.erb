@@ -1,39 +1,110 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<body class="edit-user"></body>
+<div class="col-md-6 col-centered">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <h3> Editar usuario </h3>
 
-  <div class="field">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="spacer-div"></div>
+
+
+    <%= f.label "Nombre" %><br />
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">😏</span>
+      <%= f.text_field :nombre, class:"form-control" , autofocus: true %>
+    </div>
+
+
+    <div class="spacer-div"></div>
+
+
+    <%= f.label "Apellido" %><br />
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">😁</span>
+      <%= f.text_field :apellido, class:"form-control"%>
+    </div>
+
+
+    <div class="spacer-div"></div>
+
+    <script>
+    $(function () {
+                $('#datetimepicker4').datetimepicker({
+                  format: 'DD/MM/YYYY'
+                });
+            });
+    </script>
+
+    <%= f.label "Fecha de nacimiento" %><br />
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">📅</span>
+      <%= f.date_field :fecnac, class:"form-control", id:"datetimepicker4", script:"datetimepicker4"  %>
+    </div>
+
+
+
+
+    <div class="spacer-div"></div>
+
+
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">😏</span>
+      <%= f.email_field :email, class:"form-control"%>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+
+    <div class="spacer-div"></div>
+
+
+    <%= f.label "Contraseña" %> <i>(dejar en blanco si no querés cambiar)</i>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon2">🔑</span>
+      <%= f.password_field :password, class:"form-control" ,autocomplete: "off" %>
+    </div>
+
+
+    <div class="spacer-div"></div>
+
+
+    <%= f.label "Confirmación de contraseña" %>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon2">🔑</span>
+      <%= f.password_field :password_confirmation, class:"form-control" ,autocomplete: "off" %>
+    </div>
+
+
+    <div class="spacer-div"></div>
+
+
+    <%= f.label "Contraseña actual" %> <i>(Necesitamos tu contraseña actual para confirmar los cambios)</i>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon2">🔑</span>
+      <%= f.password_field :current_password, class:"form-control", autocomplete: "off" %>
+    </div>
+
+
+    <div class="spacer-div"></div>
+
+
+    <div class="actions">
+      <%= f.submit "Actualizar", class:"btn btn-primary" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <div class="spacer-div"></div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+  <h5 > Cancelar mi cuenta </h5>
 
-<h3>Cancel my account</h3>
+  <p> No quieres seguir con nosotros? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, class:"btn btn-danger" %></p>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <%= link_to "Atrás", :back %>
 
-<%= link_to "Back", :back %>
+</div>

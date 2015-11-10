@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require_tree .
 //= require owl.carousel
+//= require moment
+//= require bootstrap-datetimepicker
 
 $(document).ready(function() {
     $('a[disabled=disabled]').click(function(event){
