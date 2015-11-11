@@ -2,8 +2,24 @@ body {
   padding-top: 10px;
 }
 
-.default{
-  background: image-url('bg_wall.jpg') no-repeat center center fixed;
+.default, .ingresar, .editar-usuario{
+  background: image-url('bg-wall.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.registracion{
+  background: image-url('bg-town.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.payment-new {
+  background: image-url('bg-youth.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
