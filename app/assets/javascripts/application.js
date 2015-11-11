@@ -17,6 +17,8 @@
 //= require owl.carousel
 //= require moment
 //= require bootstrap-datetimepicker
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 
 $(document).ready(function() {
     $('a[disabled=disabled]').click(function(event){
@@ -32,5 +34,9 @@ $(document).ready(function() {
       itemsDesktopSmall : [979,2]
 
   });
+
+    $( ".datepicker" ).datepicker({
+          dateFormat: 'yy-mm-dd'
+        });
 
 });

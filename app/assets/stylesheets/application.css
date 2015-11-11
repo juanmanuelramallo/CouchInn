@@ -16,6 +16,7 @@
  *= require owl.theme
  *= require bootstrap
  *= require bootstrap-datetimepicker
+ *= require bootstrap-datepicker3
  */
 
  h1 {

@@ -27,21 +27,25 @@
 
     <div class="spacer-div"></div>
 
-    <script>
-    $(function () {
-                $('#datetimepicker4').datetimepicker({
-                  format: 'DD/MM/YYYY'
-                });
-            });
+    <script type="text/javascript">
+      $(function() {
+        $( "#datepicker" ).datepicker({
+          minDate: 0
+          dateFormat: 'yyyy-mm-dd'
+        });
+      });
     </script>
 
     <%= f.label "Fecha de nacimiento" %><br />
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">📅</span>
-      <%= f.date_field :fecnac, class:"form-control", id:"datetimepicker4", script:"datetimepicker4"  %>
+      <%= f.date_select :fecnac %>
     </div>
 
-
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">📅</span>
+      <%= f.text_field :fecnac, class:"form-control", value: @user.fecnac%>
+    </div>
 
 
     <div class="spacer-div"></div>

@@ -71,7 +71,7 @@ Couch.create(
     ubicacion:"En medio de la nada",
     capacidad:'1',
     descripcion:"Hermosa casa, ideal para tener un momento de relax y tranquilidad. Tengo una habitación extra para alojar visitantes.",
-    usuario_id:andres.id,
+    user_id:andres.id,
     reservado:false
     )
 
@@ -81,7 +81,7 @@ Couch.create(
     ubicacion:"Encima de una palmera",
     capacidad:5,
     descripcion:"Casa avión. Cuenta con 1 baño, 2 habitaciones y 83 ventanas para disfrutar de una hermosa vista.",
-    usuario_id:esteban.id,
+    user_id:esteban.id,
     reservado:false
     )
 
@@ -91,7 +91,7 @@ Couch.create(
     ubicacion:"En el centro de la avenida",
     capacidad:8,
     descripcion:"Original casa dada vuelta. Cuenta con 2 baños, living, wifi, y 4 habitaciones. ",
-    usuario_id:juan.id,
+    user_id:juan.id,
     reservado:false
     )
 
@@ -102,7 +102,7 @@ Couch.create(
     capacidad:6,
     descripcion:"Acogedora choza en la selva misionera. Cuenta con capacidad para 6 personas. Se encuentra en una aldea, ideal para compartir momentos con la tribu.
 No cuenta con ventanas.",
-    usuario_id:diego.id,
+    user_id:diego.id,
     reservado:false
     )
 
@@ -112,7 +112,7 @@ Couch.create(
     ubicacion:"En el quinto piso de las torres mellizas",
     capacidad:4,
     descripcion:"Hermosa vista desde el balcón, baños amplios y con aire acondicionado",
-    usuario_id:juan.id,
+    user_id:juan.id,
     reservado:false
     )
 

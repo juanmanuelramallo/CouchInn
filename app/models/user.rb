@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validate :of_certain_age
+
   attr_accessor :login
 
   default_scope -> {order("rol")}
@@ -18,5 +20,13 @@ class User < ActiveRecord::Base
     def set_default_rol
       self.rol ||= :normal
     end
+
+  private
+
+  def of_certain_age
+    if self.fecnac
+      errors.add(:base, 'Por motivos de seguridad, debes tener al menos 18 años.') if self.fecnac > 18.years.ago
+    end
+  end
 
 end
