@@ -15,8 +15,6 @@
 //= require jquery_ujs
 //= require_tree .
 //= require owl.carousel
-//= require moment
-//= require bootstrap-datetimepicker
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 
@@ -34,9 +32,5 @@ $(document).ready(function() {
       itemsDesktopSmall : [979,2]
 
   });
-
-    $( ".datepicker" ).datepicker({
-          dateFormat: 'yy-mm-dd'
-        });
 
 });
