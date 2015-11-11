@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :couches
   has_many :reservas
 
-  enum genero: [:masculino, :femenino, :prefiero_no_especificar]
+  enum genero: [:Masculino, :Femenino, :Prefiero_no_especificar]
   enum rol: [:admin, :normal, :premium]
   after_initialize :set_default_rol, :if => :new_record?
 

@@ -1,18 +1,18 @@
 
 
-<div style="padding-top:50px"></div>
+<div style="padding-top:40px"></div>
 
 <div class="col-lg-3 col-lg-offset-4">
-<h1><span class="label label-default">Ingresar</span></h1>
+<h3><span class="label label-default">Ingresar</span></h3>
 </div>
-
-<div style="padding-top:55px"></div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 <div class="row">
 
 <div class="col-lg-4 col-lg-offset-4">
+
+<div class="spacer-div"></div>
 
   <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">📧</span>
@@ -48,7 +48,7 @@
   </div>
 
   <div>
-    <%= f.submit "Ingresar", class:"btn btn-success" %>
+    <%= f.submit "Ingresar", class:"btn btn-success btn-block" %>
   </div>
 
 <% end %>

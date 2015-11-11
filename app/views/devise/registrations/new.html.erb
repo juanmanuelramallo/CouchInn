@@ -43,8 +43,8 @@
 
   <div class="input-group">
 
-    <span class="input-group-addon" id="basic-addon1">📧</span>
-    <%= f.email_field :email, class:"form-control", placeholder:"miemail@loquesea.com"%>
+    <span class="input-group-addon" id="basic-addon1">📅</span>
+    <%= f.text_field :fecnac, class:"form-control", type:"text", 'data-provide':'datepicker', placeholder:"Mi cumpleaños"%>
 
   </div>
 
@@ -52,11 +52,10 @@
   <div class="spacer-div"></div>
 
 
-
   <div class="input-group">
 
-    <span class="input-group-addon" id="basic-addon1">📅</span>
-    <%= f.text_field :fecnac, class:"form-control", type:"text", 'data-provide':'datepicker', placeholder:"miemail@loquesea.com"%>
+    <span class="input-group-addon" id="basic-addon1">📧</span>
+    <%= f.email_field :email, class:"form-control", placeholder:"miemail@loquesea.com"%>
 
   </div>
 
@@ -67,7 +66,7 @@
   <div class="input-group">
 
     <span class="input-group-addon" id="basic-addon2">🔑</span>
-    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"characters minimum" %>
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Esto es secreto" %>
 
   </div>
 

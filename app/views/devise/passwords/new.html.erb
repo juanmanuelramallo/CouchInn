@@ -1,16 +1,30 @@
-<h2>Forgot your password?</h2>
+<body class="forgot-password">
+
+<div class="col-md-5 col-centered">
+
+<h2>Olvidaste tu contraseña?</h2>
+<h5>No te preocupes, estamos acostumbrados a esto.</h5>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <%= f.label :email %><br />
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">📧</span>
+    <%= f.email_field :email, class:"form-control" , autofocus: true %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="spacer-div"></div>
+
+  <div>
+    <%= f.submit "Enviame las instrucciones para cambiar la contraseña", class:"btn btn-success btn-block"%>
   </div>
 <% end %>
 
+<div class="spacer-div"></div>
+
 <%= render "devise/shared/links" %>
+
+</div>
+
+</body>
