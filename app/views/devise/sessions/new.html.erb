@@ -9,6 +9,14 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+
+<% if !devise_error_messages!.blank? %>
+    <div class="alert alert-danger">
+    <%= devise_error_messages! %>
+    </div>
+  <% end %>
+
+
 <div class="row">
 
 <div class="col-lg-4 col-lg-offset-4">

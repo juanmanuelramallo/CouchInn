@@ -10,12 +10,16 @@
 
 <%= form_for @user, as: :user, url: registration_path(@user) do |f| %>
 
-<%= devise_error_messages! %>
-
 <div class="row">
+
 
 <div class="col-lg-4 col-centered">
 
+  <% if !devise_error_messages!.blank? %>
+    <div class="alert alert-danger">
+    <%= devise_error_messages! %>
+    </div>
+  <% end %>
 
  <div class="spacer-div"></div>
 

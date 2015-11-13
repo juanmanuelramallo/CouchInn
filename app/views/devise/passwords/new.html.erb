@@ -6,7 +6,15 @@
 <h5>No te preocupes, estamos acostumbrados a esto.</h5>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+
+
+  <% if !devise_error_messages!.blank? %>
+    <div class="alert alert-danger">
+    <%= devise_error_messages! %>
+    </div>
+  <% end %>
+
+
 
   <%= f.label :email %><br />
   <div class="input-group">
