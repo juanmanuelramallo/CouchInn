@@ -1,0 +1,67 @@
+
+
+<div style="padding-top:50px"></div>
+
+<div class="col-lg-3 col-lg-offset-4">
+<h1><span class="label label-default">Ingresar</span></h1>
+</div>
+
+<div style="padding-top:55px"></div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<div class="row">
+
+<div class="col-lg-4 col-lg-offset-4">
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">📧</span>
+  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder:"miemail@loquesea.com" %>
+  </div>
+
+  <div class="spacer-div"></div>
+
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon2">🔑</span>
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"micontraseña" %>
+  </div>
+
+  </div>
+
+</div> <!-- ROW -->
+
+  <div class="spacer-div"></div>
+
+<div class="row">
+
+  <div class="col-lg-3 col-lg-offset-4">
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="input-group">
+    <span class="input-group-addon">
+      <%= f.check_box :remember_me , class:"checkbox" %>
+    </span>
+      <%= f.label :remember_me, type:"text", class:"form-control"%>
+    </div>
+  <% end -%>
+
+  </div>
+
+  <div>
+    <%= f.submit "Ingresar", class:"btn btn-success" %>
+  </div>
+
+<% end %>
+
+</div>
+
+<div style="padding-top:20px"></div>
+
+<div class="col-lg-4 col-lg-offset-4">
+<%= render "devise/shared/links" %>
+</div>
+
+
+
+
+

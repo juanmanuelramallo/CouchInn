@@ -1,0 +1,153 @@
+body {
+  padding-top: 10px;
+}
+
+.default{
+  background: image-url('bg_wall.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.navbar .navbar-default{
+  background: rgba(#E6E6E6, 0.95);
+
+}
+
+.show-couch {
+  background: image-url('wall-dark.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.form-control {
+  margin-bottom: 5px;
+}
+
+footer {
+
+  margin-bottom: 2px;
+}
+
+.td-nav {
+  padding-top:20px;
+  width:270px;
+  text-align: center;
+  font-family: Helvetica;
+
+}
+
+.spacer-div{
+  padding-top:15px;
+}
+
+.spacer-p{
+  padding-top:115px;
+}
+
+.spacer-li{
+  padding-right:10px;
+}
+
+.navbar-default{
+  height:95px;
+}
+
+li.texto{
+  padding-top:20px;
+  font-size:17px;
+}
+
+.dropdown-ingresar{
+  padding-top:27px;
+}
+
+.btn-unbordered {
+  border:none;
+}
+
+em{
+  color:grey;
+}
+
+select{
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+disabled{
+  color:white;
+}
+
+.image {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+
+h2.texto-over-image {
+   position: relative;
+   top: -200px ;
+   left: 50px;
+   width: 30%;
+}
+
+h2.texto-over-image span {
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(133, 160, 43, 0.7);
+   padding: 10px;
+}
+
+.container-info {
+
+    width: 450px;
+    /*overflow: auto;*/
+    /*padding: 1em;*/
+    background: #000;
+    /*margin: auto;*/
+}
+
+.cube {
+    letter-spacing: -1px;
+    color:white;
+    font: bold 20px Helvetica, Sans-Serif;
+    padding: 10px;
+
+    border-radius: 2px;
+
+    overflow:hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: -225px;
+    float: left;
+    background: #95B435;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+
+}
+
+.descripcion{
+  font: normal 16px Helvetica, Sans-Serif;
+}
+
+.cube:nth-of-type(2n) {
+    background: #6392AA;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+

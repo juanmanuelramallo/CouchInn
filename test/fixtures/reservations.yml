@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  couch_id: 1
+  start_date: MyString
+  Date: MyString
+  end_date: MyString
+  Date: MyString
+  confirmed: MyString
+  Boolean: MyString
+
+two:
+  user_id: 1
+  couch_id: 1
+  start_date: MyString
+  Date: MyString
+  end_date: MyString
+  Date: MyString
+  confirmed: MyString
+  Boolean: MyString
