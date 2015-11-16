@@ -34,7 +34,7 @@ class CouchesController < ApplicationController
   end
 
   def create
-  @couch = Couch.create(params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad))
+  @couch = Couch.new(params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad))
   @couch.reservado = false
   @couch.user_id = current_user.id
 
@@ -46,8 +46,8 @@ class CouchesController < ApplicationController
          format.html { render :new }
          format.json { render json: @couch.errors, status: :unprocessable_entity }
       end
-   end
-end
+    end
+  end
 
 #def create
     #@couch = Couch.create(params[:couches])

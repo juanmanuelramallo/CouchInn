@@ -1,12 +1,21 @@
 
-<%= form_for @payment, :html => { :class => 'form' } do |f| %>
+<%= form_for @payment do |f| %>
 
+<% if @payment.errors.any? %>
+  <div class="alert alert-danger">
+    <a class="close" data-dismiss="alert">×</a>
+    <% for message in @payment.errors.full_messages %>
+      <%= message %>
+      </br>
+    <% end %>
+  </div>
+<% end %>
 
 <div class="col-lg-5 col-centered">
 <div class="form-group">
-  <%= f.label :amount, 'Precio',  :type =>'label', :for =>'priceField', class:"label label-default"%>
+  <%= f.label "Monto", 'Precio',  :type =>'label', :for =>'priceField', class:"label label-default"%>
   <div>
-    <%= f.text_field :amount, :type=>'input',:class => 'form-control' , :value => '9,99 (AR$)' , :readonly => true, :id => 'priceField'%>
+    <%= f.text_field "Monto", :type=>'input',:class => 'form-control' , :value => '19.99 (US$)' , :readonly => true, :id => 'priceField'%>
   </div>
 </div>
 
@@ -26,17 +35,21 @@
 
 <div class="form-group">
   <%= f.label :cardExpiryMonth,'Mes de expiración', class:"label label-default"%>
-  <div class="controls">
-    <%= f.select(:cardExpiryMonth, options_for_select(cc_months), :id=>"",:class=>"form-control")%>
+  <div>
+    <%= f.select(:cardExpiryMonth, options_for_select(cc_months),:class=>"form-control")%>
   </div>
 </div>
 
 <div class="form-group">
   <%= f.label :cardExpiryYear,'Año de expiración', :class => 'control-label', class:"label label-default" %>
-  <div class="dropdown">
-    <%= f.select(:cardExpiryYear, options_for_select(cc_years))%>
+  <div>
+    <%= f.select(:cardExpiryYear, options_for_select(cc_years), class:"form-control")%>
   </div>
 </div>
+
+
+
+
 
 <div class="spacer">
   <p> </p>

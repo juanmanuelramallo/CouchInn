@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
   resources :payments
+
+  get 'payments/new'
+
+  get 'payments/edit'
+
+  get 'payments/index'
+
+  get 'payments/show'
+
   resources :couches
   devise_for :users
   get 'couches/index'

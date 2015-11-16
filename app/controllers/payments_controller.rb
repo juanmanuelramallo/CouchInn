@@ -24,7 +24,8 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @payment = Payment.new(params.require(:payment).permit(:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
+
 
     respond_to do |format|
       if @payment.save
