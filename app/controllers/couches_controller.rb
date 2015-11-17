@@ -29,17 +29,9 @@ class CouchesController < ApplicationController
   end
 
   def show
-    @nuevaReserva = Reservation.new
+    #@nuevaReserva = Reservation.new
   end
 
-  #def get_reserva
-  #  @buscar_reserva = 
-  #end
-
-  def reserva
-    @reserva = Reserva.new(params.require(:reserva).permit(:usuario_id, :couch_id, :estado))
-    @reserva.save
-  end
 
   def new
     @couch = Couch.new

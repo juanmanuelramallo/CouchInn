@@ -23,20 +23,17 @@
 
 
 <% if !current_user.blank? %>
-  <%= form_for @nuevaReserva do |f| %>
+  <%= form_for @couch do |f| %>
   <% if current_user.id == @couch.user_id %>
-        <div class="form-actions">
+        <div class="asdfg">
    			    <% @couch.reservado = true %>
             <%= f.submit "Aceptar reserva", class:"btn btn-primary" %>
             <%= link_to "Cancelar reserva", root_path, class:"btn btn-default" %>>
         </div>
   <% else %>
-        <div class="form-actions">
+        <div class="asdfg">
             
-        	<% @nuevaReserva.user_id = current_user.id %>
-        	<% @nuevaReserva.couch_id = @couch.id %>
-        	<% @nuevaReserva.confirmed = false %>
-            <%= f.submit "Enviar solicitud de reserva", class:"btn btn-primary" %>
+            <%= link_to "Enviar solicitud de reserva", reservations_new_path, class:"btn btn-primary" %>
             <%= link_to "Atras", root_path, class:"btn btn-default"%>
 
         </div>

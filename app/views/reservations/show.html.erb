@@ -1,2 +1,16 @@
-<h1>Reservas#show</h1>
-<p>Find me in app/views/reservas/show.html.erb</p>
+<h1>Listado de Reservas</h1>
+ 
+<table class="table">
+  <tr>
+    <th>Couch reservado</th>
+ 
+    <th>Estado de la reserva</th>
+  </tr>
+ 
+  <% @reserva.each do |article| %>
+    <tr>
+      <td><%= article.couch_id %></td>
+      <td><%= article.confirmed %></td>
+    </tr>
+  <% end %>
+</table>
