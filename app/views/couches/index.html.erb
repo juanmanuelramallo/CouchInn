@@ -3,6 +3,27 @@
 
 <div class="row">
 
+
+  <% if !current_user.blank? %>
+    <% if current_user.rol == "admin" %>
+
+      <div class="col-md-2">
+
+        <div class="barra-admin">
+
+          <div class="container-admin">
+            <h3> Espacio administrador </h3>
+            <%= link_to "Agregar Tipo de Couch", root_path , class:"btn btn-default"%>
+            <%= link_to "Modificar Tipo de Couch", root_path , class:"btn btn-default"%>
+            <%= link_to "Eliminar Tipo de Couch", root_path , class:"btn btn-default"%>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="col-md-8 col-centered">
 
     <% if !current_user.blank? %>

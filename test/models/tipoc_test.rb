@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ReservaTest < ActiveSupport::TestCase
+class TipocTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

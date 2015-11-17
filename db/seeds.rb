@@ -8,8 +8,14 @@
 
 User.destroy_all
 Couch.destroy_all
-Reserva.destroy_all
 Foto.destroy_all
+Tipoc.destroy_all
+
+#----- type couch ------#
+Tipoc.create!(tipo:"Casa");
+Tipoc.create!(tipo:"Departamento");
+Tipoc.create!(tipo:"Choza");
+Tipoc.create!(tipo:"Motorhome");
 
 #------ USERS ---------#
 
@@ -24,7 +30,7 @@ juan = User.create!(
     ciudad:'La Plata',
     password: "topsecret",
     password_confirmation: "topsecret",
-    genero:'masculino'
+    genero:'Masculino'
     )
 
 diego = User.create!(
@@ -36,7 +42,7 @@ diego = User.create!(
     rol:'normal',
     password: "diegotuman",
     password_confirmation: "diegotuman",
-    genero:'masculino'
+    genero:'Masculino'
     )
 
 andres = User.create(
@@ -48,7 +54,7 @@ andres = User.create(
     rol:'normal',
     password: "andresito4ever",
     password_confirmation: "andresito4ever",
-    genero:'masculino'
+    genero:'Masculino'
     )
 
 esteban = User.create(
@@ -60,7 +66,7 @@ esteban = User.create(
     rol:'premium',
     password: "tebis1234",
     password_confirmation: "tebis1234",
-    genero:'masculino'
+    genero:'Masculino'
     )
 
 #----- COUCHES ---------#

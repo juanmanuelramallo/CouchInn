@@ -68,8 +68,9 @@ footer {
   padding-right:10px;
 }
 
+$height-navbar:95px;
 .navbar-default{
-  height:95px;
+  height:$height-navbar;
 }
 
 li.texto{
@@ -167,3 +168,23 @@ h2.texto-over-image span {
     margin: 0 auto;
 }
 
+.barra-admin{
+
+  position: fixed;
+
+  top: $height-navbar + 50;
+  left: 30px;
+
+  width: 200px;
+  height: 200px;
+
+
+  border-radius: 5px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align: center;
+
+}
