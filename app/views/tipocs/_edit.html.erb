@@ -1,0 +1,14 @@
+<%= form_for tipo do |t| %>
+
+  <div class="list-group-item">
+
+    <div class="input-group">
+      <%= t.text_field :tipo, class:"form-control" %>
+      <span class="input-group-btn">
+        <%= t.submit "Actualizar", class:"btn btn-warning" %>
+      </span>
+    </div>
+  </div>
+
+
+<% end %>

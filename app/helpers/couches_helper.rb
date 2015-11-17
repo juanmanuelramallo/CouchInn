@@ -6,7 +6,7 @@ module CouchesHelper
 
   def tipo_couch_index(couch)
     if Tipoc.where(:id => couch.tipo).blank?
-      tipo_couch_index = "Tipo de hospedaje eliminado "
+      tipo_couch_index = "Couch"
     else
       tipo_couch_index = Tipoc.find(couch.tipo).tipo
     end

@@ -36,8 +36,8 @@ class TipocsController < ApplicationController
   def update
     respond_to do |format|
       if @tipo.update(tipo_params)
-        format.html { redirect_to @tipo, notice: 'Tipo fue actualizado correctamente.' }
-        format.json { render :show, status: :ok, location: @tipo }
+        format.html { redirect_to tipocs_path, notice: 'Tipo fue actualizado correctamente.' }
+        format.json { render :show, status: :ok, location: tipocs_path }
       else
         format.html { render :edit }
         format.json { render json: @tipo.errors, status: :unprocessable_entity }
