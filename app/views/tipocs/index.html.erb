@@ -25,6 +25,12 @@
 
     <p> Eliminar tipo </p>
 
+    <% @tipos.each do |t| %>
+
+      <%= link_to t.tipo, t, method: :delete %>
+
+    <% end %>
+
   </div>
 
 </div>

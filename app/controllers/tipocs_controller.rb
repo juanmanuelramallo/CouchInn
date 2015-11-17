@@ -33,7 +33,7 @@ class TipocsController < ApplicationController
   end
 
 
-    def update
+  def update
     respond_to do |format|
       if @tipo.update(tipo_params)
         format.html { redirect_to @tipo, notice: 'Tipo fue actualizado correctamente.' }
@@ -47,7 +47,8 @@ class TipocsController < ApplicationController
 
 
   def destroy
-
+    Tipoc.find(params[:id]).destroy
+    redirect_to tipocs_path
   end
 
 private
