@@ -1,0 +1,114 @@
+<body class="registracion">
+<div style="padding-top:50px; scrollable:false"></div>
+
+<div class="col-lg-3 col-lg-offset-4">
+<h3><span class="label label-default">Registrarme</span></h3>
+</div>
+
+<div style="padding-top:55px"></div>
+
+
+<%= form_for @user, as: :user, url: registration_path(@user) do |f| %>
+
+<div class="row">
+
+
+<div class="col-lg-4 col-centered">
+
+  <% if !devise_error_messages!.blank? %>
+    <div class="alert alert-danger">
+    <%= devise_error_messages! %>
+    </div>
+  <% end %>
+
+ <div class="spacer-div"></div>
+
+
+  <div class="input-group">
+
+    <span class="input-group-addon" id="basic-addon3">😏</span>
+    <%= f.text_field :nombre, autofocus: true, class:"form-control", placeholder:"mi nombre"%>
+
+  </div>
+
+
+  <div class="spacer-div"></div>
+
+
+  <div class="input-group">
+
+    <span class="input-group-addon" id="basic-addon4">😁</span>
+    <%= f.text_field :apellido, class:"form-control", placeholder:"mi apellido"%>
+
+  </div>
+
+
+  <div class="spacer-div"></div>
+
+
+  <div class="input-group">
+
+    <span class="input-group-addon" id="basic-addon1">📅</span>
+    <%= f.text_field :fecnac, class:"form-control", type:"text", 'data-provide':'datepicker', placeholder:"Mi cumpleaños"%>
+
+  </div>
+
+
+  <div class="spacer-div"></div>
+
+
+  <div class="input-group">
+
+    <span class="input-group-addon" id="basic-addon1">📧</span>
+    <%= f.email_field :email, class:"form-control", placeholder:"miemail@loquesea.com"%>
+
+  </div>
+
+
+  <div class="spacer-div"></div>
+
+
+  <div class="input-group">
+
+    <span class="input-group-addon" id="basic-addon2">🔑</span>
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"Esto es secreto y mínimo 8 caracteres" %>
+
+  </div>
+
+  <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+    <% end %><br />
+
+
+  <div class="spacer-div"></div>
+
+
+  <div class="input-group">
+
+    <span class="input-group-addon" id="basic-addon2">🔑</span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", placeholder:"Repetir la contraseña" %>
+
+  </div>
+
+
+  <div class="spacer-div"></div>
+
+
+  <div>
+    <%= f.submit "Registrarme", class:"btn btn-success btn-block"%>
+  </div>
+
+  </div>
+
+</div> <!-- ROW -->
+
+<% end %>
+
+
+<div style="padding-top:20px"></div>
+
+<div class="col-lg-4 col-lg-offset-4">
+<%= render "devise/shared/links" %>
+</div>
+
+</body>

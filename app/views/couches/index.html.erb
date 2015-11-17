@@ -1,0 +1,91 @@
+<body class="default">
+<div style="padding-top:25px"></div>
+
+<div class="row">
+
+
+  <% if !current_user.blank? %>
+    <% if current_user.rol == "admin" %>
+
+      <div class="col-md-2">
+
+        <div class="barra-admin">
+
+          <div class="container-admin">
+            <h3> Espacio administrador </h3>
+            <%= link_to "Agregar Tipo de Couch", root_path , class:"btn btn-default"%>
+            <%= link_to "Modificar Tipo de Couch", root_path , class:"btn btn-default"%>
+            <%= link_to "Eliminar Tipo de Couch", root_path , class:"btn btn-default"%>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="col-md-8 col-centered">
+
+    <% if !current_user.blank? %>
+    <h1 class="label label-primary"> <%= current_user.rol %> </h1>
+    <% end %>
+
+    <div class="image" style="padding-top:20px">
+
+
+      <% if @couch.nil? %>
+
+
+      <% else %>
+
+
+      <% @couch.each do |c| %>
+
+        <% fotoPrincipal = @foto.where("couch_id=#{c.id}").first %>
+
+
+        <% if fotoPrincipal.nil? %>
+
+          <%= image_tag "sofa-outline.png", class:"img-responsive img-rounded" %>
+
+        <% else %>
+
+          <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+
+        <% end %>
+
+
+        <div class="containter-info">
+
+          <div class="cube">
+            <span class=""> <strong> <%= c.tipo %> </strong>
+            </br> para <%= c.capacidad%> persona(s) </span>
+          </div>
+
+          <div class="cube">
+
+            <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
+
+          </div>
+
+          <div>
+            <!-- <p> <%= User.find(c.user_id).rol %> </p> -->
+            <!-- Uncomment the line above to see ordered couches by user role -->
+            <%= link_to "Ver más...", c , class:"cube btn"%>
+
+          </div>
+
+      <% end %>
+
+      <% end %> <!-- if -->
+
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>

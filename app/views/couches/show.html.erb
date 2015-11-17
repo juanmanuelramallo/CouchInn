@@ -1,0 +1,48 @@
+<body class="show-couch">
+
+<div style="padding-top:40px"></div>
+
+<div class="col-md-8 col-centered">
+
+  <%= render 'couches/couch', show:true %>
+
+</div>
+
+
+<div id="owl-show" class="owl-carousel">
+
+  <% cid = @couch.id %>
+  <% fotos = Foto.where("couch_id=#{cid}") %>
+  <% fotos.each do |f| %>
+
+  <div class="item"> <%= image_tag f.nombre, class:"img-rounded img-show-couch" %> </div>
+
+  <%end%>
+
+</div>
+
+
+<% if !current_user.blank? %>
+  <%= form_for @nuevaReserva do |f| %>
+  <% if current_user.id == @couch.user_id %>
+        <div class="form-actions">
+   			    <% @couch.reservado = true %>
+            <%= f.submit "Aceptar reserva", class:"btn btn-primary" %>
+            <%= link_to "Cancelar reserva", root_path, class:"btn btn-default" %>>
+        </div>
+  <% else %>
+        <div class="form-actions">
+            
+        	<% @nuevaReserva.user_id = current_user.id %>
+        	<% @nuevaReserva.couch_id = @couch.id %>
+        	<% @nuevaReserva.confirmed = false %>
+            <%= f.submit "Enviar solicitud de reserva", class:"btn btn-primary" %>
+            <%= link_to "Atras", root_path, class:"btn btn-default"%>
+
+        </div>
+<% end %>
+<% end %>
+<% end %>
+
+
+</body>

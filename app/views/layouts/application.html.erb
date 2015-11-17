@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CouchInn</title>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <!-- Important Owl stylesheet -->
+  <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+
+<!-- Default Theme -->
+  <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+
+<!--  jQuery 1.7+  -->
+  <script src="jquery-1.9.1.min.js"></script>
+
+<!-- Include js plugin -->
+  <script src="assets/owl-carousel/owl.carousel.js"></script>
+</head>
+<body>
+
+<%= render 'layouts/header' %>
+
+
+<div class="container">
+
+  <div style="padding-top:30px"></div>
+
+  <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+
+  <%= yield %>
+
+</div>
+</body>
+</html>

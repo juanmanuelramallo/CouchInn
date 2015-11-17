@@ -1,0 +1,12 @@
+<%- model_class = Payment -%>
+<div class="page-header">
+  <h1> Pago </h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Monto:</strong></dt>
+  <dd> 9,99 (AR$)</dd>
+</dl>
+
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_payment_path(@payment), :class => 'btn btn-default' %>
