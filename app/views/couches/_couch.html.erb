@@ -17,7 +17,9 @@
         <%= f.label :tipo, class:"label label-default", type:"label"%>
 
         <div class="w-label">
-          <%= f.select(:tipo, @tipos, {}, { :tipo => "tipo", class:"form-control", disabled:show }) %>
+
+          <%= f.select :tipo, options_for_tipo, {}, class:"form-control", disabled:show %>
+
         </div>
 
       </div>

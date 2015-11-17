@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :tipocs
+
+  get 'tipocs/gestion'
+
   resources :payments
 
   get 'payments/new'

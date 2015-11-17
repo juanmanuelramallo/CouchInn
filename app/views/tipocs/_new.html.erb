@@ -1,0 +1,9 @@
+<%= form_for @new do |f| %>
+
+  <%= f.text_field :tipo %>
+
+  <%= f.submit "Agregar tipo" %>
+
+  <%= link_to "Cancelar", tipocs_path %>
+
+<% end %>
