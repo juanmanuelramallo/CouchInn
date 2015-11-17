@@ -1,8 +1,7 @@
 module CouchesHelper
 
-  def options_for_tipo
-    tipos = Tipoc.pluck(:tipo)
-    return tipos
+  def tipos_array
+    tipos_array = Tipoc.all.map { |t| [t.tipo, t.id] }
   end
 
 end

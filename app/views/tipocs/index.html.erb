@@ -13,6 +13,12 @@
 
     <p> Modificar tipo </p>
 
+    <% @tipos.each do |t| %>
+
+      <%= link_to t.tipo, edit_tipoc_path(t) %>
+
+    <% end %>
+
   </div>
 
   <div class="col-md-4">

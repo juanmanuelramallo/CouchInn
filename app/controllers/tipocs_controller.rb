@@ -1,5 +1,5 @@
 class TipocsController < ApplicationController
-
+  before_action :set_tipo, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -11,8 +11,7 @@ class TipocsController < ApplicationController
 
   end
 
-  def update
-
+  def edit
   end
 
   def new
@@ -33,7 +32,31 @@ class TipocsController < ApplicationController
     end
   end
 
+
+    def update
+    respond_to do |format|
+      if @tipo.update(tipo_params)
+        format.html { redirect_to @tipo, notice: 'Tipo fue actualizado correctamente.' }
+        format.json { render :show, status: :ok, location: @tipo }
+      else
+        format.html { render :edit }
+        format.json { render json: @tipo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def destroy
 
   end
+
+private
+  def set_tipo
+    @tipo = Tipoc.find(params[:id])
+  end
+
+  def tipo_params
+    params.require(:tipoc).permit(:tipo)
+  end
+
 end

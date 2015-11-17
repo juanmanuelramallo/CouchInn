@@ -1,0 +1,9 @@
+<%= form_for @tipo do |t| %>
+
+  <%= t.text_field :tipo, class:"form-control" %>
+
+  <%= t.submit "Listo" %>
+
+  <%= link_to "Cancelar", tipocs_path %>
+
+<% end %>

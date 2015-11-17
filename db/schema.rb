@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117021000) do
+ActiveRecord::Schema.define(version: 20151116224302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "couches", force: :cascade do |t|
-    t.string   "tipo"
+    t.integer  "tipo"
     t.string   "ubicacion"
     t.integer  "capacidad"
     t.string   "descripcion"
