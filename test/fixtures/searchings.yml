@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo: 1
+  ubicacion_cont: MyString
+  capacidad: 1
+  descripcion_cont: MyString
+  user_nombre: MyString
+  user_puntos: 1
+  reservado: false
+  free_from: 2015-11-18
+  free_to: 2015-11-18
+
+two:
+  tipo: 1
+  ubicacion_cont: MyString
+  capacidad: 1
+  descripcion_cont: MyString
+  user_nombre: MyString
+  user_puntos: 1
+  reservado: false
+  free_from: 2015-11-18
+  free_to: 2015-11-18

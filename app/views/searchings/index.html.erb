@@ -1,0 +1,19 @@
+<h1>Searchings#index</h1>
+<p>Find me in app/views/searchings/index.html.erb</p>
+
+
+<%= form_for @search do |s|%>
+  <div class="form-group">
+      <%= s.label :tipo %>
+      <%= s.select :tipo, options_for_select(tipos_array_search), {}, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= s.label :ubicacion_cont, "Ubicación" %>
+    <%= s.text_field :ubicacion_cont, class:"form-control", placeholder:"Dejar en blanco si no desea buscar por ubicación" %>
+  </div>
+
+
+  <%= s.submit "Buscar", class:"btn btn-primary" %>
+
+<% end %>

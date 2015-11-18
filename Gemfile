@@ -48,7 +48,6 @@ group :development do
 end
 
 gem 'devise'
-gem 'pundit'
 
 gem 'hirb'
 
@@ -72,4 +71,3 @@ gem 'bootstrap-datepicker-rails'
 gem 'country_select'
 
 gem 'i18n', github: 'svenfuchs/i18n'
-

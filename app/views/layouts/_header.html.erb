@@ -1,3 +1,5 @@
+<%= dis = !user_signed_in? %>
+
 <div class="navbar">
 <nav class="navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
@@ -19,104 +21,43 @@
         <ul class="nav navbar-nav">
 
           <li class="texto">
-
             <%= link_to "Inicio", root_path, class:"" %> <span class="sr-only">(current)</span>
-
           </li>
 
-          <% if user_signed_in? %>
 
           <li class="texto"> <!-- CREAR COUCH -->
-
-              <%= link_to "✚ Couch", couches_new_path, class:"" %>
-
-            <% else %>
-
-          <li class="texto disabled"> <!-- CREAR COUCH -->
-
-              <%= link_to "✚ Couch", couches_new_path, disabled:true %>
-
-          <% end %>
-
+            <%= link_to_if user_signed_in?,"✚ Couch", couches_new_path do %>
+            <%= link_to "✚ Couch", couches_new_path, class:"btn disabled" %>
+            <%  end %>
         </li>
 
-
-        <% if user_signed_in? %>
 
         <li class="texto"> <!-- NOTIFICACIONES -->
-
-          <%= link_to "Notificaciones", root_path, class:"" %>
-
-          <% else %>
-
-        <li class="texto disabled"> <!-- NOTIFICACIONES -->
-
-          <%= link_to "Notificaciones", root_path, disabled:true %>
-
-          <% end %>
-
+          <%= link_to_if user_signed_in?,"Notificaciones", root_path do %>
+          <%= link_to "Notificaciones", root_path, class:"btn disabled" %>
+          <%  end %>
         </li>
+
 
       </ul>
 
+
       <ul class="nav navbar-nav navbar-right">
 
-        <li> <!-- LOGO -->
-
-          <%= link_to root_path, class: 'navbar-brand' do %>
-        <%= image_tag "logo_80.png", style: "", title: "Logo", class: "img-responsive logo" %>
-        <% end %>
-
-        </li>
 
         <li style="padding:15px"></li> <!-- ESPACIADO -->
 
-
-        <% if user_signed_in? %>
-
         <li class="texto"> <!-- BUSCADOR -->
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="input-group">
-
-              <input type="text" class="form-control" placeholder="Casa con vista al mar">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">🔍</button>
-              </span>
-
-            <% else %>
-
-        <li class="texto disabled"> <!-- BUSCADOR -->
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="input-group">
-
-              <input type="text" disabled="true" class="form-control disabled" placeholder="Tenes que ingresar para buscar">
-              <span class="input-group-btn">
-                <button class="btn btn-default" disabled="true">🔍</button>
-              </span>
-
-            <% end %>
-            </div>
-
-          </form>
-
+          <%= link_to_if user_signed_in?,"Buscar couch", searchings_path do %>
+          <%= link_to "Buscar couch", searchings_path, class:"btn disabled" %>
+          <%  end %>
         </li>
 
-        <% if user_signed_in? %>
 
         <li class="texto"> <!-- BE PREMIUM -->
-
-          <%= link_to "Be premium", new_payment_path, class:"" %>
-
-          <% else %>
-
-        <li class="texto disabled"> <!-- BE PREMIUM -->
-
-          <%= link_to "Be premium", new_payment_path, disabled:true %>
-
-          <% end %>
-
+          <%= link_to_if user_signed_in?,"Be premium", new_payment_path do %>
+          <%= link_to "Be premium", new_payment_path, class:"btn disabled" %>
+          <%  end %>
         </li>
 
 
@@ -130,16 +71,20 @@
           <ul class="dropdown-menu">
 
             <li>
-
               <%= link_to 'Editar Perfil', edit_user_registration_path %>
-
             </li>
 
-            <li> Mis couches </li>
+            <li>
+              <%= link_to 'Mis couches', root_path %>
+            </li>
 
-            <li> Ayuda </li>
+            <li>
+              <%= link_to 'Ayuda', root_path %>
+            </li>
 
-            <li> Acerca de </li>
+            <li>
+              <%= link_to 'Acerca de', root_path %>
+            </li>
 
             <li role="separator" class="divider"></li>
             <li>
@@ -180,6 +125,12 @@
       </ul>
 
       </ul> <!-- navbar right -->
+
+      <!-- LOGO -->
+
+        <%= link_to root_path, class: 'navbar-brand' do %>
+        <%= image_tag "logo_80.png", style: "", title: "Logo", class: "img-responsive logo" %>
+        <% end %>
 
     </div><!-- /.navbar-collapse -->
 

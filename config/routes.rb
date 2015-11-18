@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :searchings
+  get 'searchings/index'
+
+  get 'searchings/new'
+
+  get 'searchings/show'
+
   resources :reservations
   get 'reservations/index'
 
