@@ -1,6 +1,6 @@
 
-source 'http://rubygems.org'
-ruby "2.0.0"
+source 'https://rubygems.org'
+ruby "2.2.3"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -48,7 +48,6 @@ group :development do
 end
 
 gem 'devise'
-gem 'pundit'
 
 gem 'hirb'
 
@@ -72,4 +71,3 @@ gem 'bootstrap-datepicker-rails'
 gem 'country_select'
 
 gem 'i18n', github: 'svenfuchs/i18n'
-

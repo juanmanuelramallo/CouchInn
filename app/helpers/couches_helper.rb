@@ -10,4 +10,10 @@ module CouchesHelper
       tipo_couch_index = Tipoc.find(couch.tipo).tipo
     end
   end
+
+  def results_limit
+    # max number of search results to display
+    10
+  end
+
 end

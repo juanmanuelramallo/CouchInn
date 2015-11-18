@@ -46,10 +46,10 @@ diego = User.create!(
     genero:'Masculino'
     )
 
-andres = User.create(
+andres = User.create!(
     nombre:"Andres",
     apellido:"Martinez",
-    fecnac:'31/10/2000',
+    fecnac:'31/10/1996',
     email:"am2000@gmail.com",
     telf:"5422345782734",
     rol:'normal',
@@ -58,7 +58,7 @@ andres = User.create(
     genero:'Masculino'
     )
 
-esteban = User.create(
+esteban = User.create!(
     nombre:"Pablo Esteban",
     apellido:"Bigotes",
     fecnac:'03/01/1989',
