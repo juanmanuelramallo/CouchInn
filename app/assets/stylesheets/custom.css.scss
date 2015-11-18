@@ -39,6 +39,7 @@ body {
     -o-background-size: cover;
 }
 
+
 .form-control {
   margin-bottom: 5px;
 }
@@ -54,6 +55,11 @@ footer {
   text-align: center;
   font-family: Helvetica;
 
+}
+
+.spac
+er-min{
+  padding-top:5px;
 }
 
 .spacer-div{
@@ -196,3 +202,8 @@ h2.texto-over-image span {
   width:150px;
   height:150px;
 }
+
+.panel-admin{
+  position:fixed;
+}
+

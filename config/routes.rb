@@ -13,6 +13,11 @@ Rails.application.routes.draw do
 
   get 'reservations/update'
 
+
+  resources :tipocs
+
+  get 'tipocs/gestion'
+
   resources :payments
 
   get 'payments/new'

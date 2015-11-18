@@ -29,9 +29,8 @@ class CouchesController < ApplicationController
   end
 
   def show
-    #@nuevaReserva = Reservation.new
-  end
 
+  end
 
   def new
     @couch = Couch.new
@@ -63,15 +62,6 @@ def update
  @couch = Couch.find(params[:id])
  @couch.save
 end
-
-#def create
-    #@couch = Couch.create(params[:couches])
-    #@couch = Couch.create(params.requiere(:ubicacion, :descripcion))
-    #@couch = Couch.create(params.require(:tipo, :capacidad).permit(:ubicacion, :descripcion))
-    #@couch = Couch.create(params.require(:couches).permit(:ubicacion, :cantidad))
-   # @couch.save
-  #  redirect_to @couch
- #  end
 
   def edit
     @couch = Couch.find(params[:id])

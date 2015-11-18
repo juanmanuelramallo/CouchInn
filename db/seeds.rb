@@ -12,10 +12,11 @@ Foto.destroy_all
 Tipoc.destroy_all
 
 #----- type couch ------#
-Tipoc.create!(tipo:"Casa");
-Tipoc.create!(tipo:"Departamento");
-Tipoc.create!(tipo:"Choza");
-Tipoc.create!(tipo:"Motorhome");
+
+casa = Tipoc.create!(tipo:"Casa");
+depto = Tipoc.create!(tipo:"Departamento");
+choza = Tipoc.create!(tipo:"Choza");
+motorh = Tipoc.create!(tipo:"Motorhome");
 
 #------ USERS ---------#
 
@@ -73,7 +74,7 @@ esteban = User.create(
 
 Couch.create(
     id:'1',
-    tipo: 'Casa',
+    tipo: casa.id,
     ubicacion:"En medio de la nada",
     capacidad:'1',
     descripcion:"Hermosa casa, ideal para tener un momento de relax y tranquilidad. Tengo una habitación extra para alojar visitantes.",
@@ -83,7 +84,7 @@ Couch.create(
 
 Couch.create(
     id:'2',
-    tipo:'Casa',
+    tipo:casa.id,
     ubicacion:"Encima de una palmera",
     capacidad:5,
     descripcion:"Casa avión. Cuenta con 1 baño, 2 habitaciones y 83 ventanas para disfrutar de una hermosa vista.",
@@ -93,7 +94,7 @@ Couch.create(
 
 Couch.create(
     id:'3',
-    tipo:'Casa',
+    tipo:casa.id,
     ubicacion:"En el centro de la avenida",
     capacidad:8,
     descripcion:"Original casa dada vuelta. Cuenta con 2 baños, living, wifi, y 4 habitaciones. ",
@@ -103,7 +104,7 @@ Couch.create(
 
 Couch.create(
     id:'4',
-    tipo: 'Choza',
+    tipo: choza.id,
     ubicacion:"Selva misionera",
     capacidad:6,
     descripcion:"Acogedora choza en la selva misionera. Cuenta con capacidad para 6 personas. Se encuentra en una aldea, ideal para compartir momentos con la tribu.
@@ -114,7 +115,7 @@ No cuenta con ventanas.",
 
 Couch.create(
     id:'5',
-    tipo:'Departamento',
+    tipo:depto.id,
     ubicacion:"En el quinto piso de las torres mellizas",
     capacidad:4,
     descripcion:"Hermosa vista desde el balcón, baños amplios y con aire acondicionado",

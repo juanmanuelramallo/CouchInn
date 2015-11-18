@@ -1,0 +1,75 @@
+<body class="default">
+
+<h1> Gestión de tipos de couch </h1>
+<p><span class="label label-default">Solo para administradores, si estás acá y no sos admin reportalo!</span> </p>
+
+<div class="spacer-div"></div>
+
+<div class="row">
+
+  <div class="col-md-4">
+
+    <div class="panel panel-primary panel-tipo">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Agregar tipo </h3>
+      </div>
+
+      <div class="panel-body">
+
+        <%= render 'new' %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="panel panel-warning panel-tipo">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Modificar tipo</h3>
+      </div>
+
+      <div class="list-group">
+
+        <% @tipos.each do |t| %>
+
+          <%= render partial: 'edit', locals: {tipo: t} %>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+
+    <div class="panel panel-danger panel-tipo">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Eliminar tipo</h3>
+      </div>
+
+      <div class="list-group">
+
+        <% @tipos.each do |t| %>
+
+          <%= link_to t.tipo, t, method: :delete, data: {confirm:"Estas seguro que deseas eliminar el tipo #{t.tipo}?"}, type: "button", class:"list-group-item"%>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+</body>

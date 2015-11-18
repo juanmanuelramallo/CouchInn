@@ -7,24 +7,30 @@
   <% if !current_user.blank? %>
     <% if current_user.rol == "admin" %>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
 
-        <div class="barra-admin">
+        <div class="panel panel-info panel-admin">
 
-          <div class="container-admin">
-            <h3> Espacio administrador </h3>
-            <%= link_to "Agregar Tipo de Couch", root_path , class:"btn btn-default"%>
-            <%= link_to "Modificar Tipo de Couch", root_path , class:"btn btn-default"%>
-            <%= link_to "Eliminar Tipo de Couch", root_path , class:"btn btn-default"%>
+          <div class="panel-heading">
+            <h4> Espacio administrador </h4>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <%= link_to "Ir a gestión de tipos de Couch", tipocs_path , class:"list-group-item"  %>
+            </ul>
           </div>
 
         </div>
 
       </div>
-    <% end %>
-  <% end %>
 
+  <div class="col-md-8">
+    <% else %>
   <div class="col-md-8 col-centered">
+  <% end %>
+  <% else %>
+  <div class="col-md-8 col-centered">
+  <% end %>
 
     <% if !current_user.blank? %>
     <h1 class="label label-primary"> <%= current_user.rol %> </h1>
@@ -58,7 +64,7 @@
         <div class="containter-info">
 
           <div class="cube">
-            <span class=""> <strong> <%= c.tipo %> </strong>
+            <span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
             </br> para <%= c.capacidad%> persona(s) </span>
           </div>
 
