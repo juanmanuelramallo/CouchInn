@@ -12,6 +12,7 @@ Foto.destroy_all
 Tipoc.destroy_all
 
 #----- type couch ------#
+
 casa = Tipoc.create!(tipo:"Casa");
 depto = Tipoc.create!(tipo:"Departamento");
 choza = Tipoc.create!(tipo:"Choza");

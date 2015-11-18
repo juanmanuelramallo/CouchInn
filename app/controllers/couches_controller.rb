@@ -43,7 +43,7 @@ class CouchesController < ApplicationController
   end
 
   def create
-  @couch = Couch.new(params.require(:couch).permit(:usuario_id, :tipo, :ubicacion, :descripcion, :capacidad))
+  @couch = Couch.new(params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad))
   @couch.reservado = false
   @couch.user_id = current_user.id
 
@@ -58,14 +58,10 @@ class CouchesController < ApplicationController
     end
   end
 
-#def create
-    #@couch = Couch.create(params[:couches])
-    #@couch = Couch.create(params.requiere(:ubicacion, :descripcion))
-    #@couch = Couch.create(params.require(:tipo, :capacidad).permit(:ubicacion, :descripcion))
-    #@couch = Couch.create(params.require(:couches).permit(:ubicacion, :cantidad))
-   # @couch.save
-  #  redirect_to @couch
- #  end
+def update
+ @couch = Couch.find(params[:id])
+ @couch.save
+end
 
   def edit
     @couch = Couch.find(params[:id])

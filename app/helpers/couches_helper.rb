@@ -1,5 +1,4 @@
 module CouchesHelper
-
   def tipos_array
     tipos_array = Tipoc.all.map { |t| [t.tipo, t.id] }
   end
@@ -11,5 +10,4 @@ module CouchesHelper
       tipo_couch_index = Tipoc.find(couch.tipo).tipo
     end
   end
-
 end

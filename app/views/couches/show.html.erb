@@ -22,4 +22,23 @@
 </div>
 
 
+<% if !current_user.blank? %>
+  <%= form_for @couch do |f| %>
+  <% if current_user.id == @couch.user_id %>
+        <div class="asdfg">
+   			    <% @couch.reservado = true %>
+            <%= f.submit "Aceptar reserva", class:"btn btn-primary" %>
+            <%= link_to "Cancelar reserva", root_path, class:"btn btn-default" %>>
+        </div>
+  <% else %>
+        <div class="asdfg">
+
+            <%= link_to "Enviar solicitud de reserva", reservations_new_path, class:"btn btn-primary" %>
+            <%= link_to "Atras", root_path, class:"btn btn-default"%>
+
+        </div>
+<% end %>
+<% end %>
+<% end %>
+
 </body>

@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :reservations
+  get 'reservations/index'
+
+  get 'reservations/show'
+
+  get 'reservations/new'
+
+  get 'reservations/create'
+
+  get 'reservations/destroy'
+
+  get 'reservations/update'
+
+
   resources :tipocs
 
   get 'tipocs/gestion'
