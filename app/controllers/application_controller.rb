@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     return !user_signed_in?
   end
 
+  def max_cap
+    return 8
+  end
+
 end

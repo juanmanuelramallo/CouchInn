@@ -211,6 +211,7 @@ h2.texto-over-image span {
   left:37%;
 }
 
-.select-tipo-search{
-  border: 0 3px 3px 0;
+select.no-radius-left{
+  border-radius: 0px;
+  -webkit-appearance: none;
 }

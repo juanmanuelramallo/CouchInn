@@ -1,11 +1,19 @@
 <div class="col-md-6 col-centered">
 
 <h1><span class="label label-default"> Buscar un couch </span></h1>
-<h4> nunca fue tan fácil</h4>
 
-<div class="well wel-sm">
-<p> Para buscar un couch, marcá las casillas correspondientes a los campos con los que querés buscar </p>
+<div class="spacer-div"></div>
+
+
+<% if @search && @search.errors.any? %>
+<div class="alert alert-danger">
+  <% @search.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
 </div>
+<% end %>
+
+
 <%= form_for @search do |s|%>
 
   <script type="text/javascript">
@@ -45,7 +53,7 @@
     <span class="input-group-addon">
       <%= check_box "enable-tipo", id:"enable-tipo" %>
     </span>
-    <%= s.select :tipo, options_for_select(tipos_array_search), {}, class:"form-control select-tipo-search", id:"select-tipo", disabled: true %>
+    <%= s.select :tipo, options_for_select(tipos_array_search), {}, class:"form-control no-radius-left", id:"select-tipo", disabled: true %>
   </div>
 
   <div class="spacer-min"></div>
@@ -65,7 +73,7 @@
     <span class="input-group-addon">
       <%= check_box "enable-cap", id:"enable-cap" %>
     </span>
-    <%= s.text_field :capacidad, class:"form-control", id:"tf-cap" ,placeholder:"Ingresar un número", disabled: true %>
+    <%= s.number_field :capacidad, class:"form-control", id:"tf-cap" ,placeholder:"Ingresar un número", disabled: true %>
   </div>
 
   <div class="spacer-div"></div>
@@ -73,5 +81,11 @@
   <%= s.submit "Buscar", class:"btn btn-primary" %>
 
 <% end %>
+
+<div class="spacer-div"></div>
+
+<div class="well wel-sm">
+<p> Para buscar un couch, marcá las casillas correspondientes a los campos con los que querés buscar </p>
+</div>
 
 </div>
