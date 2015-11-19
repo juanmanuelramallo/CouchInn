@@ -1,12 +1,22 @@
 <h1>Searchings#index</h1>
 <p>Find me in app/views/searchings/index.html.erb</p>
 
+<% var = true %>
 
 <%= form_for @search do |s|%>
+
+
   <div class="form-group">
+      <%= check_box "Habilitar", id:"habilitar", type:"checkbox" %>
       <%= s.label :tipo %>
-      <%= s.select :tipo, options_for_select(tipos_array_search), {}, class:"form-control" %>
+      <%= s.select :tipo, options_for_select(tipos_array_search), {}, class:"form-control", id:"tipo_select", type:"input" %>
   </div>
+  <script type="text/javascript">
+      document.getElementById('habilitar').onchange = function() {
+        document.getElementById('tipo_select').disabled = !this.checked;
+};
+  </script>
+
 
   <div class="form-group">
     <%= s.label :ubicacion_cont, "Ubicación" %>
