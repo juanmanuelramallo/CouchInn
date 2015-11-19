@@ -19,18 +19,17 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 
 $(document).ready(function() {
-    $('a[disabled=disabled]').click(function(event){
-        event.preventDefault(); // Prevent link from following its href
-    });
-
-    $("#owl-show").owlCarousel({
-
-      autoPlay: 3000, //Set AutoPlay to 3 seconds
-
-      items : 3,
-      itemsDesktop : [1199,2],
-      itemsDesktopSmall : [979,2]
-
+  $('a[disabled=disabled]').click(function(event){
+    event.preventDefault(); // Prevent link from following its href
   });
 
+  $("#owl-show").owlCarousel({
+
+    autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+    items : 3,
+    itemsDesktop : [1199,2],
+    itemsDesktopSmall : [979,2]
+
+  });
 });

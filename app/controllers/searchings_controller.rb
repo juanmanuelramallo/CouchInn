@@ -11,15 +11,36 @@ before_action :get_search, only: [:show]
 
   def show
 
-    @couches = Couch.where('tipo = ? AND ubicacion LIKE ?',
-      @search.tipo ,'%'+@search.ubicacion_cont+'%').joins(:user).order('rol desc', 'created_at desc')
+    #@couches = Couch.where('tipo = ? AND ubicacion LIKE ?',
+    #  @search.tipo ,'%'+@search.ubicacion_cont+'%').joins(:user).order('rol desc', 'created_at desc')
+  if !@search.tipo.blank?
+    t = @search.tipo
+  else
+    t = nil
+  end
 
-    @fotos = Foto.all
+  if !@search.ubicacion_cont.blank?
+    u = @search.ubicacion_cont
+  else
+    u = ''
+  end
+
+  if !@search.capacidad.blank?
+    c = @search.capacidad
+  else
+    c = nil
+  end
+
+  @couches = Couch.where('tipo = ? AND ubicacion LIKE ? AND capacidad = ?', t ,'%'+u+'%',c).joins(:user).order('rol desc', 'created_at desc')
+
+  #@couches = Couch.where('tipo = ? AND ubicacion LIKE ? AND capacidad = ?', @search.tipo ,'%'+u+'%',c).joins(:user).order('rol desc', 'created_at desc')
+
+  @fotos = Foto.all
 
   end
 
   def create
-    @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont))
+    @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad))
 
    respond_to do |format|
       if @search.save
