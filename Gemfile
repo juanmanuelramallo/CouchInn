@@ -65,7 +65,6 @@ gem 'puma'
 
 gem 'execjs'
 
-#bootstrap datepicker
 gem 'bootstrap-datepicker-rails'
 
 gem 'country_select'
