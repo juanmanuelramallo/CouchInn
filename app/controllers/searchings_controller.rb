@@ -73,7 +73,15 @@ before_action :get_search, only: [:show]
     else
 
       @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad, :free_from, :free_to, :user_id))
+
+      ff = params[:searching][:free_from]
+      ft = params[:searching][:free_to]
+
+      @search.free_from = DateTime.strptime(ff, "%m/%d/%Y") if !ff.nil?
+      @search.free_to = DateTime.strptime(ft, "%m/%d/%Y") if !ft.nil?
+
       @search.user_id = current_user.id
+
       respond_to do |format|
         if @search.save
           format.html { redirect_to @search, notice: 'Mostrando resultados de tu búsqueda' }
