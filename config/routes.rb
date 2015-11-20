@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'couches/zdestroy'
+
+  
+  get 'couches/zedit'
+
+  get 'couches/index'
+
   resources :searchings
   get 'searchings/index'
 
@@ -37,21 +44,20 @@ Rails.application.routes.draw do
 
   resources :couches
   devise_for :users
+  get 'couches/main'
+
   get 'couches/index'
 
   get 'couches/show'
 
   get 'couches/new'
 
-  get 'couches/create'
-
-  get 'couches/edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'couches#index'
+  root 'couches#main'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

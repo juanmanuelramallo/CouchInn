@@ -2,11 +2,11 @@ class SearchingsController < ApplicationController
 before_action :get_search, only: [:show]
 
   def index
+    @searchings = Searching.where('user_id = ?', current_user.id)
+  end
 
-    @couches = Couch.all
-    @tipos = Tipoc.all
+  def new
     @search = Searching.new
-
   end
 
   def show
@@ -14,48 +14,86 @@ before_action :get_search, only: [:show]
     #@couches = Couch.where('tipo = ? AND ubicacion LIKE ?',
     #  @search.tipo ,'%'+@search.ubicacion_cont+'%').joins(:user).order('rol desc', 'created_at desc')
 
-  if !@search.ubicacion_cont.blank?
-    u = @search.ubicacion_cont.downcase
-  else
-    u = ""
+    if !@search.ubicacion_cont.blank?
+      u = @search.ubicacion_cont.downcase
+    else
+      u = ""
+    end
+
+    if !@search.capacidad.blank?
+      c = @search.capacidad
+    else
+      c = 0
+    end
+
+    if @search.free_from.blank?
+      if !@search.tipo.blank?
+        t = @search.tipo
+        @couches = Couch.where(["tipo = ? and ubicacion LIKE ? AND capacidad > ?", t ,'%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+      else
+        @couches = Couch.where(["ubicacion LIKE ? AND capacidad > ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+      end
+
+    else
+
+      rr = Reservation.all
+      cocuhesOcup = []
+
+      rr.each do |r|
+        rangeRes = r.start_date..r.end_date
+        rangeSearch = @search.free_from..@search.free_to
+        if rangeRes.overlaps?(rangeSearch)
+          cocuhesOcup << r.couch_id
+        end
+      end
+
+      couchesDisp = Couch.where.not(:id => cocuhesOcup)
+
+
+      if !@search.tipo.blank?
+        t = @search.tipo
+        @couches = couchesDisp.where(["tipo = ? and ubicacion LIKE ? AND capacidad > ?", t ,'%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+      else
+        @couches = couchesDisp.where(["ubicacion LIKE ? AND capacidad > ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+      end
+
+
+    end
+
+    #@couches = Couch.where('tipo = ? AND ubicacion LIKE ? AND capacidad = ?', @search.tipo ,'%'+u+'%',c).joins(:user).order('rol desc', 'created_at desc')
+
+    @fotos = Foto.all
+
   end
-
-  if !@search.capacidad.blank?
-    c = @search.capacidad
-  else
-    c = 0
-  end
-
-  if !@search.tipo.blank?
-    t = @search.tipo
-    @couches = Couch.where(["tipo = ? and ubicacion LIKE ? AND capacidad > ?", t ,'%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
-  else
-    @couches = Couch.where(["ubicacion LIKE ? AND capacidad > ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
-  end
-
-  #@couches = Couch.where('tipo = ? AND ubicacion LIKE ? AND capacidad = ?', @search.tipo ,'%'+u+'%',c).joins(:user).order('rol desc', 'created_at desc')
-
-  @fotos = Foto.all
-
-  end
-
-  def new
-    @search = Searching.new
-  end
-
 
   def create
-    @search = Searching.new(params.permit(:tipo, :ubicacion_cont, :capacidad))
+    if params[:searching].nil?
+      redirect_to new_searching_path, alert: 'Debes ingresar al menos un parámetro'
 
-   respond_to do |format|
-      if @search.save
-         format.html { redirect_to @search, notice: "Mostrando resultados de búsqueda" }
-         format.json { render :show, status: :created, location: @search }
-      else
-         format.html { render :index }
-         format.json { render json: @search.errors, status: :unprocessable_entity }
+    else
+
+      @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad, :free_from, :free_to, :user_id))
+
+      ff = params[:searching][:free_from]
+      ft = params[:searching][:free_to]
+
+      @search.free_from = DateTime.strptime(ff, "%m/%d/%Y") if !ff.nil?
+      @search.free_to = DateTime.strptime(ft, "%m/%d/%Y") if !ft.nil?
+
+      @search.user_id = current_user.id
+
+      respond_to do |format|
+        if @search.save
+          format.html { redirect_to @search, notice: 'Mostrando resultados de tu búsqueda' }
+          format.json { render :show, status: :created, location: @search }
+        else
+          format.html { render :new }
+          format.json { render json: @search.errors, status: :unprocessable_entity }
+        end
       end
+
     end
+
   end
 
 private

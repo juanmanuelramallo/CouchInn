@@ -1,7 +1,11 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Hola <%= @resource.nombre %>!</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>Tu cuenta ha sido bloqueada debido a un excesivo número de intentos fallidos para iniciar sesión.</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>Clickea el siguiente enlace para desbloquear tu cuenta:</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'Desbloquear mi cuenta', unlock_url(@resource, unlock_token: @token) %></p>
+
+<p>Es posible que tu mejor amigo esté intentando acceder a tu cuenta para robarte información confidencial ingresando contraseñas deducibles. O también puede ser que sean hackers maliciosos intentando acceder a tu cuenta sin tu consentimiento y así robar información confidencial. Pero no te preocupes, nosotros nos encargaremos (en ambos casos).</p>
+
+<%= render 'firma' %>

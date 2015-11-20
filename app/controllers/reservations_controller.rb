@@ -28,11 +28,7 @@ class ReservationsController < ApplicationController
       @nuevaReserva.user_id = current_user.id
       @nuevaReserva.confirmed = false
       @nuevaReserva.save
-      #respond_to do |format|
-      #if @nuevaReserva.start_sate > @nuevaReserva.end_date
-       #   format.html { redirect_to root_path, notice: "la fecha de finalizacion debe ser mayor a la de comienzo."}
-      #end
-    #end
+     
       respond_to do |format|
           if @nuevaReserva.save
               format.html { redirect_to @nuevaReserva, notice: "La reserva fue creada correctamente." }

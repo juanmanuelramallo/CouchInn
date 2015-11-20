@@ -22,18 +22,14 @@ class CouchesController < ApplicationController
     return @couch.user_id == user.id
   end
 
-  def index
+  def main
     @couches = Couch.joins(:user).order('rol desc', 'created_at desc')
     @fotos = Foto.all
   end
 
-  def search
-
-  end
-
-  def find
-    @search = Couch.search(params[:q])
-    @couches = @search.result.joins(:user).order('rol desc', 'created_at desc')
+  def index
+    @couches = Couch.joins(:user).order('rol desc', 'created_at desc').where('user_id = ?', current_user.id)
+    @fotos = Foto.all
   end
 
   def show
