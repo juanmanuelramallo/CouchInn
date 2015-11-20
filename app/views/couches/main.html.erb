@@ -1,0 +1,97 @@
+<body class="default">
+<div style="padding-top:25px"></div>
+
+<div class="row">
+
+
+  <% if !current_user.blank? %>
+    <% if current_user.rol == "admin" %>
+
+      <div class="col-md-3">
+
+        <div class="panel panel-info panel-admin">
+
+          <div class="panel-heading">
+            <h4> Espacio administrador </h4>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <%= link_to "Ir a gestión de tipos de Couch", tipocs_path , class:"list-group-item"  %>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+  <div class="col-md-8">
+    <% else %>
+  <div class="col-md-8 col-centered">
+  <% end %>
+  <% else %>
+  <div class="col-md-8 col-centered">
+  <% end %>
+
+    <% if !current_user.blank? %>
+    <h1 class="label label-primary"> <%= current_user.rol %> </h1>
+    <% end %>
+
+
+    <div class="image" style="padding-top:20px">
+
+
+      <% if @couches.nil? %>
+
+
+      <% else %>
+
+
+      <% @couches.each do |c| %>
+
+        <% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
+
+
+        <% if fotoPrincipal.nil? %>
+
+          <%= image_tag "sofa-outline.png", class:"img-responsive img-rounded" %>
+
+        <% else %>
+
+          <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+
+        <% end %>
+
+
+        <div class="containter-info">
+
+          <div class="cube">
+            <span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
+            </br> para <%= c.capacidad%> persona(s) </span>
+          </div>
+
+          <div class="cube">
+
+            <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
+
+          </div>
+
+          <div>
+            <!-- Uncomment the line above to see ordered couches by user role -->
+            <%= link_to "Ver más...", c , class:"cube btn"%>
+            <%= User.find(c.user_id).rol %>
+          </div>
+
+      <% end %>
+
+      <% end %> <!-- if -->
+
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>

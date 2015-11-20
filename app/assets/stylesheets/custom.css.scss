@@ -10,6 +10,7 @@ body {
     -o-background-size: cover;
 }
 
+
 .registracion{
   background: image-url('bg-town.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -136,6 +137,12 @@ h2.texto-over-image span {
     /*margin: auto;*/
 }
 
+.thumbnail {
+  background: transparent;
+  border-style: solid;
+  border-width: 5px;
+}
+
 .cube {
     letter-spacing: -1px;
     color:white;
@@ -157,6 +164,54 @@ h2.texto-over-image span {
     text-align: center;
     width: 150px;
     height: 150px;
+
+}
+
+.cube-large-1 {
+    letter-spacing: -1px;
+    color:white;
+    font: bold 20px Helvetica, Sans-Serif;
+    padding: 10px;
+
+    border-radius: 2px;
+
+    overflow:hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: -200px;
+    float: left;
+    background: #277277;
+    text-align: center;
+    width: 350px;
+    height: 50px;
+
+}
+
+.cube-large-2 {
+    letter-spacing: -1px;
+    color:white;
+    font: bold 20px Helvetica, Sans-Serif;
+    padding: 10px;
+
+    border-radius: 2px;
+
+    overflow:hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: -200px;
+    float: left;
+    background: #772722;
+    text-align: center;
+    width: 350px;
+    height: 50px;
 
 }
 
