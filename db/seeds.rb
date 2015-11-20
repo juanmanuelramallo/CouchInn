@@ -8,15 +8,16 @@
 
 User.destroy_all
 Couch.destroy_all
+Reservation.destroy_all
 Foto.destroy_all
 Tipoc.destroy_all
 
-#----- type couch ------#
+#----- Tipos de couch ------#
 
-casa = Tipoc.create!(tipo:"Casa");
-depto = Tipoc.create!(tipo:"Departamento");
-choza = Tipoc.create!(tipo:"Choza");
-motorh = Tipoc.create!(tipo:"Motorhome");
+casa = Tipoc.find_or_create_by(tipo:"Casa");
+depto = Tipoc.find_or_create_by(tipo:"Departamento");
+choza = Tipoc.find_or_create_by(tipo:"Choza");
+motorh = Tipoc.find_or_create_by(tipo:"Motorhome");
 
 #------ USERS ---------#
 
@@ -72,7 +73,7 @@ esteban = User.create!(
 
 #----- COUCHES ---------#
 
-Couch.create(
+a = Couch.create(
     id:'1',
     tipo: casa.id,
     ubicacion:"En medio de la nada",
@@ -82,7 +83,7 @@ Couch.create(
     reservado:false
     )
 
-Couch.create(
+b = Couch.create(
     id:'2',
     tipo:casa.id,
     ubicacion:"Encima de una palmera",
@@ -92,7 +93,7 @@ Couch.create(
     reservado:false
     )
 
-Couch.create(
+c = Couch.create(
     id:'3',
     tipo:casa.id,
     ubicacion:"En el centro de la avenida",
@@ -102,18 +103,17 @@ Couch.create(
     reservado:false
     )
 
-Couch.create(
+d = Couch.create(
     id:'4',
     tipo: choza.id,
     ubicacion:"Selva misionera",
     capacidad:6,
-    descripcion:"Acogedora choza en la selva misionera. Cuenta con capacidad para 6 personas. Se encuentra en una aldea, ideal para compartir momentos con la tribu.
-No cuenta con ventanas.",
+    descripcion:"Acogedora choza en la selva misionera. Cuenta con capacidad para 6 personas. Se encuentra en una aldea, ideal para compartir momentos con la tribu. No cuenta con ventanas.",
     user_id:diego.id,
     reservado:false
     )
 
-Couch.create(
+e = Couch.create(
     id:'5',
     tipo:depto.id,
     ubicacion:"En el quinto piso de las torres mellizas",
@@ -121,6 +121,48 @@ Couch.create(
     descripcion:"Hermosa vista desde el balcón, baños amplios y con aire acondicionado",
     user_id:juan.id,
     reservado:false
+    )
+
+#----- RESERVAS ------#
+
+Reservation.create(
+    user_id: juan.id,
+    couch_id: a.id,
+    start_date: "20/10/2016",
+    end_date: "30/10/2016",
+    confirmed: false
+    )
+
+Reservation.create(
+    user_id: juan.id,
+    couch_id: b.id,
+    start_date: "20/11/2016",
+    end_date: "30/12/2016",
+    confirmed: false
+    )
+
+Reservation.create(
+    user_id: diego.id,
+    couch_id: c.id,
+    start_date: "20/10/2016",
+    end_date: "30/10/2016",
+    confirmed: false
+    )
+
+Reservation.create(
+    user_id: andres.id,
+    couch_id: d.id,
+    start_date: "20/11/2016",
+    end_date: "30/12/2016",
+    confirmed: false
+    )
+
+Reservation.create(
+    user_id: esteban.id,
+    couch_id: d.id,
+    start_date: "20/04/2017",
+    end_date: "30/04/2017",
+    confirmed: false
     )
 
 #---- FOTOS -----#

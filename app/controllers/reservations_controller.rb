@@ -27,7 +27,6 @@ class ReservationsController < ApplicationController
       @nuevaReserva = Reservation.new(params.require(:reservation).permit(:couch_id,:confirmed, :start_date, :end_date))
       @nuevaReserva.user_id = current_user.id
       @nuevaReserva.confirmed = false
-      @nuevaReserva.save
       respond_to do |format|
           if @nuevaReserva.save
               format.html { redirect_to @nuevaReserva, notice: "La reserva fue creada correctamente." }

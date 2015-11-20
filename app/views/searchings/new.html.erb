@@ -1,0 +1,119 @@
+  <% if @search.errors.full_messages.any? %>
+  <div class="alert alert-danger">
+    <% @search.errors.full_messages.each do |error_message| %>
+      <%= error_message if @search.errors.full_messages.first == error_message %> <br />
+    <% end %>
+  </div>
+  <% end %>
+
+<div class="col-md-6 col-centered">
+
+<h1><span class="label label-default"> Buscar un couch </span></h1>
+
+<div class="spacer-div"></div>
+
+  <script type="text/javascript">
+
+  $(function () {
+
+    var $ctipo = $('[id^="enable-tipo"]'),
+        $stipo = $('#select-tipo'),
+
+        $cub = $('[id^="enable-ubic"]'),
+        $tfubic = $('#tf-ubic')
+
+        $ccap = $('[id^="enable-cap"]'),
+        $tfcap = $('#tf-cap')
+
+        $cdate = $('[id^="enable-date"]'),
+        $tffrom = $('#tf-from'),
+        $tfto = $('#tf-to')
+        ;
+
+      $ctipo.change(function (e) {
+          $stipo.prop('disabled', !$ctipo.is(':checked'))
+      });
+
+      $cub.change(function (e) {
+        $tfubic.prop('disabled', !$cub.is(':checked'))
+      });
+
+      $ccap.change(function (e) {
+        $tfcap.prop('disabled', !$ccap.is(':checked'))
+      });
+
+      $cdate.change(function (e) {
+        $tffrom.prop('disabled', !$cdate.is(':checked'))
+        $tfto.prop('disabled', !$cdate.is(':checked'))
+      });
+
+      $tffrom.datepicker({
+      dateFormat: "dd/mm/yyyy"
+      });
+      $tfto.datepicker({
+      dateFormat: "dd/mm/yyyy"
+      });
+});
+
+</script>
+
+<%= form_for @search do |s|%>
+
+
+  <%= s.label :tipo %>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <%= check_box "enable-tipo", id:"enable-tipo" %>
+    </span>
+    <%= s.select :tipo, options_for_select(tipos_array_search), {}, class:"form-control no-radius-left", id:"select-tipo", disabled: true %>
+  </div>
+
+  <div class="spacer-min"></div>
+
+  <%= s.label :ubicacion_cont, "Ubicación" %>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <%= check_box "enable-ubic", id:"enable-ubic"%>
+    </span>
+    <%= s.text_field :ubicacion_cont, class:"form-control", id:"tf-ubic" ,placeholder:"Palabras claves de la ubicación", disabled: true %>
+  </div>
+
+  <div class="spacer-min"></div>
+
+  <%= s.label :capacidad, "Capacidad" %>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <%= check_box "enable-cap", id:"enable-cap" %>
+    </span>
+    <%= s.number_field :capacidad, class:"form-control", id:"tf-cap" ,placeholder:"Ingresar un número", disabled: true %>
+  </div>
+
+  <div class="spacer-min"></div>
+
+  <%= s.label :free_from %>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <%= check_box "enable-date", id:"enable-date" %>
+    </span>
+    <%= s.text_field :free_from, class:"form-control", id:"tf-from",type:"text", 'data-provide':'datepicker', disabled:true%>
+  </div>
+
+  <%= s.label :free_to %>
+  <div class="">
+    <%= s.text_field :free_to, class:"form-control", id:"tf-to",type:"text", 'data-provide':'datepicker', disabled:true%>
+  </div>
+
+
+  <div class="spacer-div"></div>
+
+  <%= s.submit "Buscar", class:"btn btn-primary" %>
+
+<% end %>
+
+<div class="spacer-div"></div>
+
+<div class="well wel-sm">
+<p> Para buscar un couch, marcá las casillas correspondientes a los campos con los que querés buscar </p>
+</div>
+
+</div>

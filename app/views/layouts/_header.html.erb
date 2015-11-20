@@ -45,9 +45,9 @@
 
         <li style="padding:15px"></li> <!-- ESPACIADO -->
 
-        <li class="texto"> <!-- BUSCADOR -->
-          <%= link_to_if user_signed_in?,"Buscar couch", searchings_path do %>
-          <%= link_to "Buscar couch", searchings_path, class:"btn disabled" %>
+        <li class="texto">   <!-- BUSCADOR -->
+          <%= link_to_if user_signed_in?,"Buscar couch", new_searching_path do %>
+          <%= link_to "Buscar couch", new_searching_path, class:"btn disabled" %>
           <%  end %>
         </li>
 
