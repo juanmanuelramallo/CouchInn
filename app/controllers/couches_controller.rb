@@ -32,15 +32,6 @@ class CouchesController < ApplicationController
     @fotos = Foto.all
   end
 
-  def search
-
-  end
-
-  def find
-    @search = Couch.search(params[:q])
-    @couches = @search.result.joins(:user).order('rol desc', 'created_at desc')
-  end
-
   def show
 
   end
