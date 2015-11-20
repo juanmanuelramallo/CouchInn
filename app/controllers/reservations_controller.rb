@@ -7,6 +7,12 @@ class ReservationsController < ApplicationController
      @reserva = Reservation.where(user_id:current_user)
   end
 
+  def settrue
+    @reservatrue = Reservation.where(couch_id: params[:couch_id])
+    @reservatrue.confirmed = true
+    @reservatrue.save
+  end
+
   def new
      @nuevaReserva = Reservation.new(couch_id: params[:couch_id])
      #@nuevaReserva.user_id = current_user.id    
@@ -24,7 +30,7 @@ class ReservationsController < ApplicationController
       @nuevaReserva.save
       respond_to do |format|
           if @nuevaReserva.save
-              format.html { redirect_to @nuevaReserva, notice: "El reserva fue creado correctamente." }
+              format.html { redirect_to @nuevaReserva, notice: "La reserva fue creada correctamente." }
               format.json { render :show, status: :created, location: @nuevaReserva }
           else
               format.html { render :new }
@@ -37,16 +43,10 @@ class ReservationsController < ApplicationController
   end
 
   def update
-     @nuevaReserva = Reservation.find(params[:id])
-     @nuevaReserva.save
-      respond_to do |format|
-      if @nuevaReserva.save
-         format.html { redirect_to @nuevaReserva, notice: "El reserva fue creado correctamente." }
-         format.json { render :show, status: :created, location: @nuevaReserva }
-      else
-         format.html { render :new }
-         format.json { render json: @nuevaReserva.errors, status: :unprocessable_entity }
-      end
+     #@nuevaReserva = Reservation.find(params[:id])
+     #@nuevaReserva.save
+    @reservatrue = Reservation.where(couch_id: params[:couch_id])
+    @reservatrue.save
     end
-  end
+  
 end

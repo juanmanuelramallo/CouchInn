@@ -4,15 +4,17 @@
 	<div class="form-group">
 		<%= f.label :start_date,"Fechad de inicio", class:"label label-default", type:"label", :for=>'start_date' %>
 		<div class="w-label">
-			<%= f.date_field :start_date, class:"form-control", type:"input", placeholder: 'Ingrese la fecha de inicio', required:true, :id => 'start_date'%>
+			<%= f.date_field :start_date %>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<%= f.label :end_date, "Fecha de finalizacion", class:"label label-default", type:"label", :for=>'end_date' %>
 		<div class="w-label">
-			<%= f.date_field :end_date, class:"form-control", type:"input", placeholder: 'Ingrese la fecha de inicio', required:true, :id => 'end_date'%>
+			<%= f.date_field :end_date %>
 		</div>
 	</div>
+	
 
 	<div class="form-actions">
           <%= f.submit "Solicitar la Reserva", class:"btn btn-primary" %>
