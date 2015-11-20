@@ -15,17 +15,17 @@ class ReservationsController < ApplicationController
 
   def new
      @nuevaReserva = Reservation.new(couch_id: params[:couch_id])
-     #@nuevaReserva.user_id = current_user.id    
+     #@nuevaReserva.user_id = current_user.id
      #@nuevaReserva.couch_id = params[:couch_id]
 
-     #session[:reservation_couch_id] = @nuevaReserva.couch_id      
+     #session[:reservation_couch_id] = @nuevaReserva.couch_id
      #@nuevaReserva.confirmed = false
      #@nuevaReserva.save
   end
 
   def create
       @nuevaReserva = Reservation.new(params.require(:reservation).permit(:couch_id,:confirmed, :start_date, :end_date))
-      @nuevaReserva.user_id = current_user.id    
+      @nuevaReserva.user_id = current_user.id
       @nuevaReserva.confirmed = false
       @nuevaReserva.save
       respond_to do |format|
@@ -43,10 +43,23 @@ class ReservationsController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
      #@nuevaReserva = Reservation.find(params[:id])
      #@nuevaReserva.save
     @reservatrue = Reservation.where(couch_id: params[:couch_id])
     @reservatrue.save
+=======
+     @nuevaReserva = Reservation.find(params[:id])
+     @nuevaReserva.save
+      respond_to do |format|
+      if @nuevaReserva.save
+         format.html { redirect_to @nuevaReserva, notice: "La reserva fue creada correctamente." }
+         format.json { render :show, status: :created, location: @nuevaReserva }
+      else
+         format.html { render :new }
+         format.json { render json: @nuevaReserva.errors, status: :unprocessable_entity }
+      end
+>>>>>>> f4f88e8bca0c5654306626aa0f69f8077a57c5f2
     end
   
 end

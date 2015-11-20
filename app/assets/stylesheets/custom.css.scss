@@ -57,8 +57,7 @@ footer {
 
 }
 
-.spac
-er-min{
+.spacer-min{
   padding-top:5px;
 }
 
@@ -210,4 +209,9 @@ h2.texto-over-image span {
 .navbar-brand{
   position:fixed;
   left:37%;
+}
+
+select.no-radius-left{
+  border-radius: 0px;
+  -webkit-appearance: none;
 }

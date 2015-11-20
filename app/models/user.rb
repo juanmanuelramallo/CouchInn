@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   default_scope -> {order("rol")}
 
   has_many :couches
-  has_many :reservas
+  has_many :reservations
+  has_many :searchings
 
   enum genero: [:Masculino, :Femenino, :Prefiero_no_especificar]
   enum rol: [:admin, :normal, :premium]
