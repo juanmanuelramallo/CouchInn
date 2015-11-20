@@ -43,12 +43,12 @@ class ReservationsController < ApplicationController
   end
 
   def update
-<<<<<<< HEAD
+
      #@nuevaReserva = Reservation.find(params[:id])
      #@nuevaReserva.save
     @reservatrue = Reservation.where(couch_id: params[:couch_id])
     @reservatrue.save
-=======
+
      @nuevaReserva = Reservation.find(params[:id])
      @nuevaReserva.save
       respond_to do |format|
@@ -59,7 +59,7 @@ class ReservationsController < ApplicationController
          format.html { render :new }
          format.json { render json: @nuevaReserva.errors, status: :unprocessable_entity }
       end
->>>>>>> f4f88e8bca0c5654306626aa0f69f8077a57c5f2
+
     end
-  
+  end
 end
