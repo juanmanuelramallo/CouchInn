@@ -5,7 +5,7 @@ GIT
     i18n (0.7.0)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.2.4)
       actionpack (= 4.2.4)
