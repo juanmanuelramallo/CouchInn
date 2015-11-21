@@ -43,8 +43,6 @@ class ReservationsController < ApplicationController
   def destroy
   end
 
-  def seleccionar
-  end
 
   def update
 
