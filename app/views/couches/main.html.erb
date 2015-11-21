@@ -70,15 +70,11 @@
           </div>
 
           <div class="cube">
-
             <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
-
           </div>
 
-          <div>
-            <!-- Uncomment the line above to see ordered couches by user role -->
-            <%= link_to "Ver más...", c , class:"cube btn"%>
-            <%= User.find(c.user_id).rol %>
+          <div class="cube">
+            <%= link_to "Ver más...", c , class:"btn vermas"%>
           </div>
 
       <% end %>

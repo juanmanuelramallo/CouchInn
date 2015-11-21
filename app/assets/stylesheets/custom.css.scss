@@ -1,3 +1,4 @@
+
 body {
   padding-top: 10px;
 }
@@ -27,11 +28,6 @@ body {
     -o-background-size: cover;
 }
 
-.navbar .navbar-default{
-  background: rgba(#E6E6E6, 0.95);
-
-}
-
 .show-couch {
   background: image-url('wall-dark.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -40,6 +36,10 @@ body {
     -o-background-size: cover;
 }
 
+
+.navbar .navbar-default{
+  background: rgba(#E6E6E6, 0.95);
+}
 
 .form-control {
   margin-bottom: 5px;
@@ -143,30 +143,6 @@ h2.texto-over-image span {
   border-width: 5px;
 }
 
-.cube {
-    letter-spacing: -1px;
-    color:white;
-    font: bold 20px Helvetica, Sans-Serif;
-    padding: 10px;
-
-    border-radius: 2px;
-
-    overflow:hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    top: -225px;
-    float: left;
-    background: #95B435;
-    text-align: center;
-    width: 150px;
-    height: 150px;
-
-}
-
 .cube-large-1 {
     letter-spacing: -1px;
     color:white;
@@ -215,12 +191,56 @@ h2.texto-over-image span {
 
 }
 
+$dim-cube: 150px;
+.cube {
+    letter-spacing: -1px;
+    color:white;
+    font: bold 20px Helvetica, Sans-Serif;
+    padding: 10px;
+
+    border-radius: 2px;
+
+    overflow:hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: -225px;
+    float: left;
+    background: #95B435;
+    text-align: center;
+    width: $dim-cube;
+    height: $dim-cube;
+
+    -moz-box-shadow:    0px 3px 10px 1px #333;
+    -webkit-box-shadow: 0px 3px 10px 1px #333;
+    box-shadow:         0px 3px 10px 1px #333;
+
+}
+
 .descripcion{
   font: normal 16px Helvetica, Sans-Serif;
 }
 
 .cube:nth-of-type(2n) {
     background: #6392AA;
+    z-index: 1;
+}
+
+a.vermas{
+  font: bold 20px Helvetica, Sans-serif;
+  color:white;
+  width: $dim-cube;
+  height: $dim-cube;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a.vermas:hover{
+
 }
 
 .col-centered{
@@ -228,34 +248,6 @@ h2.texto-over-image span {
     margin: 0 auto;
 }
 
-.barra-admin{
-
-  position: fixed;
-
-  top: $height-navbar + 50;
-  left: 30px;
-
-  width: 200px;
-  height: 200px;
-
-
-  border-radius: 5px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  text-align: center;
-
-}
-
-.asdfg {
-  position:fixed;
-  top:115px;
-  left:30px;
-  width:150px;
-  height:150px;
-}
 
 .panel-admin{
   position:fixed;

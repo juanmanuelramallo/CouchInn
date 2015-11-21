@@ -36,6 +36,7 @@ class CouchesController < ApplicationController
 
   end
 
+
   def new
     @couch = Couch.new
   end
@@ -63,12 +64,29 @@ class CouchesController < ApplicationController
   end
 
 def update
- @couch = Couch.find(params[:id])
- @couch.save
+   respond_to do |format|
+      if @couch.update(couch_params)
+         format.html { redirect_to @couch, notice: "El couch fue modificado correctamente." }
+         format.json { render :show, status: :ok, location: @couch }
+      else
+         format.html { render :edit }
+         format.json { render json: @couch.errors, status: :unprocessable_entity }
+      end
+    end
 end
 
-  def edit
-    @couch = Couch.find(params[:id])
+def edit
+   
+end
+
+ def couch_params
+    params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad)
   end
+
+def destroy
+  Couch.find(params[:id]).destroy
+  flash[:notice] = 'El Couch ha sido eliminado exitosamente'
+  redirect_to couches_index_path
+end
 
 end
