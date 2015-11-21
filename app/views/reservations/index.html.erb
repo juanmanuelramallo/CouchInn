@@ -1,9 +1,12 @@
 <h1>Listado de Reservas</h1>
  
+
+
 <table class="table">
   <tr>
     <th>Tipo Couch</th>
-    <th> Capacidad </th>
+    <th> Nombre del usuario </th>
+    <th> Email del usuario </th>
     <th>Fecha de inicio</th>
     <th>Fecha de terminado</th> 
     <th>Estado de la reserva</th>
@@ -13,7 +16,8 @@
   <% @reservas.each do |article| %>
     <tr>
       <td><%= Tipoc.find(Couch.find(article.couch_id).tipo).tipo %></td>
-      <td><%= Couch.find(article.couch_id).capacidad %>
+      <td><%= User.find(article.user_id).nombre %></td>
+      <td><%= User.find(article.user_id).email %></td>
       <td><%= article.start_date %></td>
       <td><%= article.end_date %></td>
       <% if article.confirmed == true %>
