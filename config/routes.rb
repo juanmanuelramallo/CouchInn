@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-
-  get 'couches/zdestroy'
-
   
-  get 'couches/zedit'
+  get 'couches/edit'
 
   get 'couches/index'
 
