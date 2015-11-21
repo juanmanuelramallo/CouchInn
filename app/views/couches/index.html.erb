@@ -32,7 +32,6 @@
 
 	      				<div class="containter-info">
 
-	      					<p>
 	       					<div class="cube">
 	           					<span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
 	           					</br> para <%= c.capacidad%> persona(s) </span>
@@ -45,14 +44,13 @@
 	       					<div>
 	        					<%= link_to "Ver más...", c , class:"cube btn"%>
    							</div>
-   							</p>
-
+   						
    							<div>
-	        					<%= link_to "Modificar", couches_zedit_path , class:"cube-large-1 btn"%>
+	        					<%= link_to "Modificar", edit_couch_path(c.id) , class:"cube-large-1 btn"%>
    							</div>
 
    							<div>
-	        					<%= link_to "Eliminar", couches_zdestroy_path , class:"cube-large-2 btn"%>
+	        					<%= button_to "Eliminar", c, method: :delete, data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"cube-large-2 btn" %>
    							</div>
    						</div>
 
