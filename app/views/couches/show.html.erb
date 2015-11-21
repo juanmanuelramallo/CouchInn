@@ -25,7 +25,7 @@
 <% if !current_user.blank? %>
   <%= form_for @couch do |f| %>
   <% if current_user.id == @couch.user_id %>
-        <div class="asdfg">
+        <div class="botonsolicitar">
             <% @couch.reservado = true %>
 
             <%= link_to "Gestionar reserva", reservations_path(couch_id: @couch.id), class:"btn btn-primary" %>
