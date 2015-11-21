@@ -1,16 +1,26 @@
 class ReservationsController < ApplicationController
   before_filter :configure_permitted_parameters, if: :devise_controller?
   def index
+    @reservas = Reservation.where(couch_id: params[:couch_id])
   end
 
   def show
-     @reserva = Reservation.where(user_id:current_user)
+     #@reservas = Reservation.where(couch_id: params[:couch_id])
   end
 
-  def settrue
-    @reservatrue = Reservation.where(couch_id: params[:couch_id])
+  def edit
+    @reservatrue = Reservation.find(params[:reservation_id])
     @reservatrue.confirmed = true
     @reservatrue.save
+    respond_to do |format|
+          if @reservatrue.save
+              format.html { redirect_to reservations_path(couch_id: @reservatrue.couch_id), notice: "La reserva fue aceptada." }
+              format.json { render :show, status: :created, location:  reservations_path(couch_id: @reservatrue.couch_id) }
+          else
+              format.html { render :new }
+              format.json { render json: reservations_path(couch_id: @reservatrue.couch_id).errors, status: :unprocessable_entity }
+          end
+      end
   end
 
   def new
@@ -31,16 +41,19 @@ class ReservationsController < ApplicationController
      
       respond_to do |format|
           if @nuevaReserva.save
-              format.html { redirect_to @nuevaReserva, notice: "La reserva fue creada correctamente." }
-              format.json { render :show, status: :created, location: @nuevaReserva }
+              format.html { redirect_to Couch.find(@nuevaReserva.couch_id), notice: "La reserva fue creada correctamente." }
+              format.json { render :show, status: :created, location:  Couch.find(@nuevaReserva.couch_id) }
           else
               format.html { render :new }
-              format.json { render json: @nuevaReserva.errors, status: :unprocessable_entity }
+              format.json { render json: Couch.find(@nuevaReserva.couch_id).errors, status: :unprocessable_entity }
           end
       end
   end
 
   def destroy
+    @reservad = Reservation.find(params[:id]).destroy
+    redirect_to reservations_path(couch_id: @reservad.couch_id)
+    
   end
 
 
@@ -50,4 +63,8 @@ class ReservationsController < ApplicationController
      #@nuevaReserva.save
     @reservatrue = Reservation.where(couch_id: params[:couch_id])
   end
+
+  def seleccionar
+  end
+
 end

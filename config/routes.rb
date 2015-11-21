@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  
+
+  get 'reservations/edit'
+
   get 'couches/edit'
 
   get 'couches/index'
@@ -23,6 +27,8 @@ Rails.application.routes.draw do
   get 'reservations/destroy'
 
   get 'reservations/update'
+  
+  get 'reservations/seleccionar'
 
 
   resources :tipocs
