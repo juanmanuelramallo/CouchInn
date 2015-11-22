@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
   before_filter :configure_permitted_parameters, if: :devise_controller?
+ 
+
   def index
     @reservas = Reservation.where(couch_id: params[:couch_id])
   end
@@ -7,6 +9,8 @@ class ReservationsController < ApplicationController
   def show
      #@reservas = Reservation.where(couch_id: params[:couch_id])
   end
+
+
 
   def edit
     @reservatrue = Reservation.find(params[:reservation_id])

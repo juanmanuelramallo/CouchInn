@@ -1,4 +1,10 @@
 <%= form_for @nuevaReserva do |f| %>
+	<% if @nuevaReserva.errors.any? %>
+	<div class="alert alert-danger">
+    	<%= @nuevaReserva.errors.messages %>
+    </div>
+    <% end %>
+
 	<%= f.hidden_field :couch_id %>
 
 	<div class="form-group">
@@ -20,7 +26,6 @@
           <%= f.submit "Solicitar la Reserva", class:"btn btn-primary" %>
           <%= link_to "Cancelar", root_path, class:"btn btn-default" %>
     </div>
-
 
 <% end %>
 
