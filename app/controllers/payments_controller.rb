@@ -29,9 +29,15 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        current_user.premium!
-        format.html { redirect_to root_path, notice: 'El pago fue concretado correctamente. Ahora sos premium!' }
-        format.json { render :show, status: :created, location: @payment }
+
+        if current_user.rol == "normal"
+          current_user.premium!
+          format.html { redirect_to root_path, notice: 'El pago fue concretado correctamente. Ahora sos premium!' }
+          format.json { render :show, status: :created, location: @payment }
+        else
+          format.html { redirect_to root_path, alert: 'Sos admin, que más querés?' }
+        end
+
       else
         format.html { render :new }
         format.json { render json: @payment.errors, status: :unprocessable_entity }

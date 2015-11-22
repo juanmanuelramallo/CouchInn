@@ -10,7 +10,7 @@ class CreateSearchings < ActiveRecord::Migration
       t.boolean :reservado
       t.date :free_from
       t.date :free_to
-
+      t.integer :user_id
       t.timestamps null: false
     end
   end
