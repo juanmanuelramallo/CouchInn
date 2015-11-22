@@ -42,7 +42,7 @@ before_action :get_search, only: [:show]
       rr.each do |r|
         rangeRes = r.start_date..r.end_date
         rangeSearch = @search.free_from..@search.free_to
-        if rangeRes.overlaps?(rangeSearch)
+        if rangeRes.overlaps?(rangeSearch) & r.confirmed
           cocuhesOcup << r.couch_id
         end
       end
