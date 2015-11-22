@@ -4,7 +4,7 @@ body {
 }
 
 .default, .ingresar, .editar-usuario{
-  background: image-url('bg-wall.jpg') no-repeat center center fixed;
+  background: image-url('bg-wall2.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -109,6 +109,12 @@ disabled{
 .image {
    position: relative;
    width: 100%; /* for IE 6 */
+}
+
+.img-rounded{
+  -moz-box-shadow:    0px 3px 10px 1px #333;
+    -webkit-box-shadow: 0px 3px 10px 1px #333;
+    box-shadow:         0px 3px 10px 1px #333;
 }
 
 
@@ -226,7 +232,6 @@ $dim-cube: 150px;
 
 .cube:nth-of-type(2n) {
     background: #6392AA;
-    z-index: 1;
 }
 
 a.vermas{
@@ -251,6 +256,9 @@ a.vermas:hover{
 
 .panel-admin{
   position:fixed;
+  -moz-box-shadow:    0px 3px 10px 1px #333;
+    -webkit-box-shadow: 0px 3px 10px 1px #333;
+    box-shadow:         0px 3px 10px 1px #333;
 }
 
 .navbar-brand{
