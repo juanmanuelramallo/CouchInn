@@ -44,6 +44,7 @@ class ReservationsController < ApplicationController
       @nuevaReserva.save
      
       respond_to do |format|
+        if @nuevaReserva.valid?
           if @nuevaReserva.save
               format.html { redirect_to Couch.find(@nuevaReserva.couch_id), notice: "La reserva fue creada correctamente." }
               format.json { render :show, status: :created, location:  Couch.find(@nuevaReserva.couch_id) }
@@ -51,6 +52,10 @@ class ReservationsController < ApplicationController
               format.html { render :new }
               format.json { render json: Couch.find(@nuevaReserva.couch_id).errors, status: :unprocessable_entity }
           end
+        else
+          format.html { render :new }
+          format.json { render json: @nuevaReserva.errors, status: :unprocessable_entity }
+        end
       end
   end
 
