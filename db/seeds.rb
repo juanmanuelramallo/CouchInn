@@ -163,38 +163,38 @@ Reservation.create(
 #---- FOTOS -----#
 
 Foto.create(
-    couch_id:'1',
+    couch_id:a.id,
     nombre:"couches/c1.jpg")
 
 Foto.create(
-    couch_id:'2',
+    couch_id:b.id,
     nombre:"couches/c2.jpg")
 
 Foto.create(
-    couch_id:'3',
+    couch_id:c.id,
     nombre:"couches/c3.jpg")
 
 Foto.create(
-    couch_id:'4',
+    couch_id:d.id,
     nombre:"couches/c4.jpg")
 
 Foto.create(
-    couch_id:'5',
+    couch_id:e.id,
     nombre:"couches/c5.jpg")
 
 Foto.create(
-    couch_id:'1',
+    couch_id:a.id,
     nombre:"couches/c1-1.jpg")
 
 Foto.create(
-    couch_id:'1',
+    couch_id:a.id,
     nombre:"couches/c1-2.jpg")
 
 Foto.create(
-    couch_id:'1',
+    couch_id:a.id,
     nombre:"couches/c1-3.jpg")
 
 Foto.create(
-    couch_id:'1',
+    couch_id:a.id,
     nombre:"couches/c1-4.jpg")
 
