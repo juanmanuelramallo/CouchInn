@@ -74,7 +74,6 @@ esteban = User.create!(
 #----- COUCHES ---------#
 
 a = Couch.create(
-    id:'1',
     tipo: casa.id,
     ubicacion:"En medio de la nada",
     capacidad:'1',
@@ -84,7 +83,6 @@ a = Couch.create(
     )
 
 b = Couch.create(
-    id:'2',
     tipo:casa.id,
     ubicacion:"Encima de una palmera",
     capacidad:5,
@@ -94,7 +92,6 @@ b = Couch.create(
     )
 
 c = Couch.create(
-    id:'3',
     tipo:casa.id,
     ubicacion:"En el centro de la avenida",
     capacidad:8,
@@ -104,7 +101,6 @@ c = Couch.create(
     )
 
 d = Couch.create(
-    id:'4',
     tipo: choza.id,
     ubicacion:"Selva misionera",
     capacidad:6,
@@ -114,7 +110,6 @@ d = Couch.create(
     )
 
 e = Couch.create(
-    id:'5',
     tipo:depto.id,
     ubicacion:"En el quinto piso de las torres mellizas",
     capacidad:4,

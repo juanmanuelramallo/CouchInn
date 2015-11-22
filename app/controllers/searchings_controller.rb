@@ -31,7 +31,7 @@ before_action :get_search, only: [:show]
         t = @search.tipo
         @couches = Couch.where(["tipo = ? and ubicacion LIKE ? AND capacidad >= ?", t ,'%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
       else
-        @couches = Couch.where(["ubicacion LIKE ? AND capacidad > ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+        @couches = Couch.where(["ubicacion LIKE ? AND capacidad >= ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
       end
 
     else
