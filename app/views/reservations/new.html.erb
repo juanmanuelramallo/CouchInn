@@ -1,9 +1,13 @@
 <%= form_for @nuevaReserva do |f| %>
-	<% if @nuevaReserva.errors.any? %>
-	<div class="alert alert-danger">
-    	<%= @nuevaReserva.errors.messages %>
-    </div>
+	<% if @nuevaReserva.errors.full_messages.any? %>
+  <div class="alert alert-danger">
+    <% @nuevaReserva.errors.full_messages.each do |error_message| %>
+      <%= error_message if @nuevaReserva.errors.full_messages.first == error_message %> <br />
     <% end %>
+  </div>
+  <% end %>
+
+
 
 	<%= f.hidden_field :couch_id %>
 
@@ -20,7 +24,7 @@
 			<%= f.date_field :end_date %>
 		</div>
 	</div>
-	
+
 
 	<div class="form-actions">
           <%= f.submit "Solicitar la Reserva", class:"btn btn-primary" %>
