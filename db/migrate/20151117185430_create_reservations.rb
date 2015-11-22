@@ -3,8 +3,8 @@ class CreateReservations < ActiveRecord::Migration
     create_table :reservations do |t|
     	t.integer  "user_id"
     	t.integer  "couch_id"
-    	t.datetime "start_date"
-    	t.datetime "end_date"
+    	t.date     "start_date"
+    	t.date     "end_date"
     	t.boolean   "confirmed"
       t.timestamps null: false
     end
