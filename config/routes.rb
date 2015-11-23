@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  
+  get 'contacto/index'
+
+  get 'contacto/show'
+
+  get 'layouts/informacion' 
 
   get 'reservations/edit'
 
