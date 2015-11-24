@@ -1,6 +1,7 @@
 <h1> Seleccion de fechas </h1>
+
 <%= form_for @nuevaReserva do |f| %>
-	
+
 	<% if @nuevaReserva.errors.full_messages.any? %>
  		<div class="alert alert-danger">
     	<% @nuevaReserva.errors.full_messages.each do |error_message| %>
