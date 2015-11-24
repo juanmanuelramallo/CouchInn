@@ -81,7 +81,10 @@
             </li>
 
             <li>
-              <%= link_to 'Acerca de', root_path %>
+              <%= link_to 'Acerca de', contacto_show_path %>
+            </li>
+            <li>
+              <%= link_to 'Contacto', contacto_index_path %>
             </li>
 
             <li role="separator" class="divider"></li>
@@ -107,7 +110,12 @@
           </button>
           <ul class="dropdown-menu">
             <li><a href="#"> Ayuda </a></li>
-            <li><a href="#"> Acerca de </a></li>
+           <li>
+              <%= link_to 'Acerca de', contacto_show_path %>
+            </li>
+            <li>
+              <%= link_to 'Contacto', contacto_index_path %>
+            </li>
           </ul>
 
         </li>   <!-- fin del dropdown-->
