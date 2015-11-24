@@ -20,6 +20,14 @@ choza = Tipoc.find_or_create_by(tipo:"Choza");
 motorh = Tipoc.find_or_create_by(tipo:"Motorhome");
 
 #------ USERS ---------#
+userA = User.create!(
+    nombre: "A",
+    apellido: "A",
+    email:"a@a.com",
+    rol:"normal",
+    password:"123456",
+    password_confirmation:"123456"
+    )
 
 juan = User.create!(
     nombre:"Juan",
