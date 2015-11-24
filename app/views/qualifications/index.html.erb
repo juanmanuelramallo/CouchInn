@@ -1,0 +1,26 @@
+
+<h3><span class="label label-default"> Calificaciones </h3>
+
+<table class="table">
+  <tr>
+    <th>Email</th>
+    <th>Nombre</th>
+    <th>Calificacion</th>
+  </tr>
+ 
+  <% @calificacion.each do |article| %>
+    <tr>
+      <td><%= User.find(article.user_id).email %></td>
+      <td><%= User.find(article.user_id).nombre %></td>
+      <td><%= article.percentage %></td>
+    </tr>
+  <% end %>
+  <% if @calificacion.size == 0 %>
+    <tr> <td colspan="3"> No hay Reservas </td> </tr>
+  <% end %>
+
+</table>
+
+
+
+

@@ -26,17 +26,21 @@
   <%= form_for @couch do |f| %>
   <% if current_user.id == @couch.user_id %>
         <div class="botonsolicitar">
-            <% @couch.reservado = true %>
 
-            <%= link_to "Gestionar reserva", reservations_path(couch_id: @couch.id), class:"btn btn-primary" %>
-           
-        </div>
+            <%= link_to "Gestionar reserva", reservations_path(couch_id: @couch.id), class:"btn btn-primary" %>           
+          </div>
+          <div class="botoncalificar">
+            <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-primary" %>
+             </div>
   <% else %>
         <div class="botonsolicitar">
             
             <%= link_to "Enviar solicitud de reserva", reservations_new_path(couch_id: @couch.id), class:"btn btn-primary" %>
             <!-- link_to "Atras", root_path, class:"btn btn-default"%> -->
         </div>
+         <div class="botoncalificar">
+        <%= link_to "Calificar", qualifications_new_path(couch_id: @couch.id), class:"btn btn-primary" %>
+      </div>
 <% end %>
 <% end %>
 <% end %>

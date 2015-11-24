@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
+  resources :qualifications
   
+  get 'qualifications/index'
+
+  get 'qualifications/show'
+
+  get 'qualifications/new'
+
+  get 'qualifications/create'
+
+  get 'qualifications/destroy'
+
+  get 'qualifications/edit'
+
+  get 'qualifications/update'
+
   get 'contacto/index'
 
   get 'contacto/show'

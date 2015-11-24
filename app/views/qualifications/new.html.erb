@@ -1,0 +1,33 @@
+<h1> Calificacion </h1>
+<%= form_for @nuevacalif do |f| %>
+	
+	<% if @nuevacalif.errors.full_messages.any? %>
+ 		<div class="alert alert-danger">
+    	<% @nuevacalif.errors.full_messages.each do |error_message| %>
+      		<%= error_message if @nuevacalif.errors.full_messages.first == error_message %> <br />
+    		<% end %>
+  		</div>
+  	<% end %>
+
+
+
+	<%= f.hidden_field :couch_id %>
+
+
+      <div class="form-group">
+
+        <%= f.label :percentage, class:"label label-default" %>
+		 <div class="w-label">
+           <%= f.select(:percentage, ["Muy malo", "Malo","Regular","Bueno","Muy bueno","Exelente"], {}, { :percentage => "percentage", class:"form-control"}) %>
+        </div>
+ 		</div>
+
+
+		<div class="form-actions">
+          <%= f.submit "Aceptar calificacion", class:"btn btn-primary" %>
+          <%= link_to "Cancelar", root_path, class:"btn btn-default" %>
+   		 </div>
+
+<% end %>
+
+
