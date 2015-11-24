@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   resources :qualifications
 
   get 'qualifications/index'
@@ -17,20 +19,22 @@ Rails.application.routes.draw do
   get 'qualifications/update'
 
 
-  get 'contacto/index'
 
-  get 'contacto/show'
 
 
   get 'layouts/informacion'
 
 #corregido desde abajo en adelante ---
 
+  get '/contacto' => 'pages#contacto'
+
+  get '/acercade' => 'pages#acercade'
+
   resources :searchings
 
-  resources :reservations
+  get 'reservations/misreservas'
 
-  get 'reservations/indexUser'
+  resources :reservations
 
   resources :tipocs
 

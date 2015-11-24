@@ -8,12 +8,9 @@ class Reservation < ActiveRecord::Base
   validate :no_mismo_usuario_misma_fecha
   validate :no_chocan_fechas
 
-
-
   validates_uniqueness_of :couch_id, :scope => :user_id
-  #validates_presence_of :start_date
- #validates :start_date, :end_date, :email, :presence => { message: "No puede dejarse vacío" }
 
+  default_scope {order('created_at')}
 
   def valid_date
     if (start_date && end_date) && (end_date < start_date)

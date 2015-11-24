@@ -1,12 +1,10 @@
-<div class="col-md-8 col-centered">
+<!-- LISTADO DE RESERVAS DEL USUARIO ACTUAL -->
 
-  <h1>Listado de Reservas</h1>
+<h1>Listado de Reservas</h1>
 
   <table class="table">
     <tr>
       <th>Tipo Couch</th>
-      <th> Nombre del usuario </th>
-      <th> Email del usuario </th>
       <th>Fecha de inicio</th>
       <th>Fecha de terminado</th>
       <th>Estado de la reserva</th>
@@ -16,15 +14,17 @@
     <% @reservas.each do |r| %>
       <tr>
         <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
-        <td><%= User.find(r.user_id).nombre %></td>
-        <td><%= User.find(r.user_id).email %></td>
         <td><%= r.start_date %></td>
         <td><%= r.end_date %></td>
         <% if r.confirmed == true %>
-        <td> Reservado </td>
+        <td> Confirmado </td>
         <% else %>
-        <td> No reservado </td>
+        <td> En espera </td>
         <% end %>
+        <td>
+          <%= link_to "Modificar", edit_reservation_path(r), class: 'btn btn-info btn-sm' %>
+          <%= link_to "Cancelar", r, method: :delete, data:{confirmed: "Eliminar reserva?"},type: "button", class: 'btn btn-danger btn-sm' %>
+        </td>
       </tr>
     <% end %>
     <% if @reservas.size == 0 %>
@@ -32,6 +32,3 @@
     <% end %>
 
   </table>
-
-
-</div>

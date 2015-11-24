@@ -1,0 +1,35 @@
+<%= form_for @reserva do |f| %>
+
+  <% if @reserva.errors.full_messages.any? %>
+    <div class="alert alert-danger">
+      <% @reserva.errors.full_messages.each do |error_message| %>
+          <%= error_message if @reserva.errors.full_messages.first == error_message %> <br />
+        <% end %>
+      </div>
+    <% end %>
+
+
+
+  <%= f.hidden_field :couch_id %>
+
+  <div class="form-group">
+    <%= f.label :start_date,"Fechad de inicio", class:"label label-default", type:"label", :for=>'start_date' %>
+    <div class="w-label">
+      <%= f.date_field :start_date %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_date, "Fecha de finalizacion", class:"label label-default", type:"label", :for=>'end_date' %>
+    <div class="w-label">
+      <%= f.date_field :end_date %>
+    </div>
+  </div>
+
+
+  <div class="form-actions">
+          <%= f.submit "Aceptar", class:"btn btn-primary" %>
+          <%= link_to "Cancelar", :back , class:"btn btn-default" %>
+    </div>
+
+<% end %>
