@@ -16,7 +16,6 @@
     <tr>
       <th>Tipo Couch</th>
       <th> Nombre del usuario </th>
-      <th> Email del usuario </th>
       <th>Fecha de inicio</th>
       <th>Fecha de terminado</th>
       <th>Estado de la reserva</th>
@@ -28,7 +27,6 @@
       <tr class="active">
         <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
         <td><%= User.find(r.user_id).nombre %></td>
-        <td><%= User.find(r.user_id).email %></td>
         <td><%= r.start_date %></td>
         <td><%= r.end_date %></td>
         <% if r.confirmed == true %>

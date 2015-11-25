@@ -2,7 +2,7 @@ class QualificationsController < ApplicationController
   before_filter :configure_permitted_parameters, if: :devise_controller?
   
   def index
-    
+    @miscalif = Qualification.where(user_id: current_user)
   end
 
   def show
