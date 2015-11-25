@@ -18,12 +18,6 @@
 
 	    <% @couches.each do |c| %>
 
-	    	<% if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0 %>
-				<% if c.eliminado == true %>
-					<%= c.destroy %>
-		    	<% end %>
-		    <% end %>
-
 			<div class="col-md-10 col-md-8 col-centered">
 	    		<div class="thumbnail">
 	      			<% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
