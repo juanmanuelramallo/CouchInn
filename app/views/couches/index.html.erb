@@ -18,6 +18,12 @@
 
 	    <% @couches.each do |c| %>
 
+	    	<% if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0 %>
+				<% if c.eliminado == true %>
+					<%= c.destroy %>
+		    	<% end %>
+		    <% end %>
+
 			<div class="col-md-10 col-md-8 col-centered">
 	    		<div class="thumbnail">
 	      			<% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
@@ -54,7 +60,7 @@
    								<% if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0 %>
 									<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"cube-large-2 btn" %>
 					       		<% else %>
-					       			<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, desea eliminarlo de todos modos?"} , class:"cube-large-2 btn" %>
+					       			<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, no puede eliminarlo ahora. Desea ocultarlo y que se elimine cuando se completen las reservas actuales?"} , class:"cube-large-2 btn" %>
 					       		<% end %>
 
 
