@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   has_many :couches
   has_many :reservations
   has_many :searchings
+  has_many :payments
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ":style/missing.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   enum genero: [:Masculino, :Femenino, :Prefiero_no_especificar]
   enum rol: [:admin, :normal, :premium]

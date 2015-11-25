@@ -1,5 +1,7 @@
 <body class="default">
 
+<% if current_user.rol == "admin" %>
+
 <h1> Gestión de tipos de couch </h1>
 <p><span class="label label-default">Solo para administradores, si estás acá y no sos admin reportalo!</span> </p>
 
@@ -71,5 +73,12 @@
   </div>
 
 </div>
+
+<% else %>
+
+  <h3> No tenés los permisos para ver esta página </h3>
+  <%= link_to "Atrás", :back %>
+
+<% end %>
 
 </body>

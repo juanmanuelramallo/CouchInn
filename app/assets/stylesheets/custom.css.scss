@@ -12,7 +12,7 @@ body {
 }
 
 
-.registracion{
+.new-user{
   background: image-url('bg-town.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -34,6 +34,34 @@ body {
 .navbar .navbar-default{
   background: rgba(#E6E6E6, 0.95);
 }
+
+
+.round-image-50 {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+
+.perfil{
+  top:-15px;
+  right:-10px;
+  height:90px;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+
 
 .form-control {
   margin-bottom: 5px;
@@ -151,11 +179,11 @@ select.no-radius-left{
 }
 
 .ec-stars-wrapper {
-  /* Espacio entre los inline-block (los hijos, los `a`) 
+  /* Espacio entre los inline-block (los hijos, los `a`)
      http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
   font-size: 0;
-  /* Podríamos quitarlo, 
-    pero de esta manera (siempre que no le demos padding), 
+  /* Podríamos quitarlo,
+    pero de esta manera (siempre que no le demos padding),
     sólo aplicará la regla .ec-stars-wrapper:hover a cuando
     también se esté haciendo hover a alguna estrella */
   display: inline-block;
@@ -166,7 +194,7 @@ select.no-radius-left{
   /* Volver a dar tamaño al texto */
   font-size: 32px;
   font-size: 2rem;
-  
+
   color: #888;
 }
 

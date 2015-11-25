@@ -46,7 +46,7 @@ $(document).ready(function() {
 
   <div class="form-actions">
           <%= f.submit "Aceptar", class:"btn btn-primary" %>
-          <%= link_to "Cancelar", :back , class:"btn btn-default" %>
+          <%= link_to "Cancelar", couch_path(@reserva.couch_id) , class:"btn btn-default" %>
     </div>
 
 <% end %>

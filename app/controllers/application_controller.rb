@@ -8,9 +8,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nombre, :apellido, :fecnac, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nombre, :apellido, :fecnac, :email, :password, :password_confirmation, :remember_me, :avatar) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :email, :password, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nombre, :apellido, :fecnac, :genero,:telf, :pais, :ciudad ,:email, :password, :password_confirmation, :current_password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:nombre, :apellido, :fecnac, :genero,:telf, :pais, :ciudad ,:email, :password, :password_confirmation, :current_password, :avatar) }
+    devise_parameter_sanitizer.for(:user) { |u| u.permit(:avatar) }
   end
 
   def disabled?

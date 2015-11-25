@@ -58,13 +58,13 @@
           <%  end %>
         </li>
 
-
-        <li class="dropdown texto"> <!-- DROPDOWN PERFIL -->
-
         <% if user_signed_in? %>
 
 
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Perfil <span class="caret"></span></a>
+
+        <li class="dropdown texto"> <!-- DROPDOWN PERFIL -->
+
+          <a href="#" class="dropdown-toggle perfil" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.nombre %> <%= image_tag(current_user.avatar.url(:thumb), class:"round-image-50") %> <span class="caret"></span></a>
 
           <ul class="dropdown-menu">
 
@@ -89,9 +89,6 @@
             </li>
             <li>
               <%= link_to 'Contacto', contacto_path %>
-            </li>
-            <li>
-              <%= link_to 'Mis calificaciones', qualifications_path %>
             </li>
 
             <li role="separator" class="divider"></li>
