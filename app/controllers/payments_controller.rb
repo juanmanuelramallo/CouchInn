@@ -24,8 +24,8 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @payment = Payment.new(params.require(:payment).permit(:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
 
+    @payment = Payment.new(params.require(:payment).permit(:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
 
     respond_to do |format|
       if @payment.save
@@ -33,9 +33,11 @@ class PaymentsController < ApplicationController
         if current_user.rol == "normal"
           current_user.premium!
           format.html { redirect_to root_path, notice: 'El pago fue concretado correctamente. Ahora sos premium!' }
-          format.json { render :show, status: :created, location: @payment }
-        else
+          format.json { render :index, status: :created, location: @payment }
+        elsif current_user.rol == "admin"
           format.html { redirect_to root_path, alert: 'Sos admin, que más querés?' }
+        else
+          format.html { redirect_to root_path, alert: 'Ya sos premium, no podes ser doblemente premium'}
         end
 
       else

@@ -3,8 +3,10 @@ require 'uri'
 
 class Payment < ActiveRecord::Base
 
-  validates :cardNumber, length: { is: 16 }
-  validates :cardCVV, length: { is: 3 }
+  belongs_to :user
+
+  validates :cardNumber, numericality: true, length: { is: 16 }
+  validates :cardCVV, numericality: true, length: { is: 3 }
   validate :expiration_date_cannot_be_in_the_past, on: :create
 
   MERCHANT_ID = "0000992"

@@ -26,7 +26,7 @@ class TipocsController < ApplicationController
          format.html { redirect_to tipocs_path, notice: "El tipo fue creado correctamente." }
          format.json { render :show, status: :created, location: tipocs_path }
       else
-         format.html { render :new }
+         format.html { redirect_to tipocs_path, alert: "El tipo no fue creado, ya existe" }
          format.json { render json: @tipo.errors, status: :unprocessable_entity }
       end
     end
@@ -39,7 +39,7 @@ class TipocsController < ApplicationController
         format.html { redirect_to tipocs_path, notice: 'Tipo fue actualizado correctamente.' }
         format.json { render :show, status: :ok, location: tipocs_path }
       else
-        format.html { render :edit }
+        format.html { redirect_to tipocs_path, alert: 'El tipo no fue actualizado, ya existe' }
         format.json { render json: @tipo.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +48,7 @@ class TipocsController < ApplicationController
 
   def destroy
     Tipoc.find(params[:id]).destroy
-    redirect_to tipocs_path
+    redirect_to tipocs_path, notice: 'El tipo fue eliminado correctamente'
   end
 
 private

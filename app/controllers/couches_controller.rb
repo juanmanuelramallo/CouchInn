@@ -90,8 +90,9 @@ end
 
   def destroy
 
+    #si no tiene reservas confirmadas este couch lo elimino
     if Reservation.where('couch_id = ? and confirmed = ?', @couch.id, true).count == 0
-
+      @couch.destroy
       flash[:notice] = 'El Couch ha sido eliminado exitosamente'
     else
       @couch.eliminado = true

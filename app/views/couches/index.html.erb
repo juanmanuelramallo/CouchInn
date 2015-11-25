@@ -12,11 +12,15 @@
 
  	<% if @couches.blank? %>
 
+    <div class="col-md-8 col-centered">
+
       <h1> No has publicado ningun couch ¡Qué esperas! ¡Hay muchos viajeros esperando! </h1>
 
-    <% else %>
+    </div>
 
-	    <% @couches.each do |c| %>
+  <% else %>
+
+	  <% @couches.each do |c| %>
 
 <div class="row">
 
@@ -69,7 +73,7 @@
 
 </div> <!-- row -->
 
-		<% end %>
+	  <% end %>
 
 
 

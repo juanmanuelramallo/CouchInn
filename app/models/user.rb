@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :couches
   has_many :reservations
   has_many :searchings
+  has_many :payments
 
   enum genero: [:Masculino, :Femenino, :Prefiero_no_especificar]
   enum rol: [:admin, :normal, :premium]
