@@ -8,78 +8,76 @@
  		<h1><span class="label label-default"> Mis couches</span></h1>
 	</div>
 
+</div>
 
-    <div class="image" style="padding-top:20px">
+ 	<% if @couches.blank? %>
 
-
- 	<% if @couches.nil? %>
-    	<h1> No has publicado ningun couch ¡Qué esperas! ¡Hay muchos viajeros esperando! </h1>
+      <h1> No has publicado ningun couch ¡Qué esperas! ¡Hay muchos viajeros esperando! </h1>
 
     <% else %>
 
 	    <% @couches.each do |c| %>
 
-			<div class="col-md-10 col-md-8 col-centered">
-	    		<div class="thumbnail">
-	      			<% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
+<div class="row">
 
-		       		<% if fotoPrincipal.nil? %>
-						<%= image_tag "sofa-outline.png", class:"img-responsive img-rounded" %>
-		       		<% else %>
-		       			<%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
-		       		<% end %>
+      <div class="col-md-2 action-buttons">
 
-	      			<div class="caption">
+          <%= link_to "Modificar", edit_couch_path(c.id) , class:"btn btn-default btn-block"%>
 
-	      				<div class="containter-info">
+          <% if Reservation.where('couch_id = ? and confirmed = ?',c.id, true).count == 0 %>
+            <%= link_to "Eliminar", c, method: :delete , data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"btn btn-danger btn-block" %>
+          <% else %>
+            <%= link_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, no puede eliminarlo ahora. Desea ocultarlo y que se elimine cuando se completen las reservas actuales?"} , class:"btn btn-danger btn-block" %>
+          <% end %>
 
-	       					<div class="cube">
-	           					<span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
-	           					</br> para <%= c.capacidad%> persona(s) </span>
-	       					</div>
+      </div>
 
-	       					<div class="cube">
-	          					<p class="descripcion"> <%= c.descripcion.first(115) %> </p>
-							</div>
+      <div class="col-md-8">
 
-	       					<div>
-	        					<%= link_to "Ver más...", c , class:"cube btn"%>
-   							</div>
+      <div class="image" style="padding-top:20px">
 
-   							<div>
-	        					<%= link_to "Modificar", edit_couch_path(c.id) , class:"cube-large-1 btn"%>
-   							</div>
+    		<% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
 
-   							<div>
+       	<% if fotoPrincipal.nil? %>
+  			  <%= image_tag "c-ph.jpeg", class:"img-responsive img-rounded" %>
+       	<% else %>
+    			<%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+     		<% end %>
 
-   								<% if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0 %>
-									<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"cube-large-2 btn" %>
-					       		<% else %>
-					       			<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, desea eliminarlo de todos modos?"} , class:"cube-large-2 btn" %>
-					       		<% end %>
+  			<div class="containter-info">
 
+ 					<div class="cube">
+     					<span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
+     					</br> para <%= c.capacidad %> <%= 'persona'.pluralize(c.capacidad) %> </span>
+ 					</div>
 
-   								
+ 					<div class="cube">
+    					<p class="descripcion"> <%= c.descripcion.first(115) %> </p>
+			     </div>
 
-	        					
-   							</div>
-   						</div>
+ 					<div>
+  					<%= link_to "Ver más...", c , class:"cube btn"%>
+					</div>
+
+   			</div> <!-- container info -->
 
 
-	      			</div>
-				</div>
-			</div>
+      </div> <!-- image -->
+
+      </div> <!-- col md 8 -->
 
 
+</div> <!-- row -->
 
 		<% end %>
+
+
+
 	<% end %> <!-- if -->
 
 
-	</div>
 
 
-</div>
 
 </body>
 

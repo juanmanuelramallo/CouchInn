@@ -150,8 +150,12 @@ a.vermas:hover{
 
 }
 
-
-
+.action-buttons{
+  z-index:10;
+  position:relative;
+  top:25px;
+  right:-200px;
+}
 
 #owl-show .item{
   margin: 3px;

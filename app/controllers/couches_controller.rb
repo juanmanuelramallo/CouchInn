@@ -18,13 +18,22 @@ class CouchesController < ApplicationController
   end
 
   def main
-    @couches = Couch.joins(:user).order('rol desc', 'created_at desc')
+    @couches = Couch.joins(:user).where('eliminado = ?', false).order('rol desc', 'created_at desc')
     @fotos = Foto.all
     @users = User.all
   end
 
   def index
     @couches = Couch.joins(:user).order('rol desc', 'created_at desc').where('user_id = ?', current_user.id)
+
+    @couches.each do |c|
+        if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0
+          if c.eliminado == true
+            c.destroy
+          end
+        end
+    end
+
     @fotos = Foto.all
   end
 
@@ -75,14 +84,22 @@ def edit
 
 end
 
- def couch_params
+  def couch_params
     params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad)
   end
 
-def destroy
-  Couch.find(params[:id]).destroy
-  flash[:notice] = 'El Couch ha sido eliminado exitosamente'
-  redirect_to couches_path
-end
+  def destroy
+
+    if Reservation.where('couch_id = ? and confirmed = ?', @couch.id, true).count == 0
+
+      flash[:notice] = 'El Couch ha sido eliminado exitosamente'
+    else
+      @couch.eliminado = true
+      @couch.save
+      flash[:notice] = 'El Couch ya no se encuentra visible. Cuando las reservas actuales se completen será eliminado de forma definitiva'
+    end
+
+      redirect_to couches_path
+  end
 
 end
