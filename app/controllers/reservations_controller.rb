@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
   def index
     @couchactual = Couch.find(params[:cid])
     @reservas = Reservation.where('couch_id = ?', params[:cid])
+
   end
 
   def misreservas
@@ -54,10 +55,12 @@ class ReservationsController < ApplicationController
 
 
   def destroy
-    if @reserva.destroy
-      redirect_to :back, notice: "La reserva fue eliminada correctamente"
+    if !@reserva.confirmed
+      @reserva.destroy
+      redirect_to :back, notice: "La reserva fue denegada correctamente"
     else
-      redirect_to :back, alert: "Un error impidió que la reserva fuera eliminada"
+      u = User.find(@reserva.user_id)
+      redirect_to :back, alert: "La reserva ya había sido confirmada. Para denegarla comuniquese con el usuario #{u.nombre} a la dirección #{u.email}"
     end
   end
 
@@ -83,11 +86,13 @@ class ReservationsController < ApplicationController
 
   def confirm
 
-    #validar si no tiene una reserva confirmada con otro couch en la misma fecha (en el modelo)
+    #validar si no tiene una reserva confirmada con otro couch en la misma fecha
+
 
     respond_to do |format|
       if @reserva.update(confirmed: true)
         #eliminar todas las reservas del usuario actual que coincidan con la fecha de esta reserva aceptada
+        #eliminar todas las reservas del couch que coincidan con
         eliminar_reservas_coincidentes
 
         format.html { redirect_to reservations_path(cid: @reserva.couch_id), notice: "La reserva fue aceptada." }
@@ -122,20 +127,39 @@ private
 
 
   def eliminar_reservas_coincidentes
-    #todas las reservas del usuario actual sin confirmar
 
-    r = Reservation.where('user_id = ? and confirmed = ?', @reservatrue.user_id, false)
-    rango = @reservatrue.start_date..@reservatrue.end_date
+        rango = @reserva.start_date..@reserva.end_date
+
+    #eliminar todas las reservas del usuario actual sin confirmar y que ocupan las mismas fechas de la confirmada
+
+    r = Reservation.where('user_id = ? and confirmed = ?', @reserva.user_id, false)
 
     r.each do |res|
       aux = res.start_date..res.end_date
       if aux.overlaps?(rango)
-
-        res.destroy
-        flash[:notice] << "Una reserva fue eliminada debido a fechas coincidentes con la reserva aceptada recientemente"
+        destroy_coincidente(res)
+        flash[:notice] = "Una reserva del usuario fue eliminada debido a fechas coincidentes con la reserva aceptada recientemente"
         User.find(res.user_id).errors.add(:base, "La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.")
       end
     end
+
+    #eliminar las reservas del couch que ocupan las mismas fechas de la aceptada
+
+    r = Reservation.where('couch_id = ? and confirmed = ?', @reserva.couch_id, false)
+
+    r.each do |res|
+      aux = res.start_date..res.end_date
+      if aux.overlaps?(rango)
+        destroy_coincidente(res)
+        flash[:notice] = "Una reserva del couch fue eliminada debido a fechas coincidentes con la reserva aceptada recientemente"
+        User.find(res.user_id).errors.add(:base, "La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.")
+      end
+    end
+
+  end
+
+  def destroy_coincidente(reserva)
+    reserva.destroy
   end
 
 end

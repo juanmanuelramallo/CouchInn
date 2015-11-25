@@ -23,6 +23,7 @@ motorh = Tipoc.find_or_create_by(tipo:"Motorhome");
 userA = User.create!(
     nombre: "A",
     apellido: "A",
+    fecnac:'01/01/1990',
     email:"a@a.com",
     rol:"normal",
     password:"123456",
@@ -131,40 +132,40 @@ e = Couch.create(
 Reservation.create(
     user_id: juan.id,
     couch_id: a.id,
-    start_date: "20/10/2016",
-    end_date: "30/10/2016",
+    start_date: "26/11/2015",
+    end_date: "15/12/2015",
     confirmed: false
     )
 
 Reservation.create(
     user_id: juan.id,
     couch_id: b.id,
-    start_date: "20/11/2016",
-    end_date: "30/12/2016",
+    start_date: "20/12/2015",
+    end_date: "30/12/2015",
     confirmed: false
     )
 
 Reservation.create(
     user_id: diego.id,
     couch_id: c.id,
-    start_date: "20/10/2016",
-    end_date: "30/10/2016",
+    start_date: "27/11/2015",
+    end_date: "05/12/2015",
     confirmed: false
     )
 
 Reservation.create(
     user_id: andres.id,
     couch_id: d.id,
-    start_date: "20/11/2016",
-    end_date: "30/12/2016",
+    start_date: "01/12/2015",
+    end_date: "10/12/2015",
     confirmed: false
     )
 
 Reservation.create(
     user_id: esteban.id,
     couch_id: d.id,
-    start_date: "20/04/2017",
-    end_date: "30/04/2017",
+    start_date: "05/12/2015",
+    end_date: "15/12/2015",
     confirmed: false
     )
 

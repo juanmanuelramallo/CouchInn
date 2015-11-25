@@ -7,6 +7,8 @@ class Reservation < ActiveRecord::Base
   validate :valid_date_actual
   validate :no_mismo_usuario_misma_fecha
   validate :no_chocan_fechas
+  validate :maximo_periodo
+  validate :no_eliminado
 
   validates_uniqueness_of :couch_id, :scope => :user_id
 
@@ -53,6 +55,20 @@ class Reservation < ActiveRecord::Base
       if aux.overlaps?(rango)
         errors.add(:base, "Ya tienes una reserva confirmada para esas fechas, intenta antes del #{res.start_date.to_formatted_s(:short)}, o después del #{res.end_date.to_formatted_s(:short)}.")
       end
+    end
+  end
+
+  def maximo_periodo
+    max = 30
+    if (end_date - start_date) > max
+      errors.add(:base, "La reserva no puede ser mayor a #{max} días")
+    end
+  end
+
+  def no_eliminado
+    c = Couch.find(couch_id)
+    if c.eliminado
+      errors.add(:base, "El couch ha sido eliminado por su dueño y no puede reservarse")
     end
   end
 

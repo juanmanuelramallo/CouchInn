@@ -1,3 +1,9 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('[data-toggle=tooltip]').tooltip();
+});
+</script>
+
 <% if @couchactual.is_owner?(current_user) or current_user.admin? %>
 
 <!-- LISTADO DE RESERVAS DEL COUCH ACTUAL -->
@@ -13,6 +19,7 @@
       <th>Fecha de terminado</th>
       <th>Estado de la reserva</th>
       <th>Gestion de reservas</th>
+      <th>Info</th>
     </tr>
 
     <% @reservas.each do |r| %>
@@ -28,9 +35,10 @@
         <td> En espera </td>
         <% end %>
         <td>
-          <%= link_to "Aceptar", confirm(r), class: 'btn btn-info btn-sm' %>
+          <%= link_to "Aceptar", reservation_confirm_path(id:r.id) , class: 'btn btn-info btn-sm' %>
           <%= link_to "Denegar", r, method: :delete, data:{confirmed: "Eliminar reserva?"},type: "button", class: 'btn btn-danger btn-sm' %>
         </td>
+        <td> <a href="#" data-toggle="tooltip" title=" <%= r.errors.full_messages.first %>"> Info</a> </td>
       </tr>
     <% end %>
     <% if @reservas.size == 0 %>
@@ -38,6 +46,8 @@
     <% end %>
 
   </table>
+
+
 
 <% else %>
 

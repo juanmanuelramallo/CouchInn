@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   get 'reservations/misreservas'
 
+  get 'reservation/confirm' => 'reservations#confirm'
+
   resources :reservations
 
   resources :tipocs
