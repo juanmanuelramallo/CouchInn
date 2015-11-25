@@ -22,7 +22,10 @@ $(document).ready(function() {
     event.preventDefault(); // Prevent link from following its href
   });
 
-
+  $('#sandbox-container input').datepicker({
+     orientation: "bottom auto",
+    autoclose: true
+  })
 
   $('[data-toggle=tooltip]').tooltip();
 

@@ -1,3 +1,13 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+$('#sandbox-container input').datepicker({
+    orientation: "bottom auto"
+});
+});
+</script>
+
 <body class="registracion">
 <div style="padding-top:50px; scrollable:false"></div>
 
@@ -46,10 +56,10 @@
   <div class="spacer-div"></div>
 
 
-  <div class="input-group">
+  <div class="input-group date" data-provide="datepicker">
 
     <span class="input-group-addon" id="basic-addon1">📅</span>
-    <%= f.text_field :fecnac, class:"form-control", type:"text", placeholder:"Mi cumpleaños"%>
+    <%= f.text_field :fecnac, class:"form-control", type:"text" , placeholder:"Mi cumpleaños"%>
 
   </div>
 
