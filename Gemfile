@@ -69,3 +69,6 @@ gem 'bootstrap-datepicker-rails'
 gem 'country_select'
 
 gem 'i18n', github: 'svenfuchs/i18n'
+
+#uploading images
+gem 'paperclip'

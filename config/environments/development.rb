@@ -53,6 +53,6 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-  #config.i18n.available_locales = ['es-AR', :de]
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 
 end
