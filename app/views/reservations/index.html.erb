@@ -1,3 +1,5 @@
+<body class="reservations">
+
 <script type="text/javascript">
   $(document).ready(function() {
   $('[data-toggle=tooltip]').tooltip();
@@ -10,7 +12,7 @@
 
   <h1>Listado de Reservas</h1>
 
-  <table class="table">
+  <table class="table table-striped table-hover">
     <tr>
       <th>Tipo Couch</th>
       <th> Nombre del usuario </th>
@@ -23,7 +25,7 @@
     </tr>
 
     <% @reservas.each do |r| %>
-      <tr>
+      <tr class="active">
         <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
         <td><%= User.find(r.user_id).nombre %></td>
         <td><%= User.find(r.user_id).email %></td>
@@ -54,3 +56,5 @@
   <h4> No tienes los permisos para ver esta página </h4>
 
 <% end %>
+
+</body>

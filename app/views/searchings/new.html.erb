@@ -1,3 +1,5 @@
+<body class="new-searching">
+
   <% if @search.errors.full_messages.any? %>
   <div class="alert alert-danger">
     <% @search.errors.full_messages.each do |error_message| %>
@@ -95,12 +97,12 @@
     <span class="input-group-addon">
       <%= check_box "enable-date", id:"enable-date" %>
     </span>
-    <%= s.text_field :free_from, class:"form-control", id:"tf-from",type:"text", 'data-provide':'datepicker', disabled:true%>
+    <%= s.text_field :free_from, class:"form-control", id:"tf-from",type:"text", 'data-provide':'datepicker','data-date-format':"dd/mm/yyyy", disabled:true%>
   </div>
 
   <%= s.label :free_to %>
   <div class="">
-    <%= s.text_field :free_to, class:"form-control", id:"tf-to",type:"text", 'data-provide':'datepicker', disabled:true%>
+    <%= s.text_field :free_to, class:"form-control", id:"tf-to",type:"text", 'data-provide':'datepicker', 'data-date-format':"dd/mm/yyyy", disabled:true%>
   </div>
 
 
@@ -117,3 +119,5 @@
 </div>
 
 </div>
+
+</body>

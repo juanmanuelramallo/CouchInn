@@ -1,8 +1,18 @@
-<h1>Resultados de la búsqueda</h1>
+<body class="show-searching">
 
+<% if !@search.user_id == current_user.id %>
+  <h3> No tienes los permisos para ver esta página! </h3>
+  <%= link_to "Atrás", :back %>
+<% else %>
+
+<h1>Resultados de la búsqueda</h1>
 
 <div class="col-md-8 col-centered">
 
   <%= render 'results' %>
 
 </div>
+
+<% end %>
+
+</body>

@@ -1614,7 +1614,7 @@
 	$.fn.datepicker = datepickerPlugin;
 
 	var defaults = $.fn.datepicker.defaults = {
-		autoclose: false,
+		autoclose: true,
 		beforeShowDay: $.noop,
 		beforeShowMonth: $.noop,
 		beforeShowYear: $.noop,
@@ -1626,14 +1626,14 @@
 		datesDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
-		format: 'mm/dd/yyyy',
+		format: 'dd/mm/yyyy',
 		keyboardNavigation: true,
 		language: 'en',
 		minViewMode: 0,
 		maxViewMode: 2,
 		multidate: false,
 		multidateSeparator: ',',
-		orientation: "auto",
+		orientation: "bottom auto",
 		rtl: false,
 		startDate: -Infinity,
 		startView: 0,

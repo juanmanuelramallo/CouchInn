@@ -8,7 +8,8 @@ $('#sandbox-container input').datepicker({
 });
 </script>
 
-<body class="registracion">
+<body class="new-user">
+
 <div style="padding-top:50px; scrollable:false"></div>
 
 <div class="col-lg-3 col-lg-offset-4">
@@ -56,10 +57,10 @@ $('#sandbox-container input').datepicker({
   <div class="spacer-div"></div>
 
 
-  <div class="input-group date" data-provide="datepicker">
+  <div class="input-group">
 
     <span class="input-group-addon" id="basic-addon1">📅</span>
-    <%= f.text_field :fecnac, class:"form-control", type:"text" , placeholder:"Mi cumpleaños"%>
+    <%= f.text_field :fecnac, 'data-provide':"datepicker",  'data-date-format':"dd/mm/yyyy", class:"form-control", placeholder:"Mi cumpleaños"%>
 
   </div>
 

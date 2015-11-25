@@ -14,6 +14,7 @@ class Reservation < ActiveRecord::Base
 
   default_scope {order('created_at')}
 
+
   def valid_date
     if (start_date && end_date) && (end_date < start_date)
       errors.add(:start_date, "debe ser menor a la de finalizacion.")
