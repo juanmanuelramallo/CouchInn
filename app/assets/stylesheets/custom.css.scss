@@ -3,7 +3,7 @@ body {
   padding-top: 10px;
 }
 
-.default, .ingresar, .editar-usuario{
+.default, .login-user, .edit-user, .show-couch, .new-couch, .edit-couch, .new-password, .edit-password, .unlock-user, .new-reservation, .reservations, .misreservas{
   background: image-url('bg-wall2.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -28,13 +28,7 @@ body {
     -o-background-size: cover;
 }
 
-.show-couch {
-  background: image-url('wall-dark.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
+
 
 
 .navbar .navbar-default{
@@ -106,147 +100,6 @@ disabled{
   color:white;
 }
 
-.image {
-   position: relative;
-   width: 100%; /* for IE 6 */
-}
-
-.img-rounded{
-  -moz-box-shadow:    0px 3px 10px 1px #333;
-    -webkit-box-shadow: 0px 3px 10px 1px #333;
-    box-shadow:         0px 3px 10px 1px #333;
-}
-
-
-h2.texto-over-image {
-   position: relative;
-   top: -200px ;
-   left: 50px;
-   width: 30%;
-}
-
-h2.texto-over-image span {
-   color: white;
-   font: bold 24px/45px Helvetica, Sans-Serif;
-   letter-spacing: -1px;
-   background: rgb(0, 0, 0); /* fallback color */
-   background: rgba(133, 160, 43, 0.7);
-   padding: 10px;
-}
-
-.container-info {
-
-    width: 450px;
-    /*overflow: auto;*/
-    /*padding: 1em;*/
-    background: #000;
-    /*margin: auto;*/
-}
-
-.thumbnail {
-  background: transparent;
-  border-style: solid;
-  border-width: 5px;
-}
-
-.cube-large-1 {
-    letter-spacing: -1px;
-    color:white;
-    font: bold 20px Helvetica, Sans-Serif;
-    padding: 10px;
-
-    border-radius: 2px;
-
-    overflow:hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    top: -200px;
-    float: left;
-    background: #277277;
-    text-align: center;
-    width: 350px;
-    height: 50px;
-
-}
-
-.cube-large-2 {
-    letter-spacing: -1px;
-    color:white;
-    font: bold 20px Helvetica, Sans-Serif;
-    padding: 10px;
-
-    border-radius: 2px;
-
-    overflow:hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    top: -200px;
-    float: left;
-    background: #772722;
-    text-align: center;
-    width: 350px;
-    height: 50px;
-
-}
-
-$dim-cube: 150px;
-.cube {
-    letter-spacing: -1px;
-    color:white;
-    font: bold 20px Helvetica, Sans-Serif;
-    padding: 10px;
-
-    border-radius: 2px;
-
-    overflow:hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    top: -225px;
-    float: left;
-    background: #95B435;
-    text-align: center;
-    width: $dim-cube;
-    height: $dim-cube;
-
-    -moz-box-shadow:    0px 3px 10px 1px #333;
-    -webkit-box-shadow: 0px 3px 10px 1px #333;
-    box-shadow:         0px 3px 10px 1px #333;
-
-}
-
-.descripcion{
-  font: normal 16px Helvetica, Sans-Serif;
-}
-
-.cube:nth-of-type(2n) {
-    background: #6392AA;
-}
-
-a.vermas{
-  font: bold 20px Helvetica, Sans-serif;
-  color:white;
-  width: $dim-cube;
-  height: $dim-cube;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-a.vermas:hover{
-
-}
 
 .col-centered{
     float: none;

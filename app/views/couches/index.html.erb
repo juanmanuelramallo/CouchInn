@@ -1,4 +1,5 @@
 <body class="default">
+
 <div style="padding-top:25px"></div>
 
 <div class="row">
@@ -40,11 +41,11 @@
 	       					<div class="cube">
 	          					<p class="descripcion"> <%= c.descripcion.first(115) %> </p>
 							</div>
-	       				
+
 	       					<div>
 	        					<%= link_to "Ver más...", c , class:"cube btn"%>
    							</div>
-   						
+
    							<div>
 	        					<%= link_to "Modificar", edit_couch_path(c.id) , class:"cube-large-1 btn"%>
    							</div>
@@ -54,11 +55,11 @@
    							</div>
    						</div>
 
-   						
+
 	      			</div>
 				</div>
-			</div>	  
-		
+			</div>
+
 
 
 		<% end %>

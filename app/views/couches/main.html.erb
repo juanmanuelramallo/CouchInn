@@ -1,4 +1,5 @@
 <body class="default">
+
 <div style="padding-top:25px"></div>
 
 <div class="row">
@@ -42,6 +43,7 @@
 
       <% if @couches.nil? %>
 
+        <h3> No hay couches para mostrar. Creá uno para ser el primero! </h3>
 
       <% else %>
 
@@ -64,6 +66,10 @@
 
         <div class="containter-info">
 
+          <% if @users.find(c.user_id).rol == "premium" %>
+          <div class="rol-label"> <span class="label label-success"> Premium </span> </div>
+          <% end %>
+
           <div class="cube">
             <span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
             </br> para <%= c.capacidad%> persona(s) </span>
@@ -77,17 +83,17 @@
             <%= link_to "Ver más...", c , class:"btn vermas"%>
           </div>
 
-      <% end %>
+      <% end %> <!-- EACH DO -->
 
-      <% end %> <!-- if -->
+      <% end %> <!-- IF -->
 
 
-        </div>
+        </div> <!-- CONTAINER INFO -->
 
-    </div>
+    </div> <!-- IMAGE -->
 
-  </div>
+  </div> <!-- COL MD 8 -->
 
-</div>
+</div> <!-- ROW -->
 
 </body>

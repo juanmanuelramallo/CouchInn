@@ -22,11 +22,19 @@ $(document).ready(function() {
     event.preventDefault(); // Prevent link from following its href
   });
 
-  $('#sandbox-container input').datepicker({
+  $.fn.datepicker.defaults.format = "mm/dd/yyyy";
+  $('.datepicker').datepicker()
+
+  $('#date').datepicker({
      orientation: "bottom auto",
     autoclose: true
   })
 
   $('[data-toggle=tooltip]').tooltip();
+
+  if ( $('[type="date"]').prop('type') != 'date' ) {
+    $('[type="date"]').datepicker();
+  }
+
 
 });

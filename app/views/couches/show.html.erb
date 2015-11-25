@@ -43,7 +43,7 @@
   <% if current_user.id == @couch.user_id %>
         <div class="botonsolicitar">
 
-            <%= link_to "Gestionar reserva", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
+            <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
           </div>
           <div class="botoncalificar">
             <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-primary" %>

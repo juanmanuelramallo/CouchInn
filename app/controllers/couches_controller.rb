@@ -20,6 +20,7 @@ class CouchesController < ApplicationController
   def main
     @couches = Couch.joins(:user).order('rol desc', 'created_at desc')
     @fotos = Foto.all
+    @users = User.all
   end
 
   def index
