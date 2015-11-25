@@ -52,9 +52,9 @@
    							<div>
 
    								<% if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0 %>
-									<%= button_to "Eliminar", c, method: :delete, data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"cube-large-2 btn" %>
+									<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"cube-large-2 btn" %>
 					       		<% else %>
-					       			<%= button_to "Eliminar", c, method: :delete, data: {confirm: "Usted habia confirmado reservas para este Couch, desea eliminarlo de todos modos?"} , class:"cube-large-2 btn" %>
+					       			<%= button_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, desea eliminarlo de todos modos?"} , class:"cube-large-2 btn" %>
 					       		<% end %>
 
 

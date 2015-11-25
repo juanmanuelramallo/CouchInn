@@ -81,7 +81,7 @@ end
 def destroy
   Couch.find(params[:id]).destroy
   flash[:notice] = 'El Couch ha sido eliminado exitosamente'
-  redirect_to couches_index_path
+  redirect_to couches_path
 end
 
 end
