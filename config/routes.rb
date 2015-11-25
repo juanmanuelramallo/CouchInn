@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :mensajes
 
+
+  get 'mensajes/index'
+
+  get 'mensajes/show'
+
+  get 'mensajes/new'
 
   resources :qualifications
 

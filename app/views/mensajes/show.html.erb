@@ -1,0 +1,24 @@
+<h1> Los siguientes couchs han sido aceptados: </h1>
+<% if @reservasok.size == 0 %>
+    <h3>no hay notificaciones nuevas</h3>
+    <% else %>
+	<table class="table">
+    <tr>
+      <th>Tipo Couch</th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de terminado</th>
+	  <th> Ubicacion </th>    
+    </tr>
+
+    <% @reservasok.each do |q| %>
+	<% if q.confirmed == true %>
+         <tr>
+        <td><%= Tipoc.find(Couch.find(q.couch_id).tipo).tipo %></td>
+        <td><%= q.start_date %></td>
+        <td><%= q.end_date %></td>
+        <td><%= Couch.find(q.couch_id).ubicacion %></td>
+    </tr>
+    <% end %>
+    <% end %>
+     <% end %>
+
