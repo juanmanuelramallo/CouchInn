@@ -1,38 +1,56 @@
-<h1>Listado de Reservas</h1>
- 
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('[data-toggle=tooltip]').tooltip();
+});
+</script>
 
+<% if @couchactual.is_owner?(current_user) or current_user.admin? %>
 
-<table class="table">
-  <tr>
-    <th>Tipo Couch</th>
-    <th> Nombre del usuario </th>
-    <th> Email del usuario </th>
-    <th>Fecha de inicio</th>
-    <th>Fecha de terminado</th> 
-    <th>Estado de la reserva</th>
-    <th>Gestion de reservas</th>
-  </tr>
- 
-  <% @reservas.each do |article| %>
+<!-- LISTADO DE RESERVAS DEL COUCH ACTUAL -->
+
+  <h1>Listado de Reservas</h1>
+
+  <table class="table">
     <tr>
-      <td><%= Tipoc.find(Couch.find(article.couch_id).tipo).tipo %></td>
-      <td><%= User.find(article.user_id).nombre %></td>
-      <td><%= User.find(article.user_id).email %></td>
-      <td><%= article.start_date %></td>
-      <td><%= article.end_date %></td>
-      <% if article.confirmed == true %>
-      <td> Reservado </td>
-      <% else %>
-      <td> No reservado </td>
-      <% end %>
-      <td>
-        <%= link_to "Aceptar", reservations_edit_path(:reservation_id => article.id), class: 'btn btn-info btn-sm' %>
-        <%= link_to "Denegar", article, method: :delete, data:{confirmed: "Eliminar reserva?"},type: "button", class: 'btn btn-danger btn-sm' %>
-      </td>
+      <th>Tipo Couch</th>
+      <th> Nombre del usuario </th>
+      <th> Email del usuario </th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de terminado</th>
+      <th>Estado de la reserva</th>
+      <th>Gestion de reservas</th>
+      <th>Info</th>
     </tr>
-  <% end %>
-  <% if @reservas.size == 0 %>
-    <tr> <td colspan="3"> No hay Reservas </td> </tr>
-  <% end %>
 
-</table>
+    <% @reservas.each do |r| %>
+      <tr>
+        <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
+        <td><%= User.find(r.user_id).nombre %></td>
+        <td><%= User.find(r.user_id).email %></td>
+        <td><%= r.start_date %></td>
+        <td><%= r.end_date %></td>
+        <% if r.confirmed == true %>
+        <td> Confirmado </td>
+        <% else %>
+        <td> En espera </td>
+        <% end %>
+        <td>
+          <%= link_to "Aceptar", reservation_confirm_path(id:r.id) , class: 'btn btn-info btn-sm' %>
+          <%= link_to "Denegar", r, method: :delete, data:{confirmed: "Eliminar reserva?"},type: "button", class: 'btn btn-danger btn-sm' %>
+        </td>
+        <td> <a href="#" data-toggle="tooltip" title=" <%= r.errors.full_messages.first %>"> Info</a> </td>
+      </tr>
+    <% end %>
+    <% if @reservas.size == 0 %>
+      <tr> <td colspan="3"> No hay Reservas </td> </tr>
+    <% end %>
+
+  </table>
+
+
+
+<% else %>
+
+  <h4> No tienes los permisos para ver esta página </h4>
+
+<% end %>

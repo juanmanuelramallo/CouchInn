@@ -120,7 +120,7 @@ es:
       restrict_dependent_destroy:
         one: No se puede eliminar el registro porque existe un %{record} dependiente
         many: No se puede eliminar el registro porque existen %{record} dependientes
-      taken: ya est· en uso
+      taken: ya está tomado por vos
       too_long:
         one: "es demasiado largo (1 car·cter m·ximo)"
         other: "es demasiado largo (%{count} caracteres m·ximo)"

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
+
+
   resources :qualifications
-  
+
   get 'qualifications/index'
 
   get 'qualifications/show'
@@ -15,40 +18,25 @@ Rails.application.routes.draw do
 
   get 'qualifications/update'
 
-  get 'contacto/index'
 
-  get 'contacto/show'
 
-  get 'layouts/informacion' 
 
-  get 'reservations/edit'
 
-  get 'couches/edit'
+  get 'layouts/informacion'
 
-  get 'couches/index'
+#corregido desde abajo en adelante ---
+
+  get '/contacto' => 'pages#contacto'
+
+  get '/acercade' => 'pages#acercade'
 
   resources :searchings
-  get 'searchings/index'
 
-  get 'searchings/new'
+  get 'reservations/misreservas'
 
-  get 'searchings/show'
+  get 'reservation/confirm' => 'reservations#confirm'
 
   resources :reservations
-  get 'reservations/index'
-
-  get 'reservations/show'
-
-  get 'reservations/new'
-
-  get 'reservations/create'
-
-  get 'reservations/destroy'
-
-  get 'reservations/update'
-  
-  get 'reservations/seleccionar'
-
 
   resources :tipocs
 
@@ -56,24 +44,11 @@ Rails.application.routes.draw do
 
   resources :payments
 
-  get 'payments/new'
-
-  get 'payments/edit'
-
-  get 'payments/index'
-
-  get 'payments/show'
-
   resources :couches
+
   devise_for :users
+
   get 'couches/main'
-
-  get 'couches/index'
-
-  get 'couches/show'
-
-  get 'couches/new'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

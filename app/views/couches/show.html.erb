@@ -1,3 +1,19 @@
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $("#owl-show").owlCarousel({
+
+      autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+      items : 3,
+      itemsDesktop : [1199,2],
+      itemsDesktopSmall : [979,2]
+
+    });
+  });
+
+</script>
+
 <body class="show-couch">
 
 <div style="padding-top:40px"></div>
@@ -27,15 +43,15 @@
   <% if current_user.id == @couch.user_id %>
         <div class="botonsolicitar">
 
-            <%= link_to "Gestionar reserva", reservations_path(couch_id: @couch.id), class:"btn btn-primary" %>           
+            <%= link_to "Gestionar reserva", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
           </div>
           <div class="botoncalificar">
             <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-warning" %>
              </div>
   <% else %>
         <div class="botonsolicitar">
-            
-            <%= link_to "Enviar solicitud de reserva", reservations_new_path(couch_id: @couch.id), class:"btn btn-primary" %>
+
+            <%= link_to "Enviar solicitud de reserva", new_reservation_path(couch_id: @couch.id), class:"btn btn-primary" %>
             <!-- link_to "Atras", root_path, class:"btn btn-default"%> -->
         </div>
          <div class="botoncalificar">

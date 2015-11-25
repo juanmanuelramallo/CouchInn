@@ -1,0 +1,34 @@
+<!-- LISTADO DE RESERVAS DEL USUARIO ACTUAL -->
+
+<h1>Listado de Reservas</h1>
+
+  <table class="table">
+    <tr>
+      <th>Tipo Couch</th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de terminado</th>
+      <th>Estado de la reserva</th>
+      <th>Gestion de reservas</th>
+    </tr>
+
+    <% @reservas.each do |r| %>
+      <tr>
+        <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
+        <td><%= r.start_date %></td>
+        <td><%= r.end_date %></td>
+        <% if r.confirmed == true %>
+        <td> Confirmado </td>
+        <% else %>
+        <td> En espera </td>
+        <% end %>
+        <td>
+          <%= link_to "Modificar", edit_reservation_path(r), class: 'btn btn-info btn-sm' %>
+          <%= link_to "Cancelar", r, method: :delete, data:{confirmed: "Eliminar reserva?"},type: "button", class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @reservas.size == 0 %>
+      <tr> <td colspan="3"> No hay Reservas </td> </tr>
+    <% end %>
+
+  </table>

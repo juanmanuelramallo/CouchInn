@@ -24,8 +24,8 @@
 
 
           <li class="texto"> <!-- CREAR COUCH -->
-            <%= link_to_if user_signed_in?,"✚ Couch", couches_new_path do %>
-            <%= link_to "✚ Couch", couches_new_path, class:"btn disabled" %>
+            <%= link_to_if user_signed_in?,"✚ Couch", new_couch_path do %>
+            <%= link_to "✚ Couch", new_couch_path, class:"btn disabled" %>
             <%  end %>
         </li>
 
@@ -73,7 +73,11 @@
             </li>
 
             <li>
-              <%= link_to 'Mis couches', couches_index_path %>
+              <%= link_to 'Couches', couches_path %>
+            </li>
+
+            <li>
+              <%= link_to 'Reservas', reservations_misreservas_path %>
             </li>
 
             <li>
@@ -81,10 +85,10 @@
             </li>
 
             <li>
-              <%= link_to 'Acerca de', contacto_show_path %>
+              <%= link_to 'Acerca de', acercade_path %>
             </li>
             <li>
-              <%= link_to 'Contacto', contacto_index_path %>
+              <%= link_to 'Contacto', contacto_path %>
             </li>
 
             <li role="separator" class="divider"></li>
@@ -111,10 +115,10 @@
           <ul class="dropdown-menu">
             <li><a href="#"> Ayuda </a></li>
            <li>
-              <%= link_to 'Acerca de', contacto_show_path %>
+              <%= link_to 'Acerca de', acercade_path %>
             </li>
             <li>
-              <%= link_to 'Contacto', contacto_index_path %>
+              <%= link_to 'Contacto', contacto_path %>
             </li>
           </ul>
 

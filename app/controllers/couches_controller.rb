@@ -2,7 +2,6 @@ class CouchesController < ApplicationController
 
   before_action :get_couch, only:[:edit, :update, :destroy, :show, :is_owner?]
   before_action :get_types, only:[:edit, :update, :show, :new]
-  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   #attr_accessible :ubicacion, :descripcion, :tipo, :capacidad
 
@@ -16,10 +15,6 @@ class CouchesController < ApplicationController
 
   def get_id
     @c_id = Couch.id
-  end
-
-  def is_owner?(user)
-    return @couch.user_id == user.id
   end
 
   def main
@@ -76,7 +71,7 @@ def update
 end
 
 def edit
-   
+
 end
 
  def couch_params
