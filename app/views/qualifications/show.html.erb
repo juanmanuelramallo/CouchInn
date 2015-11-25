@@ -5,12 +5,35 @@
   <tr>
     <th>Nombre</th>
     <th>Calificacion</th>
+    <th> Estrellas </th>
   </tr>
  
   <% @calificacion.each do |article| %>
     <tr>
       <td><%= User.find(article.user_id).nombre %></td>
       <td><%= article.percentage %></td>
+         <div class="ec-stars-wrapper">
+      <td>
+        <a href="#" style="color:blue" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+        <% if article.percentage == "Muy malo"%></td>
+          <% else %>  
+            <a href="#" style="color:blue" data-value="1" title="Votar con 2 estrellas">&#9733;</a>
+              <% if article.percentage == "Malo" %></td>
+              <% else %>  
+                <a href="#" style="color:blue" data-value="1" title="Votar con 3 estrellas">&#9733;</a>
+                <% if article.percentage == "Regular" %></td>
+                <% else %>
+                  <a href="#" style="color:blue" data-value="1" title="Votar con 4 estrellas">&#9733;</a>
+                  <% if article.percentage == "Bueno" %></td>
+                    <% else %>
+                    <a href="#" style="color:blue" data-value="1" title="Votar con 5 estrellas">&#9733;</a>
+                  <% end %>
+
+                <% end %>
+              <% end %>
+          <% end %>
+    </div>
+    </td>
     </tr>
   <% end %>
   <% if @calificacion.size == 0 %>
