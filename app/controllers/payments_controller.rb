@@ -7,8 +7,17 @@ class PaymentsController < ApplicationController
     @payments = Payment.all
   end
 
+  def resumen
+    @desde
+    @hasta
+  end
+
   def main
-    @payments = Payment.all
+    if params[:from]
+      @payments = Payment.search(params[:from], params[:to]).order("created_at DESC")
+    else
+      @payments = Payment.all
+    end
     @sum = 0
   end
 

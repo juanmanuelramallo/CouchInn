@@ -1,0 +1,27 @@
+<body class="default">
+
+  <div class="col-md-8 col-centered">
+
+    <h2> Resumen de ganancias <span class="label label-default"> $$$ </span> </h2>
+
+    <div class="spacer-div"></div>
+
+     <%= form_tag(payments_main_path, :method => "get", id: "search-form") do %>
+
+        <%= label_tag :from, "Desde", class:"label label-default" %>
+        <div class="spacer-min"></div>
+        <%= text_field_tag :from, params[:from], class:"form-control", 'data-provide':"datepicker", 'data-date-format':"dd/mm/yyyy", placeholder: "Desde" %>
+
+        <%= label_tag :to, "Hasta", class:"label label-default" %>
+        <div class="spacer-min"></div>
+        <%= text_field_tag :to, params[:to], class:"form-control", 'data-provide':"datepicker", 'data-date-format':"dd/mm/yyyy", placeholder: "Hasta" %>
+
+        <div class="spacer-min"></div>
+
+        <button class="btn btn-default" type="submit"> Ver resumen 🔍</button>
+
+    <% end %>
+
+  </div>
+
+</body>

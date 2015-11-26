@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-  get 'payments/main'
-
   resources :qualifications
 
   get 'qualifications/index'
@@ -43,6 +40,12 @@ Rails.application.routes.draw do
   resources :tipocs
 
   get 'tipocs/gestion'
+
+
+
+  get 'payments/resumen'
+
+  get 'payments/main'
 
   resources :payments
 

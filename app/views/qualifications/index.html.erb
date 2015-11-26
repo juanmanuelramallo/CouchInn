@@ -7,6 +7,7 @@
     <th>Ubicacion del Couch</th>
     <th>Calificacion</th>
     <th>Estrellas </th>
+    <th> Descripcion </th>
   </tr>
  
   <% @miscalif.each do |article| %>
@@ -36,7 +37,7 @@
           <% end %>
 
 
-
+    <td> <%= article.description %></td>
     </div>
     </td>
     </tr>

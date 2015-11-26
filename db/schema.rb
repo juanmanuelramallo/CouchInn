@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 20151126165720) do
     t.integer  "couch_id"
     t.integer  "user_id"
     t.string   "percentage"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
   end
 
   create_table "reservations", force: :cascade do |t|

@@ -4,42 +4,45 @@
 
     <h2> Resumen de ganancias <span class="label label-default"> $$$ </span> </h2>
 
-      <table class="table">
 
-        <% if !@payments.blank? %>
+      <% if !@payments.blank? %>
+
+        <table class="table table-responsive table-striped table-hover">
+
+          <tr>
+            <th> ID </th>
+            <th> Usuario </th>
+            <th> Fecha </th>
+            <th> Monto </th>
+          </tr>
 
           <% @payments.each do |p| %>
 
             <% @sum = @sum + p.amount %>
 
-            <tr>
-              <th> ID </th>
-              <th> Usuario </th>
-              <th> Fecha </th>
-              <th> Monto </th>
-            </tr>
-
-            <tr>
-              <th> <%= p.id %> </th>
-              <th> <%= User.find(p.user_id).nombre %> </th>
-              <th> <%= p.created_at.to_formatted_s(:short) %> </th>
-              <th> <%= p.amount %> </th>
+            <tr class="active">
+              <td> <%= p.id %> </td>
+              <td> <%= User.find(p.user_id).nombre %> </td>
+              <td> <%= p.created_at.to_formatted_s(:short) %> </td>
+              <td> <%= p.amount %> </td>
             </tr>
 
           <% end %>
 
-          <tr>
+          <tr class="info">
             <th> Total </th>
+            <th></th>
+            <th></th>
             <th> <%= @sum %> </th>
           </tr>
 
-        <% else %>
+        </table>
+
+      <% else %>
 
           <h4> No hay pagos en estas fechas </h4>
 
-        <% end %>
-
-      </table>
+      <% end %>
 
   </div>
 

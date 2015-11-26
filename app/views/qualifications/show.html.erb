@@ -6,6 +6,7 @@
     <th>Nombre</th>
     <th>Calificacion</th>
     <th> Estrellas </th>
+    <th> Descripcion</th>
   </tr>
  
   <% @calificacion.each do |article| %>
@@ -34,6 +35,7 @@
           <% end %>
     </div>
     </td>
+    <td><%= article.description %></td>
     </tr>
   <% end %>
   <% if @calificacion.size == 0 %>

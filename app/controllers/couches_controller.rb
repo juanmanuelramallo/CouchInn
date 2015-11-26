@@ -38,7 +38,7 @@ class CouchesController < ApplicationController
   end
 
   def show
-
+    @nuevacalif = Qualification.new
   end
 
 
