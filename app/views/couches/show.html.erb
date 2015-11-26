@@ -38,11 +38,9 @@
 </div>
     </br>
 
- <% if current_user.id != @couch.user_id %>
+  <% if (current_user.id != @couch.user_id)%>
 
-  
 <%= form_for @nuevacalif do |f| %>
-  
   <% if @nuevacalif.errors.full_messages.any? %>
     <div class="alert alert-danger">
       <% @nuevacalif.errors.full_messages.each do |error_message| %>
@@ -72,7 +70,7 @@
       </div>
 
 
-   
+
 
     <div class="col-md-8 col-centered">
           <%= f.submit "Aceptar calificacion", class:"btn btn-primary" %>
