@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :reservations
   has_many :searchings
   has_many :payments
+  has_many :messages
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ":style/missing.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
