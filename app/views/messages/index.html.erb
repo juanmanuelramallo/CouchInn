@@ -1,0 +1,25 @@
+<body class="default">
+
+  <h2> Notificaciones </h2>
+
+  <% if !@messages.blank? %>
+
+    <table class="table table-responsive table-stripped">
+
+      <% @messages.each do |m| %>
+
+        <tr class="active">
+          <td> <%= m.message %></td>
+        </tr>
+
+      <% end %>
+
+    </table>
+
+  <% else %>
+
+    <h4> No tienes novedades </h4>
+
+  <% end %>
+
+</body>

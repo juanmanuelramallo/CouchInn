@@ -31,9 +31,13 @@
 
 
         <li class="texto"> <!-- NOTIFICACIONES -->
-          <%= link_to_if user_signed_in?,"Notificaciones", root_path do %>
-          <%= link_to "Notificaciones", root_path, class:"btn disabled" %>
-          <%  end %>
+          <% if user_signed_in? %>
+            <%= link_to messages_index_path do %>
+              Notificaciones<span class="badge"><%=Message.where('user_id = ? and seen = ?',current_user.id, false).count%></span>
+            <%end%>
+          <% else %>
+            <%= link_to "Notificaciones", messages_index_path, class:"btn disabled" %>
+          <%end%>
         </li>
 
 

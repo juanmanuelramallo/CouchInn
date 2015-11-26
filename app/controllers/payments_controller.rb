@@ -8,17 +8,15 @@ class PaymentsController < ApplicationController
   end
 
   def resumen
-    @desde
-    @hasta
   end
 
   def main
-    if params[:from]
+    if !params[:from].blank? and !params[:to].blank?
       @payments = Payment.search(params[:from], params[:to]).order("created_at DESC")
+      @sum = 0
     else
-      @payments = Payment.all
+      redirect_to payments_resumen_path, alert: "Debes ingresar las fechas para crear el resumen"
     end
-    @sum = 0
   end
 
   # GET /payments/1

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'messages/index'
+
   resources :qualifications
 
   get 'qualifications/index'
