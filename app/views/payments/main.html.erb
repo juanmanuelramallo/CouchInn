@@ -1,5 +1,7 @@
 <body class="default">
 
+<% if current_user.admin? %>
+
   <div class="col-md-8 col-centered">
 
     <h2> Resumen de ganancias <span class="label label-default"> $$$ </span> </h2>
@@ -45,5 +47,11 @@
       <% end %>
 
   </div>
+
+<% else %>
+
+  <h4> No tienes los permisos para ver esta página </h4>
+
+<% end %>
 
 </body>
