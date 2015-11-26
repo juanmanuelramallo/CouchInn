@@ -36,6 +36,61 @@
   <%end%>
 
 </div>
+    </br>
+
+ <% if current_user.id != @couch.user_id %>
+
+  
+<%= form_for @nuevacalif do |f| %>
+  
+  <% if @nuevacalif.errors.full_messages.any? %>
+    <div class="alert alert-danger">
+      <% @nuevacalif.errors.full_messages.each do |error_message| %>
+          <%= error_message if @nuevacalif.errors.full_messages.first == error_message %> <br />
+        <% end %>
+      </div>
+    <% end %>
+
+
+
+      <%= f.hidden_field :couch_id, :value => @couch.id %>
+
+      <div class="col-md-8 col-centered">
+           <%= f.label :percentage, "Que calificacion tendria el Couch en base a su experiencia?",class:"label label-default" %>
+       <div class="w-label">
+         <%= f.select :percentage, options_for_select(["Muy malo", "Malo","Regular","Bueno","Muy bueno"]), :class => 'genForm_dropBox' %>
+​     </div>
+      </div>
+
+      </br>
+      <div class="col-md-8 col-centered">
+        <%= f.label :description, "Breve descripcion de su experiencia con el Couch",class:"label label-default", for:"comment" %>
+
+        <div class="w-label">
+          <%= f.text_area :description, class:"form-control", placeholder: 'Maximo 70 caracteres'%>
+        </div>
+      </div>
+
+
+   
+
+    <div class="col-md-8 col-centered">
+          <%= f.submit "Aceptar calificacion", class:"btn btn-primary" %>
+          <%= link_to "Cancelar", root_path, class:"btn btn-default" %>
+       </div>
+
+<% end %>
+
+
+<% end %>
+
+
+
+
+
+
+
+
 
 
 <% if !current_user.blank? %>
@@ -54,15 +109,11 @@
             <%= link_to "Enviar solicitud de reserva", new_reservation_path(couch_id: @couch.id), class:"btn btn-primary" %>
             <!-- link_to "Atras", root_path, class:"btn btn-default"%> -->
         </div>
-         <div class="botoncalificar">
-        <%= link_to "Calificar", qualifications_new_path(couch_id: @couch.id), class:"btn btn-success" %>
-      </div>
-       <div class="botonvercalificar">
+       <div class="botoncalificar">
         <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-success" %>
       </div>
 <% end %>
 <% end %>
 <% end %>
-
-
+<h1></br></h1>
 </body>

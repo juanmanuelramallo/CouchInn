@@ -14,7 +14,7 @@ class QualificationsController < ApplicationController
   end
 
   def create
-    @nuevacalif = Qualification.new(params.require(:qualification).permit(:couch_id, :user_id, :percentage))
+    @nuevacalif = Qualification.new(params.require(:qualification).permit(:couch_id, :user_id, :percentage, :description))
     @nuevacalif.user_id = current_user.id
     @nuevacalif.save
     respond_to do |format|
