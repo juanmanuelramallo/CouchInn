@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 20151126165720) do
     t.integer  "capacidad"
     t.date     "free_from"
     t.date     "free_to"
-    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
