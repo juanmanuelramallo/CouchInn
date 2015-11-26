@@ -5,6 +5,12 @@ class Payment < ActiveRecord::Base
 
   belongs_to :user
 
+  after_initialize :init
+
+  def init
+    self.amount ||= 19.99
+  end
+
   validates :cardNumber, numericality: true, length: { is: 16 }
   validates :cardCVV, numericality: true, length: { is: 3 }
   validate :expiration_date_cannot_be_in_the_past, on: :create

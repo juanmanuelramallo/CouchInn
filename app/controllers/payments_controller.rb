@@ -7,6 +7,11 @@ class PaymentsController < ApplicationController
     @payments = Payment.all
   end
 
+  def main
+    @payments = Payment.all
+    @sum = 0
+  end
+
   # GET /payments/1
   # GET /payments/1.json
   def show
@@ -25,7 +30,8 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
 
-    @payment = Payment.new(params.require(:payment).permit(:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
+    @payment = Payment.new(params.require(:payment).permit(:amount ,:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
+    @payment.user_id = current_user.id
 
     respond_to do |format|
       if @payment.save

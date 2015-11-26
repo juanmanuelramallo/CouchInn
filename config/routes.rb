@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'payments/main'
+
   resources :qualifications
 
   get 'qualifications/index'
