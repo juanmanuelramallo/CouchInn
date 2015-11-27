@@ -42,7 +42,7 @@
 
       <div class="image" style="padding-top:20px">
 
-    		<% fotoPrincipal = c.photo.url(:large) %>
+    		<% fotoPrincipal = c.photo.url(:medium) %>
 
        	<% if fotoPrincipal.nil? %>
   			  <%= image_tag "c-ph.jpeg", class:"img-responsive img-rounded" %>

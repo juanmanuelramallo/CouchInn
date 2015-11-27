@@ -16,7 +16,7 @@ class Couch < ActiveRecord::Base
   has_attached_file :photo,
     :storage => :dropbox,
     :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
-    styles: { original: "4000x4000>", large:"2000x2000>" ,medium: "300x300>" ,small: "150x150>" },
+    styles: { original: "4000x4000>", large:"2000x2000>" ,medium: "800x800>" ,small: "300x300>" },
     default_url: ":style/missing.jpeg",
     :dropbox_options => {
       :path => proc { |style| "#{style}/#{id}_#{photo.original_filename}" } }
