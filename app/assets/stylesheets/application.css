@@ -12,14 +12,9 @@
  *
  *= require_tree .
  *= require_self
- *= require owl.carousel
- *= require owl.theme
  *= require bootstrap
  *= require bootstrap-datepicker3
  */
 
- h1 {
-  color: gray;
- }
 
 

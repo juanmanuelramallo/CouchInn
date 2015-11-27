@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
     :dropbox_options => {
       :path => proc { |style| "#{style}/#{id}_#{avatar.original_filename}" } }
 
-  validates_attachment_size :avatar, less_than: 3.megabytes, allow_blank: true
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_attachment_size :avatar, less_than: 5.megabytes, allow_blank: true
+  validates_attachment_content_type :avatar, content_type: ['image/jpeg', 'image/jpg', 'image/png']
 
   enum genero: [:Masculino, :Femenino, :Prefiero_no_especificar]
   enum rol: [:admin, :normal, :premium]
