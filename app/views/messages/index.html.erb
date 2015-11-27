@@ -8,7 +8,13 @@
 
       <% @messages.each do |m| %>
 
-        <tr class="active">
+        <% if m.seen %>
+          <tr class="active">
+        <% else %>
+          <tr class="info">
+          <% m.seen = true %>
+          <% m.save %>
+        <%end%>
           <td> <span class="<%=m.get_icon%>" aria-hidden="true"></span></td>
           <td> <%= m.message %> </td>
           <td> <%= m.created_at.to_formatted_s(:short) %> </td>

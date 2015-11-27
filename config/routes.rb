@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'questions/edit'
+
+  get 'questions/index'
+
   get 'messages/index'
 
   resources :qualifications
@@ -26,6 +30,8 @@ Rails.application.routes.draw do
   get 'layouts/informacion'
 
 #corregido desde abajo en adelante ---
+
+  resources :questions
 
   get '/contacto' => 'pages#contacto'
 

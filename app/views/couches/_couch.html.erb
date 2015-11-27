@@ -6,7 +6,7 @@
         <%= f.label :ubicacion, class:"label label-default", type:"label",:for=>'ubicacion'%>
 
         <div class="w-label">
-          <%= f.text_field :ubicacion, class:"form-control", type:"input" ,placeholder: 'Ingrese la ubicacion', required:true, :id=>'ubicacion', readonly:show%>
+          <%= f.text_area :ubicacion, class:"form-control", type:"input" ,placeholder: 'Ingrese la ubicacion', required:true, :id=>'ubicacion', readonly:show%>
         </div>
 
       </div>
@@ -56,11 +56,11 @@
 
         <div class="form-group">
 
-          <%= f.label :updated_at, value:"Publicado",class:"label label-default" %>
+          <%= f.label :created_at, value:"Publicado",class:"label label-default" %>
 
           <div class="w-label">
 
-            <%= f.text_field :updated_at, value:"#{ time_ago_in_words @couch.updated_at } atrás", class:"form-control", readonly:show %>
+            <%= f.text_field :created_at, value:"#{ time_ago_in_words @couch.created_at } atrás", class:"form-control", readonly:show %>
 
           </div>
 

@@ -1,54 +1,86 @@
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#owl-show").owlCarousel({
-      autoPlay: 3000, //Set AutoPlay to 3 seconds
-      items : 3,
-      itemsDesktop : [1199,2],
-      itemsDesktopSmall : [979,2]
-    });
-  });
-</script>
-
 <body class="show-couch">
 
-<div style="padding-top:40px"></div>
+<div style="padding-top:20px"></div>
 
-<div class="col-md-8">
+<h1 style="text-align:center; color:gray"> <%= request.fullpath %></h1>
+
+<div style="padding-top:20px"></div>
 
 <% if @couch.errors.full_messages.any? %>
     <div class="alert alert-danger">
       <% @couch.errors.full_messages.each do |error_message| %>
           <%= error_message if @couch.errors.full_messages.first == error_message %> <br />
-        <% end %>
+      <% end %>
       </div>
-    <% end %>
+<% end %>
 
-  <%= image_tag @couch.photo.url(:small) %>
+<div class="row">
+
+
+<% if @couch.photo? %>
+
+
+<div class="col-md-12">
+
+  <%= image_tag @couch.photo.url(:original), class:"img-responsive img-center img-rounded" %>
+
+</div>
+
+<% end %>
+
+</div> <!-- row foto -->
+
+
+<div class="row">
+
+<div style="padding-top:30px"></div>
+
+<div class="col-md-4 col-md-offset-4">
 
   <%= render 'couches/couch', show:true %>
 
-</div>
+  <% if !current_user.blank? %>
+
+    <% if current_user.id == @couch.user_id %> <!-- si el usuario actual es el dueño -->
+
+          <div>
+              <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary btn-block" %>
+          </div>
+
+          <div class="spacer-min">
+            <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-primary btn-block" %>
+          </div>
+
+          <div class="spacer-min">
+            <%= link_to "Modificar", edit_couch_path(@couch) , class:"btn btn-primary btn-block"%>
+          </div>
+
+          <div class="spacer-min">
+            <% if Reservation.where('couch_id = ? and confirmed = ?',@couch.id, true).count == 0 %>
+              <%= link_to "Eliminar", @couch, method: :delete , data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"btn btn-danger btn-block" %>
+            <% else %>
+              <%= link_to "Eliminar", @couch, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, no puede eliminarlo ahora. Desea ocultarlo y que se elimine cuando se completen las reservas actuales?"} , class:"btn btn-danger btn-block" %>
+            <% end %>
+          </div>
+
+    <% else %>
+          <div>
+              <%= link_to "Enviar solicitud de reserva", new_reservation_path(couch_id: @couch.id), class:"btn btn-primary btn-block" %>
+          </div>
+
+    <% end %>
+
+  <% end %>
+
+</div> <!-- col 4 -->
 
 
-<div id="owl-show" class="owl-carousel">
-
-  <% cid = @couch.id %>
-  <% fotos = Foto.where("couch_id=#{cid}") %>
-  <% fotos.each do |f| %>
-
-  <div class="item"> <%= image_tag f.nombre, class:"img-rounded img-show-couch" %> </div>
-
-  <%end%>
-
-</div>
-
- <% if user_signed_in? %>
 
 
 <% if user_signed_in? %>
   <% if current_user.id != @couch.user_id %>
 
-    <div class="col-md-4">
+    <div class="col-md-2">
 
     <%= form_for @nuevacalif do |f| %>
 
@@ -61,69 +93,138 @@
 
       <% end %> <!-- end error -->
 
-
-
       <%= f.hidden_field :couch_id, :value => @couch.id %>
 
+        <div class="panel panel-default">
 
-      <div class="cuadradocalif">
+          <div class="panel-heading">Calificar</div>
 
-          <div class="panel panel-default">
-              <div class="panel-heading">Califique ya!</div>
-              <div class="panel-body">
-                  <%= f.label :percentage, "Calificacion?",class:"label label-default" %>
-                  <div class="w-label">
-                      <%= f.select :percentage, options_for_select(["Muy malo", "Malo","Regular","Bueno","Muy bueno"]), :class => 'genForm_dropBox' %>
-                   </div>
-                     </br>
-                  <%= f.label :description, "Breve descripcion de su experiencia",class:"label label-default", for:"comment" %>
-                  <div class="w-label">
-                      <%= f.text_area :description, cols: 10, rows: 5, class:"form-control", placeholder: 'Maximo 70 caracteres'%>
-                  </div>
-                  </br>
-
-      <%= f.submit "Aceptar calificacion", class:"btn btn-primary" %>
-        <div class="panel-heading">Mira todas las calificaciones</div>
-      <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-success" %>
-              </div>
+          <div class="panel-body">
+            <%= f.select :percentage, options_for_select(["Seleccione una","Muy malo", "Malo","Regular","Bueno","Muy ueno"]),{}, class:"form-control list-group-item"   %>
           </div>
 
-        </div>
-
-<% end %>
-
-
-<% end %>
-
-
-
-
-
-
-
-
-
-
-<% if !current_user.blank? %>
-  <%= form_for @couch do |f| %>
-  <% if current_user.id == @couch.user_id %>
-        <div class="botonsolicitar">
-
-
-            <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
+          <div class="list-group">
+            <%= f.text_area :description, cols: 10, rows: 5, class:"form-control list-group-item", placeholder: 'Describa su experiencia en este couch - máximo 70 caracteres'%>
+            <%= f.submit "OK", class:"list-group-item btn btn-block" %>
+            <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"list-group-item btn btn-block" %>
           </div>
 
-  <% else %>
-        <div class="botonsolicitar">
+      </div>
 
-            <%= link_to "Enviar solicitud de reserva", new_reservation_path(couch_id: @couch.id), class:"btn btn-primary" %>
-            <!-- link_to "Atras", root_path, class:"btn btn-default"%> -->
-        </div>
+    <% end %> <!-- end form -->
+
+
+  </div>
+
+  <% end %>
+<% end %> <!-- end ifs -->
+
+</div> <!-- row -->
+
+
+<!-- ************* PREGUNTAS ************* -->
+
+
+<div style="padding-top:50px"></div>
+
+<div class="col-questions">
+
+<div class="row">
+
+  <div class="col-md-6 col-centered">
+
+  <div class="spacer-div"></div>
+
+  <h2 style="text-align:center"> Obtené más info </h2>
+
+    <% if user_signed_in? %>
+
+      <h6 class="label label-default"> Alguna duda? </h6>
+      <div class="spacer-min"></div>
+
+      <%= form_for @question do |q| %>
+
+
+        <%= q.hidden_field :couch_id, value:@couch.id %>
+        <%= q.hidden_field :user_id, value:current_user.id %>
+        <%= q.text_field :question, placeholder:"Escribe tu pregunta",class:"form-control" %>
+        <%= q.submit "Enviar", class:"btn btn-primary" %>
+
+      <% end %>
+
+      <div style="padding-top:20px"></div>
+
+    <% else %>
+
+      <h4 style="text-align:center"> Debes <%= link_to "ingresar", new_user_session_path %> para poder preguntar </h4>
+
+    <% end %>
+
+  </div> <!-- col 8 -->
+
+</div> <!-- row -->
+
+<div style="padding-top:30px"></div>
+
+<% if @questions.count > 0 %>
+
+  <div class="col-md-5 col-md-offset-4">
+  <h6 class="label label-primary"> Preguntas </h6>
+  </div>
+
+  <% @questions.each do |q| %>
+
+  <div class="row">
+
+    <div class="col-md-3 col-md-offset-1">
+
+      <h4 style="text-align:right"> <%= User.find(q.user_id).nombre %> <%= image_tag(User.find(q.user_id).avatar.url(:thumb), class:"round-image-50") %> </h4>
+
+
+    </div>
+
+    <div class="col-md-5">
+
+
+    <div class="spacer-min"></div>
+
+      <%= text_field_tag "Pregunta", nil, value:q.question, readonly:true ,class:"form-control" %>
+
+      <%= text_area_tag "Respuesta", q.answer, readonly:true ,class:"form-control" %>
+
+
+      <% if user_signed_in? %>
+
+        <% if @couch.is_owner?(current_user) %>
+          <%= link_to "Responder", edit_question_path(q), class:"btn btn-default" %>
+        <% end %>
+
+        <% if q.is_owner?(current_user) or @couch.is_owner?(current_user) %>
+          <%= link_to "Eliminar", q, method: :delete, class:"btn btn-danger" %>
+        <% end %>
+
+      <% end %>
+
+
+      <span class="label label-default"> Preguntada <%= time_ago_in_words q.created_at %> atrás</span>
+
+      <div class="spacer-div"></div>
+
+
+      <div class="spacer-div"></div>
+
+    </div>
+
+  </div>
+
+  <% end %>
 
 <% end %>
-<% end %>
-<% end %>
-<% end %>
-<% end %>
-<h1></br></h1>
+
+
+
+
+
+
+
 </body>

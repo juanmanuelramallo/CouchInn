@@ -39,6 +39,8 @@ class CouchesController < ApplicationController
 
   def show
     @nuevacalif = Qualification.new
+    @questions = Question.where('couch_id = ?', @couch.id)
+    @question = Question.new
   end
 
 

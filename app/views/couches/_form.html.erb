@@ -1,11 +1,24 @@
 <%= form_for @couch do |f| %>
 
+<% if @couch.errors.full_messages.any? %>
+    <div class="alert alert-danger">
+      <% @couch.errors.full_messages.each do |error_message| %>
+          <%= error_message if @couch.errors.full_messages.first == error_message %> <br />
+        <% end %>
+      </div>
+    <% end %>
+
 
       <div class="form-group">
 
-        <% if !show %>
-          <%= f.file_field :photo %>
+        <% if current_user.premium? or current_user.admin? %>
+          <%= f.label :photo,"Foto"  , class:"label label-default"%>
+          <div class="w-label">
+          <%= f.file_field :photo, class:"btn btn-default btn-block btn-file" %>
+          </div>
         <% end %>
+
+        <div class="spacer-div"></div>
 
         <%= f.label :ubicacion, class:"label label-default", type:"label",:for=>'ubicacion'%>
 
