@@ -98,4 +98,6 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
+  config.autoload_paths += %W(#{config.root}/extras)
+
 end

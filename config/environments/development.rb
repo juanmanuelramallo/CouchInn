@@ -55,4 +55,6 @@ Rails.application.configure do
 
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  config.autoload_paths += %W(#{config.root}/extras)
+
 end

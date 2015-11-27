@@ -17,7 +17,15 @@ class User < ActiveRecord::Base
   has_many :payments
   has_many :messages
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ":style/missing-user.jpg"
+  has_attached_file :avatar,
+    :storage => :dropbox,
+    :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
+    styles: { medium: "300x300>", thumb: "100x100>" },
+    default_url: ":style/missing-user.jpg",
+    :dropbox_options => {
+      :path => proc { |style| "#{style}/#{id}_#{avatar.original_filename}" } }
+
+  validates_attachment_size :avatar, less_than: 3.megabytes, allow_blank: true
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   enum genero: [:Masculino, :Femenino, :Prefiero_no_especificar]

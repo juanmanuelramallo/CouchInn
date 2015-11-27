@@ -1,6 +1,7 @@
 
 source 'http://rubygems.org'
 
+ruby '2.2.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
@@ -72,3 +73,5 @@ gem 'i18n', github: 'svenfuchs/i18n'
 
 #uploading images
 gem 'paperclip'
+
+gem "paperclip-dropbox"
