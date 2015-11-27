@@ -57,7 +57,7 @@ class ReservationsController < ApplicationController
   def destroy
     if !@reserva.confirmed
       @reserva.destroy
-      redirect_to :back, notice: "La reserva fue denegada correctamente"
+      redirect_to :back, notice: "La reserva fue cancelada correctamente"
     else
       u = User.find(@reserva.user_id)
       redirect_to :back, alert: "La reserva ya había sido confirmada. Para denegarla comuniquese con el usuario #{u.nombre} a la dirección #{u.email}"
