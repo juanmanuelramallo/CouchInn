@@ -45,7 +45,7 @@
       <%= f.label "Fecha de nacimiento" %><br />
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">📅</span>
-        <%= f.text_field :fecnac, class:"form-control", type:"text", placeholder:"Mi cumpleaños"%>
+        <%= f.text_field :fecnac, 'data-provide':"datepicker",  'data-date-format':"dd/mm/yyyy",class:"form-control", type:"text", placeholder:"Mi cumpleaños"%>
       </div>
 
     </div>
