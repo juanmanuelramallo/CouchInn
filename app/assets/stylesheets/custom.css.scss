@@ -66,16 +66,41 @@ body {
 
 }
 
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  background: none repeat scroll 0 0 #F2F2F2;
+  opacity: 0.9
+}
+
+footer a {
+  color: #000;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 30px;
+  margin-top: 5px;
+}
 
 
 .form-control {
   margin-bottom: 5px;
 }
 
-footer {
-
-  margin-bottom: 2px;
-}
 
 .td-nav {
   padding-top:20px;
@@ -109,6 +134,11 @@ $height-navbar:95px;
 li.texto{
   padding-top:20px;
   font-size:17px;
+}
+
+li.texto2{
+  font-size:17px;
+  font-color:dark;
 }
 
 .dropdown-ingresar{
