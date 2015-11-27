@@ -42,6 +42,7 @@
 
 </div>
 
+ <% if user_signed_in? %>
 
 
 <% if user_signed_in? %>
@@ -65,31 +66,29 @@
       <%= f.hidden_field :couch_id, :value => @couch.id %>
 
 
-        <p class="bg-success">Califica Ya!</p>
+      <div class="cuadradocalif">
 
-           <%= f.label :percentage, "Calificacion?",class:"label label-default" %>
+          <div class="panel panel-default">
+              <div class="panel-heading">Califique ya!</div>
+              <div class="panel-body">
+                  <%= f.label :percentage, "Calificacion?",class:"label label-default" %>
+                  <div class="w-label">
+                      <%= f.select :percentage, options_for_select(["Muy malo", "Malo","Regular","Bueno","Muy bueno"]), :class => 'genForm_dropBox' %>
+                   </div>
+                     </br>
+                  <%= f.label :description, "Breve descripcion de su experiencia",class:"label label-default", for:"comment" %>
+                  <div class="w-label">
+                      <%= f.text_area :description, cols: 10, rows: 5, class:"form-control", placeholder: 'Maximo 70 caracteres'%>
+                  </div>
+                  </br>
 
-       <div class="w-label">
-         <%= f.select :percentage, options_for_select(["Muy malo", "Malo","Regular","Bueno","Muy bueno"]), :class => 'genForm_dropBox' %>
-​
-      </div>
-
-      </br>
-
-        <%= f.label :description, "Breve descripcion de su experiencia",class:"label label-default", for:"comment" %>
-
-        <div class="w-label">
-          <%= f.text_area :description, cols: 10, rows: 5, class:"form-control", placeholder: 'Maximo 70 caracteres'%>
-
-      </div>
-    </br>
       <%= f.submit "Aceptar calificacion", class:"btn btn-primary" %>
-          <%= link_to "Cancelar", root_path, class:"btn btn-default" %>
+        <div class="panel-heading">Mira todas las calificaciones</div>
+      <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-success" %>
+              </div>
+          </div>
 
-
-
-</div>
-
+        </div>
 
 <% end %>
 
@@ -109,20 +108,19 @@
   <%= form_for @couch do |f| %>
   <% if current_user.id == @couch.user_id %>
         <div class="botonsolicitar">
-          <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
-        </div>
-        <div class="botoncalificar">
-          <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-warning" %>
-        </div>
+
+
+            <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
+          </div>
+
   <% else %>
         <div class="botonsolicitar">
 
             <%= link_to "Enviar solicitud de reserva", new_reservation_path(couch_id: @couch.id), class:"btn btn-primary" %>
             <!-- link_to "Atras", root_path, class:"btn btn-default"%> -->
         </div>
-       <div class="botoncalificar">
-        <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-success" %>
-      </div>
+
+<% end %>
 <% end %>
 <% end %>
 <% end %>
