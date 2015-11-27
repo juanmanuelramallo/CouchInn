@@ -34,6 +34,8 @@
             <%= link_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, no puede eliminarlo ahora. Desea ocultarlo y que se elimine cuando se completen las reservas actuales?"} , class:"btn btn-danger btn-block" %>
           <% end %>
 
+          <%= link_to "Reservas", reservations_path(cid: c.id) , class:"btn btn-default btn-block"%>
+
       </div>
 
       <div class="col-md-8">

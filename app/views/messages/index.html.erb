@@ -9,7 +9,9 @@
       <% @messages.each do |m| %>
 
         <tr class="active">
-          <td> <%= m.message %></td>
+          <td> <span class="<%=m.get_icon%>" aria-hidden="true"></span></td>
+          <td> <%= m.message %> </td>
+          <td> <%= m.created_at.to_formatted_s(:short) %> </td>
         </tr>
 
       <% end %>

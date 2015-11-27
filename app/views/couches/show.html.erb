@@ -13,7 +13,17 @@
 
 <div style="padding-top:40px"></div>
 
-<div class="col-md-8 col-centered">
+<div class="col-md-8">
+
+<% if @couch.errors.full_messages.any? %>
+    <div class="alert alert-danger">
+      <% @couch.errors.full_messages.each do |error_message| %>
+          <%= error_message if @couch.errors.full_messages.first == error_message %> <br />
+        <% end %>
+      </div>
+    <% end %>
+
+  <%= image_tag @couch.photo.url(:small) %>
 
   <%= render 'couches/couch', show:true %>
 
@@ -31,29 +41,34 @@
   <%end%>
 
 </div>
-    </br>
-
- <% if current_user.id != @couch.user_id %>
 
 
-<%= form_for @nuevacalif do |f| %>
 
-  <% if @nuevacalif.errors.full_messages.any? %>
-    <div class="alert alert-danger">
-      <% @nuevacalif.errors.full_messages.each do |error_message| %>
-          <%= error_message if @nuevacalif.errors.full_messages.first == error_message %> <br />
-        <% end %>
-      </div>
-    <% end %>
+<% if user_signed_in? %>
+  <% if current_user.id != @couch.user_id %>
+
+    <div class="col-md-4">
+
+    <%= form_for @nuevacalif do |f| %>
+
+      <% if @nuevacalif.errors.full_messages.any? %>
+        <div class="alert alert-danger">
+          <% @nuevacalif.errors.full_messages.each do |error_message| %>
+            <%= error_message if @nuevacalif.errors.full_messages.first == error_message %> <br />
+        </div>
+          <% end %>
+
+      <% end %> <!-- end error -->
 
 
 
       <%= f.hidden_field :couch_id, :value => @couch.id %>
 
-      <div class="cuadrado-3">
+
         <p class="bg-success">Califica Ya!</p>
 
            <%= f.label :percentage, "Calificacion?",class:"label label-default" %>
+
        <div class="w-label">
          <%= f.select :percentage, options_for_select(["Muy malo", "Malo","Regular","Bueno","Muy bueno"]), :class => 'genForm_dropBox' %>
 ​
@@ -94,12 +109,11 @@
   <%= form_for @couch do |f| %>
   <% if current_user.id == @couch.user_id %>
         <div class="botonsolicitar">
-
-            <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
-          </div>
-          <div class="botoncalificar">
-            <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-warning" %>
-             </div>
+          <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary" %>
+        </div>
+        <div class="botoncalificar">
+          <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-warning" %>
+        </div>
   <% else %>
         <div class="botonsolicitar">
 
@@ -109,6 +123,7 @@
        <div class="botoncalificar">
         <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-success" %>
       </div>
+<% end %>
 <% end %>
 <% end %>
 <% end %>

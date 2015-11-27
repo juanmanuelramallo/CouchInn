@@ -88,13 +88,13 @@ class ReservationsController < ApplicationController
 
     #validar si no tiene una reserva confirmada con otro couch en la misma fecha
 
-
     respond_to do |format|
       if @reserva.update(confirmed: true)
         #eliminar todas las reservas del usuario actual que coincidan con la fecha de esta reserva aceptada
         #eliminar todas las reservas del couch que coincidan con
         eliminar_reservas_coincidentes
 
+        Message.create(user_id: @reserva.user_id, message:"Tu reserva al couch con id #{@reserva.couch_id} fue aceptada", object:"couch", objectid:@reserva.couch_id)
         format.html { redirect_to reservations_path(cid: @reserva.couch_id), notice: "La reserva fue aceptada." }
         format.json { render :index, status: :created, location:  reservations_path(cid: @reserva.couch_id) }
 
@@ -138,7 +138,7 @@ private
       aux = res.start_date..res.end_date
       if aux.overlaps?(rango)
         c=c+1
-        Message.create(user_id:res.user_id, message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.", object: res.couch_id)
+        Message.create(user_id:res.user_id, message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.", object: "reservation")
         destroy_coincidente(res)
       end
     end
@@ -151,12 +151,12 @@ private
       aux = res.start_date..res.end_date
       if aux.overlaps?(rango)
         c=c+1
-        Message.create(user_id:res.user_id, message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.", object: res)
+        Message.create(user_id:res.user_id, message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.", object:"reservation")
         destroy_coincidente(res)
       end
     end
 
-    Message.create(user_id: current_user.id, message:"#{c} #{"reserva".pluralize(c)} #{"eliminada".pluralize(c)} debido a fechas coincidentes con la reserva #{self.id} aceptada en fecha #{self.updated_at}", object: nil) if c>0
+    Message.create(user_id: current_user.id, message:"Se han eliminado #{c} #{"reserva".pluralize(c)} debido a fechas coincidentes con la reserva de id #{@reserva.id} aceptada en fecha #{@reserva.updated_at}", object: "reservation") if c>0
 
   end
 
