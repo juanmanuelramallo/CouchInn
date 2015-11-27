@@ -9,6 +9,11 @@
 User.destroy_all
 Couch.destroy_all
 Reservation.destroy_all
+Searching.destroy_all
+Message.destroy_all
+Payment.destroy_all
+Qualification.destroy_all
+Question.destroy_all
 Foto.destroy_all
 Tipoc.destroy_all
 
@@ -30,11 +35,11 @@ userA = User.create!(
     password_confirmation:"123456"
     )
 
-juan = User.create!(
-    nombre:"Juan",
-    apellido:"Pérez",
+marcelo = User.create!(
+    nombre:"Marcelo",
+    apellido:"Bufartanelo",
     fecnac:'12/03/1990',
-    email:"juanperez@hotmail.com",
+    email:"marcelo@hotmail.com",
     telf:"542215678901",
     rol:'admin',
     pais:'Argentina',
@@ -42,6 +47,20 @@ juan = User.create!(
     password: "topsecret",
     password_confirmation: "topsecret",
     genero:'Masculino'
+    )
+
+angelica = User.create!(
+    nombre:"Angélica",
+    apellido:"Portacelutti",
+    fecnac:'12/03/1990',
+    email:"angelica@hotmail.com",
+    telf:"542215678901",
+    rol:'admin',
+    pais:'Argentina',
+    ciudad:'La Plata',
+    password: "topsecret",
+    password_confirmation: "topsecret",
+    genero:'Femenino'
     )
 
 diego = User.create!(
@@ -105,7 +124,7 @@ c = Couch.create(
     ubicacion:"En el centro de la avenida",
     capacidad:8,
     descripcion:"Original casa dada vuelta. Cuenta con 2 baños, living, wifi, y 4 habitaciones. ",
-    user_id:juan.id,
+    user_id:marcelo.id,
     reservado:false
     )
 
@@ -123,14 +142,14 @@ e = Couch.create(
     ubicacion:"En el quinto piso de las torres mellizas",
     capacidad:4,
     descripcion:"Hermosa vista desde el balcón, baños amplios y con aire acondicionado",
-    user_id:juan.id,
+    user_id:marcelo.id,
     reservado:false
     )
 
 #----- RESERVAS ------#
 
 Reservation.create(
-    user_id: juan.id,
+    user_id: marcelo.id,
     couch_id: a.id,
     start_date: "26/11/2015",
     end_date: "15/12/2015",
@@ -138,7 +157,7 @@ Reservation.create(
     )
 
 Reservation.create(
-    user_id: juan.id,
+    user_id: marcelo.id,
     couch_id: b.id,
     start_date: "20/12/2015",
     end_date: "30/12/2015",
@@ -169,41 +188,4 @@ Reservation.create(
     confirmed: false
     )
 
-#---- FOTOS -----#
-
-Foto.create(
-    couch_id:a.id,
-    nombre:"couches/c1.jpg")
-
-Foto.create(
-    couch_id:b.id,
-    nombre:"couches/c2.jpg")
-
-Foto.create(
-    couch_id:c.id,
-    nombre:"couches/c3.jpg")
-
-Foto.create(
-    couch_id:d.id,
-    nombre:"couches/c4.jpg")
-
-Foto.create(
-    couch_id:e.id,
-    nombre:"couches/c5.jpg")
-
-Foto.create(
-    couch_id:a.id,
-    nombre:"couches/c1-1.jpg")
-
-Foto.create(
-    couch_id:a.id,
-    nombre:"couches/c1-2.jpg")
-
-Foto.create(
-    couch_id:a.id,
-    nombre:"couches/c1-3.jpg")
-
-Foto.create(
-    couch_id:a.id,
-    nombre:"couches/c1-4.jpg")
 

@@ -42,12 +42,12 @@
 
       <div class="image" style="padding-top:20px">
 
-    		<% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
+    		<% fotoPrincipal = c.photo.url(:large) %>
 
        	<% if fotoPrincipal.nil? %>
   			  <%= image_tag "c-ph.jpeg", class:"img-responsive img-rounded" %>
        	<% else %>
-    			<%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+    			<%= image_tag fotoPrincipal, :class=>"img-responsive img-rounded" %>
      		<% end %>
 
   			<div class="containter-info">
