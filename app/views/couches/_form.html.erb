@@ -72,9 +72,17 @@
       <% if !show %>
 
         <div class="form-actions">
-          <%= f.submit "Aceptar", class:"btn btn-primary" %>
+          <%= f.submit "Aceptar", id:"aceptar", class:"btn btn-primary", 'data-loading-text':"Loading...", 'autocomplete':"off" %>
           <%= link_to "Cancelar", root_path, class:"btn btn-default" %>
         </div>
+
+        <script>
+          $('#aceptar').on('click', function () {
+            var $btn = $(this).button('loading')
+            // business logic...
+            $btn.button('reset')
+          })
+        </script>
 
       <% else %>
 

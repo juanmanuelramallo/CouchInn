@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
       self.rol ||= :normal
     end
 
+  def has_new_messages
+    return Message.where('user_id = ? and seen = ?', id, false).count
+  end
+
   private
 
   def of_certain_age
