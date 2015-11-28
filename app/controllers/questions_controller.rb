@@ -9,7 +9,12 @@ before_action :get_couch, only: [:update]
 
     respond_to do |format|
       if @question.save
-        Message.create(user_id: @c.user_id, message:"Tienes una nueva pregunta para tu couch con id #{@c.id}", object:"question")
+
+        Message.create(user_id: @c.user_id,
+          message:"Tienes una nueva pregunta para el couch #{@c.id}",
+          object:"question",
+          link:"/couches/#{@c.id}"
+          )
         format.html { redirect_to @c, notice: "Tu pregunta fue enviada" }
       else
         format.html { redirect_to @c, alert: "Tu pregunta no fue enviada" }
@@ -28,7 +33,11 @@ before_action :get_couch, only: [:update]
 
     respond_to do |format|
       if @question.update(params.require(:question).permit(:answer))
-        Message.create(user_id: @question.user_id, message:"Tu pregunta al couch con id #{@question.couch_id} fue respondida", object:"question")
+        Message.create(user_id: @question.user_id,
+          message:"Tu pregunta al couch #{@question.couch_id} fue respondida",
+          object:"question",
+          link:"/couches/#{@question.couch_id}"
+          )
         format.html { redirect_to @c, notice: "La pregunta fue respondida" }
       else
          format.html { redirect_to edit_question_path(@question), alert: "La pregunta no fue respondida" }
@@ -40,7 +49,11 @@ before_action :get_couch, only: [:update]
   def destroy
     @couch = Couch.find(@question.couch_id)
     if !current_user.id == @question.user_id
-      Message.create(user_id:@question.user_id, message:"Tu pregunta al couch con id #{@question.couch_id} fue dada de baja por el dueño del couch", object:"question")
+      Message.create(user_id:@question.user_id,
+        message:"Tu pregunta al couch #{@question.couch_id} fue dada de baja por el dueño del couch",
+        object:"question",
+        link:"/couches/#{@question.couch_id}"
+        )
     end
     @question.destroy
     redirect_to @couch, notice:"La pregunta fue eliminada correctamente"

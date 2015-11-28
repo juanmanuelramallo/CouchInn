@@ -2,7 +2,7 @@
 
 <div style="padding-top:20px"></div>
 
-<h1 style="text-align:center; color:gray">Bienvenido a Couch <%= @couch.id %></h1>
+<h1 style="text-align:center; color:gray"><em>Couch - <%= @couch.id %></em></h1>
 
 <div style="padding-top:20px"></div>
 
@@ -67,6 +67,13 @@
           <div>
               <%= link_to "Enviar solicitud de reserva", new_reservation_path(couch_id: @couch.id), class:"btn btn-primary btn-block" %>
           </div>
+
+          <% if @couch.has_confirmed_reservation(current_user) > 0 %>
+          <div class="spacer-min">
+            <!-- esto me deberá redirigir al perfil del dueño y obtener su info -->
+            <%= link_to "Contactar dueño", root_path, class:"btn btn-primary btn-block" %>
+          </div>
+          <% end %>
 
     <% end %>
 
@@ -211,7 +218,7 @@
       <div class="spacer-div"></div>
 
 
-      <div class="spacer-div"></div>
+      <div style="padding-top:40px"></div>
 
     </div>
 

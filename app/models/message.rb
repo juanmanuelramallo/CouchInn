@@ -9,6 +9,10 @@ class Message < ActiveRecord::Base
     self.seen ||= false
   end
 
+  def has_new_messages(user)
+    return Message.where('user_id = ? and seen = ?', user.id, false).count
+  end
+
   def get_icon
 
     case object # a_variable is the variable we want to compare

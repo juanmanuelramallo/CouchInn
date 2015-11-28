@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127001425) do
+ActiveRecord::Schema.define(version: 20151127224126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151127001425) do
     t.boolean  "seen"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "objectid"
+    t.string   "link"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -76,14 +76,6 @@ ActiveRecord::Schema.define(version: 20151127001425) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reservas", force: :cascade do |t|
-    t.integer  "usuario_id"
-    t.integer  "couch_id"
-    t.integer  "estado"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "couch_id"
@@ -100,6 +92,7 @@ ActiveRecord::Schema.define(version: 20151127001425) do
     t.integer  "capacidad"
     t.date     "free_from"
     t.date     "free_to"
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
