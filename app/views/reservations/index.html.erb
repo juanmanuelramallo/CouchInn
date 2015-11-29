@@ -10,12 +10,12 @@
 
 <!-- LISTADO DE RESERVAS DEL COUCH ACTUAL -->
 
-  <h1>Listado de Reservas</h1>
+  <h1>Listado de reservas del couch <%= @couchactual.id %></h1>
 
   <table class="table table-striped table-hover">
     <tr>
-      <th>Tipo Couch</th>
-      <th> Nombre del usuario </th>
+      <th>Solicitada el día</th>
+      <th>Nombre del usuario </th>
       <th>Fecha de inicio</th>
       <th>Fecha de terminado</th>
       <th>Estado de la reserva</th>
@@ -25,7 +25,7 @@
 
     <% @reservas.each do |r| %>
       <tr class="active">
-        <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
+        <td><%= I18n.l r.created_at, format: :short %></td>
         <td><%= User.find(r.user_id).nombre %></td>
         <td><%= r.start_date %></td>
         <td><%= r.end_date %></td>

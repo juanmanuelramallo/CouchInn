@@ -1,6 +1,6 @@
 <body class="default">
 
-  <div class="col-md-8 col-centered">
+  <div class="col-md-11 col-centered">
 
     <h2> Resumen de mis couches reservados <span class="label label-default"> ⌂ </span> </h2>
 
@@ -9,7 +9,8 @@
 
           <table class="table table-striped table-hover">
             <tr>
-              <th>Tipo Couch</th>
+              <th> Solicitada el día </th>
+              <th> Couch</th>
               <th> Nombre del usuario </th>
               <th>Fecha de inicio</th>
               <th>Fecha de terminado</th>
@@ -20,7 +21,8 @@
 
             <% @reservas.where("couch_id = ? and confirmed = ?", c.id , true).each do |r| %>
                <tr class="active">
-                 <td><%= Couch.find(r.couch_id).get_tipo %></td>
+                 <td><%= I18n.l r.created_at, format: :short %></td>
+                 <td><%= link_to Couch.find(r.couch_id).get_tipo, Couch.find(r.couch_id) %></td>
                  <td><%= User.find(r.user_id).nombre %></td>
                  <td><%= r.start_date %></td>
                  <td><%= r.end_date %></td>

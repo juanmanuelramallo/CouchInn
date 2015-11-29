@@ -17,6 +17,10 @@ class Couch < ActiveRecord::Base
     return Couch.find(couch_id).user_id
   end
 
+  def get_owner
+    return User.find(user_id)
+  end
+
   def has_confirmed_reservation(user)
     return Reservation.where('user_id = ? and couch_id = ? and confirmed = ? and end_date > ?',user.id, id, true, Date.today).count
   end

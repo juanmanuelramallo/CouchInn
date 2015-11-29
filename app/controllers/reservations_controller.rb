@@ -72,20 +72,23 @@ class ReservationsController < ApplicationController
 
 
   def destroy
-    if !@reserva.confirmed
+    #si la reserva no esta confirmada o si el usuario actual es el dueño del couch
+    if !@reserva.confirmed or current_user.is_owner?(Couch.find(@reserva.couch_id))
+      Message.create(user_id: @reserva.user_id,
+        message:"La reserva que tenías confirmada para el couch #{@reserva.couch_id} fue eliminada",
+        object:"reservation",
+        link:"/couches/#{@reserva.couch_id}")
       @reserva.destroy
       redirect_to :back, notice: "La reserva fue cancelada correctamente"
 
     # si el usuario actual es el solicitante de la reserva y está confirmada que se contacte con el dueño del couch para cancelarla
-    elsif current_user.id == @reserva.user_id
-      u = User.find(@reserva.user_id)
-      redirect_to :back, alert: "La reserva ya había sido confirmada. Para denegarla comuniquese con el usuario #{u.nombre} a la dirección #{u.email}"
-
-    # si el usuario actual es el dueño del couch
     else
-      Message.create(user_id: @reserva.user_id, message:"La reserva que tenías confirmada para el couch #{@reserva.couch_id} fue eliminada", object:"reservation", link:"/couches/#{@reserva.couch_id}")
-      @reserva.destroy
-      redirect_to :back, notice: "La reserva fue cancelada correctamente"
+      u = Couch.find(@reserva.couch_id).get_owner
+      Message.create(user_id: Couch.find(@reserva.couch_id).get_owner.id,
+        message:"El usuario #{User.find(@reserva.user_id).nombre} intentó eliminar su reserva al couch #{@reserva.couch_id} ya confirmada. Deseas eliminarla?",
+        object:"reservation",
+        link:"/reservations?cid=#{@reserva.couch_id}")
+      redirect_to :back, alert: "La reserva ya había sido confirmada. Para denegarla comuniquese con el usuario #{u.nombre} a la dirección #{u.email}"
     end
   end
 
@@ -185,7 +188,7 @@ private
       if aux.overlaps?(rango)
         c=c+1
         Message.create(user_id:res.user_id,
-          message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.",
+          message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva al mismo couch en fechas coincidentes.",
           object:"reservation",
           link:"/couches/#{res.couch_id}"
           )
@@ -194,9 +197,9 @@ private
     end
 
     Message.create(user_id: current_user.id,
-      message:"Se han eliminado #{c} #{"reserva".pluralize(c)} debido a fechas coincidentes con la reserva de id #{@reserva.id} aceptada en fecha #{@reserva.updated_at}",
+      message:"Se han eliminado #{c} #{"reserva".pluralize(c)} a tu couch #{@reserva.couch_id} debido a fechas coincidentes con la reserva de id #{@reserva.id} aceptada recientemente",
       object: "reservation",
-      link: "/couches"
+      link: "/reservations?cid=#{@reserva.couch_id}"
       ) if c>0
 
   end
