@@ -14,7 +14,7 @@ class Reservation < ActiveRecord::Base
 
   validates_uniqueness_of :couch_id, :scope => :user_id
 
-  default_scope {order('created_at')}
+  default_scope {order('confirmed DESC, created_at')}
 
 
   def valid_date

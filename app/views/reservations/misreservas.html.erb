@@ -16,7 +16,7 @@
 
     <% @reservas.each do |r| %>
       <tr class="active">
-        <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
+        <td><%= link_to Couch.find(r.couch_id).get_tipo, Couch.find(r.couch_id) %></td>
         <td><%= r.start_date %></td>
         <td><%= r.end_date %></td>
         <% if r.confirmed == true %>
