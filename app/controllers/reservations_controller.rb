@@ -75,9 +75,17 @@ class ReservationsController < ApplicationController
     if !@reserva.confirmed
       @reserva.destroy
       redirect_to :back, notice: "La reserva fue cancelada correctamente"
-    else
+
+    # si el usuario actual es el solicitante de la reserva y está confirmada que se contacte con el dueño del couch para cancelarla
+    elsif current_user.id == @reserva.user_id
       u = User.find(@reserva.user_id)
       redirect_to :back, alert: "La reserva ya había sido confirmada. Para denegarla comuniquese con el usuario #{u.nombre} a la dirección #{u.email}"
+
+    # si el usuario actual es el dueño del couch
+    else
+      Message.create(user_id: @reserva.user_id, message:"La reserva que tenías confirmada para el couch #{@reserva.couch_id} fue eliminada", object:"reservation", link:"/couches/#{@reserva.couch_id}")
+      @reserva.destroy
+      redirect_to :back, notice: "La reserva fue cancelada correctamente"
     end
   end
 
