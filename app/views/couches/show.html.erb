@@ -71,7 +71,7 @@
           <% if @couch.has_confirmed_reservation(current_user) > 0 %>
           <div class="spacer-min">
             <!-- esto me deberá redirigir al perfil del dueño y obtener su info -->
-            <%= link_to "Contactar dueño", root_path, class:"btn btn-primary btn-block" %>
+            <%= link_to "Contactar dueño", users_path, class:"btn btn-primary btn-block" %>
           </div>
           <% end %>
 
