@@ -2,11 +2,11 @@
 
   <div class="col-md-8 col-centered">
 
-    <h2> Resumen de Reservas <span class="label label-default"> ⌂ </span> </h2>
+    <h2> Resumen de mis couches reservados <span class="label label-default"> ⌂ </span> </h2>
 
 
       <% if !(@reservas.count == 0) %>
-          
+
           <table class="table table-striped table-hover">
             <tr>
               <th>Tipo Couch</th>
@@ -31,7 +31,7 @@
                  <% end %>
                 </tr>
             <% end %>
-             
+
              <% if @reservas.size == 0 %>
                <tr class="active"> <td colspan="3"> No hay Reservas </td> </tr>
              <% end %>
@@ -39,7 +39,7 @@
         <% end %>
 
         </table>
- 
+
 
 
       <% else %>
