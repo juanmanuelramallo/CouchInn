@@ -32,7 +32,9 @@ class Couch < ActiveRecord::Base
   validates_attachment_size :photo, less_than: 5.megabytes, allow_blank: true
   validates_attachment_content_type :photo, content_type: ['image/jpeg', 'image/jpg', 'image/png']
 
-
+  def get_tipo
+    return Tipoc.find(tipo).tipo
+  end
 
 
 end

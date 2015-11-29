@@ -35,5 +35,9 @@ $(document).ready(function() {
     $('[type="date"]').datepicker();
   }
 
-
 });
+
+
+
+
+

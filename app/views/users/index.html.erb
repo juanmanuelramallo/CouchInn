@@ -1,0 +1,110 @@
+<body class="default">
+<div class="container">
+    <div class="row">
+
+    	<div class="col-md-4">
+			<div class="profile-sidebar">
+				<div class="spacer-div"></div>
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<% avatarFoto = @user.avatar.url(:thumb) %>
+					<%= image_tag avatarFoto, :class=>"img-responsive img-rounded" %>
+
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<%= @user.nombre %>
+						<%= @user.apellido %>
+					</div>
+					<div class="profile-usertitle-job">
+						<%= @user.rol %>
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+
+					<table width="200" align="center">
+						<tr>
+							<td><%= link_to "Editar", edit_user_registration_path , class:"btn btn-success btn-sm" %></td>
+							<td><%= button_to "Eliminar", registration_path(@user), data: { confirm: "Estas seguro que desea eliminar su cuenta?" }, method: :delete, class:"btn btn-danger btn-sm" %></td>
+						</tr>
+					</table>
+
+				</div>
+				<div class="spacer-div"></div>
+		</div>
+
+    	</div>
+
+
+		<div class="col-md-6">
+				<div class="container">
+      				<div class="row">
+
+        				<div class="col-xs-8 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 toppad" >
+
+
+          					<div class="panel panel-info">
+            					<div class="panel-heading">
+              						<h3 class="panel-title">
+              							<%= @user.nombre %>
+              							<%= @user.apellido %>
+              						</h3>
+           	 					</div>
+            				<div class="panel-body">
+              					<div class="row">
+
+                					<div class=" col-md-9 col-lg-9 ">
+                  						<table class="table table-user-information">
+						                    <tbody>
+						                      <tr>
+						                        <td>Nacimiento:</td>
+						                        <td><%= @user.fecnac %></td>
+						                      </tr>
+						                      <tr>
+						                        <td>Genero:</td>
+						                        <td><%= @user.genero %></td>
+						                      </tr>
+						                      <tr>
+						                        <td>Telefono</td>
+						                        <td><%= @user.telf %></td>
+						                      </tr>
+						                      <tr>
+						                      	<tr>
+						                        	<td>Pais</td>
+						                        	<td> Argentina </td>
+						                      	</tr>
+						                      <tr>
+						                        <td>Ciudad</td>
+						                        <td><%= @user.ciudad %></td>
+						                      </tr>
+						                      <tr>
+						                        <td>Email</td>
+						                        <td><%= @user.email %></td>
+						                      </tr>
+						                      </tr>
+
+						                    </tbody>
+						                  </table>
+
+						                </div>
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+
+
+			</div>
+		</div>
+
+		</div>
+	</div>
+
+<br>
+<br>
+</body>

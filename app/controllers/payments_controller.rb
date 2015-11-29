@@ -11,9 +11,14 @@ class PaymentsController < ApplicationController
   end
 
   def main
+
     if !params[:from].blank? and !params[:to].blank?
-      @payments = Payment.search(params[:from], params[:to]).order("created_at DESC")
-      @sum = 0
+      if Date.parse(params[:from]) < Date.parse(params[:to])
+        @payments = Payment.search(params[:from], params[:to]).order("created_at DESC")
+        @sum = 0
+      else
+        redirect_to payments_resumen_path, alert:"Fecha de inicio debe ser anterior a fecha de fin"
+      end
     else
       redirect_to payments_resumen_path, alert: "Debes ingresar las fechas para crear el resumen"
     end

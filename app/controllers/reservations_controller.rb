@@ -11,8 +11,18 @@ class ReservationsController < ApplicationController
     @reservas = Reservation.where('user_id = ?', current_user.id)
   end
 
-  def show
-     #@reservas = Reservation.where(couch_id: params[:couch_id])
+  def main
+
+    if !params[:from].blank? and !params[:to].blank?
+      if Date.parse(params[:from]) < Date.parse(params[:to])
+        @couches = Couch.where("user_id = ?", current_user.id).all
+        @reservas = Reservation.search(params[:from], params[:to]).all
+      else
+        redirect_to reservations_show_path, alert: "Fecha de inicio debe ser menor que la de fin"
+      end
+    else
+      redirect_to reservations_show_path, alert: "Debes ingresar las fechas para crear el resumen"
+    end
   end
 
 

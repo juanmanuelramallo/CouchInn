@@ -85,6 +85,9 @@ GEM
       thor (~> 0.19.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize (5.0.1)
+      activemodel (>= 4.2.0, < 4.3)
+      activerecord (>= 4.2.0, < 4.3)
     hirb (0.7.3)
     i18n_data (0.7.0)
     jbuilder (2.3.2)
@@ -210,10 +213,12 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   byebug
   coffee-rails (~> 4.1.0)
+  countries
   country_select
   devise
   execjs
   foreman
+  globalize
   hirb
   i18n!
   jbuilder (~> 2.0)
