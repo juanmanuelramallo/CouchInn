@@ -14,11 +14,18 @@
         <% if current_user.premium? or current_user.admin? %>
           <%= f.label :photo,"Foto"  , class:"label label-default"%>
           <div class="w-label">
-          <%= f.file_field :photo, class:"btn btn-default btn-block btn-file" %>
+            <%= f.file_field :photo, class:"btn btn-default btn-block btn-file" %>
           </div>
-        <% end %>
 
-        <div class="spacer-div"></div>
+          <div class="spacer-min"></div>
+
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+              <span class="sr-only">10% Complete</span>
+            </div>
+          </div>
+
+        <% end %>
 
         <%= f.label :ubicacion, class:"label label-default", type:"label",:for=>'ubicacion'%>
 

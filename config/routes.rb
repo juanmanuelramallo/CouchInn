@@ -41,6 +41,10 @@ Rails.application.routes.draw do
 
   get 'reservations/misreservas'
 
+  get 'reservations/show'
+
+  get 'reservations/main'
+
   get 'reservation/confirm' => 'reservations#confirm'
 
   resources :reservations
@@ -59,7 +63,10 @@ Rails.application.routes.draw do
 
   resources :couches
 
+  get 'devise/registrations/show'
+
   devise_for :users
+  resources :users, only: [:index]
 
   get 'couches/main'
 

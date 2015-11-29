@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-//= require owl.carousel
 //= require bootstrap-datepicker
 
 $(document).ready(function() {
@@ -38,3 +37,12 @@ $(document).ready(function() {
 
 
 });
+
+jQuery(document).on('focus', 'input.datepicker', function() {
+   opts =  {format: 'M dd, yyyy', autoclose: true, orientation: 'auto top'};
+   jQuery(this).datepicker(opts);
+   jQuery(".datepicker").css("z-index",10000);
+});
+
+
+

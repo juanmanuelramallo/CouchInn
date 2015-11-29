@@ -1,0 +1,53 @@
+<body class="default">
+
+  <div class="col-md-8 col-centered">
+
+    <h2> Resumen de Reservas <span class="label label-default"> ⌂ </span> </h2>
+
+
+      <% if !(@reservas.count == 0) %>
+          
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Tipo Couch</th>
+              <th> Nombre del usuario </th>
+              <th>Fecha de inicio</th>
+              <th>Fecha de terminado</th>
+              <th>Estado de la reserva</th>
+            </tr>
+
+          <% @couches.each do |c| %>
+
+            <% @reservas.where("couch_id = ? and confirmed = ?", c.id , true).each do |r| %>
+               <tr class="active">
+                 <td><%= Couch.find(r.couch_id).get_tipo %></td>
+                 <td><%= User.find(r.user_id).nombre %></td>
+                 <td><%= r.start_date %></td>
+                 <td><%= r.end_date %></td>
+                 <% if r.confirmed == true %>
+                   <td> Confirmado </td>
+                 <% else %>
+                   <td> En espera </td>
+                 <% end %>
+                </tr>
+            <% end %>
+             
+             <% if @reservas.size == 0 %>
+               <tr class="active"> <td colspan="3"> No hay Reservas </td> </tr>
+             <% end %>
+
+        <% end %>
+
+        </table>
+ 
+
+
+      <% else %>
+
+          <h4> No hay reservas confirmadas en tus couches para estas fechas </h4>
+
+      <% end %>
+
+  </div>
+
+</body>

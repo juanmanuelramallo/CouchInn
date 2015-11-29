@@ -12,11 +12,11 @@
 
         <%= label_tag :from, "Desde", class:"label label-default" %>
         <div class="spacer-min"></div>
-        <%= text_field_tag :from, params[:from], class:"form-control", 'data-provide':"datepicker", 'data-date-format':"dd/mm/yyyy", placeholder: "Desde" %>
+        <%= text_field_tag :from, params[:from], class:"form-control", placeholder: "Desde" , class: 'datepicker' %>
 
         <%= label_tag :to, "Hasta", class:"label label-default" %>
         <div class="spacer-min"></div>
-        <%= text_field_tag :to, params[:to], class:"form-control", 'data-provide':"datepicker", 'data-date-format':"dd/mm/yyyy", placeholder: "Hasta" %>
+        <%= text_field_tag :to, params[:to], class:"form-control", placeholder: "Hasta" , class: 'datepicker' %>
 
         <div class="spacer-min"></div>
 

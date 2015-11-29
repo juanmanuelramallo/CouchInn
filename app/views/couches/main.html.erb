@@ -51,7 +51,7 @@
 
       <% @couches.each do |c| %>
 
-        <% fotoPrincipal = c.photo.url(:large) %>
+        <% fotoPrincipal = c.photo.url(:medium) %>
 
 
         <% if fotoPrincipal.nil? %>
@@ -73,7 +73,7 @@
 
           <div class="cube">
             <span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
-            </br> para <%= c.capacidad %> <%= 'persona'.pluralize(c.capacidad) %> <%= c.id %> </span>
+            </br> para <%= c.capacidad %> <%= 'persona'.pluralize(c.capacidad) %> </span>
           </div>
 
           <div class="cube">
