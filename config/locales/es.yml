@@ -5,7 +5,7 @@ es:
     - dom
     - lun
     - mar
-    - miÈ
+    - mié
     - jue
     - vie
     - s·b
@@ -27,10 +27,10 @@ es:
     - domingo
     - lunes
     - martes
-    - miÈrcoles
+    - miércoles
     - jueves
     - viernes
-    - s·bado
+    - sábado
     formats:
       default: "%d/%m/%Y"
       long: "%d de %B de %Y"
@@ -75,11 +75,11 @@ es:
         one: menos de 1 segundo
         other: menos de %{count} segundos
       over_x_years:
-        one: m·s de 1 aÒo
-        other: m·s de %{count} aÒos
+        one: mes de 1 año
+        other: mes de %{count} años
       x_days:
-        one: 1 dÌa
-        other: "%{count} dÌas"
+        one: 1 día
+        other: "%{count} días"
       x_minutes:
         one: 1 minuto
         other: "%{count} minutos"
@@ -90,12 +90,12 @@ es:
         one: 1 segundo
         other: "%{count} segundos"
     prompts:
-      day: DÌa
+      day: Día
       hour: Hora
       minute: Minutos
       month: Mes
       second: Segundos
-      year: AÒo
+      year: Año
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -103,32 +103,32 @@ es:
       blank: no puede estar en blanco
       present: debe estar en blanco
       confirmation: no coincide
-      empty: no puede estar vacÌo
+      empty: no puede estar vacío
       equal_to: debe ser igual a %{count}
       even: debe ser par
-      exclusion: est· reservado
+      exclusion: está reservado
       greater_than: debe ser mayor que %{count}
       greater_than_or_equal_to: debe ser mayor que o igual a %{count}
-      inclusion: no est· incluido en la lista
-      invalid: no es v·lido
+      inclusion: no está incluido en la lista
+      invalid: no es válido
       less_than: debe ser menor que %{count}
       less_than_or_equal_to: debe ser menor que o igual a %{count}
-      not_a_number: no es un n˙mero
+      not_a_number: no es un número
       not_an_integer: debe ser un entero
       odd: debe ser impar
-      record_invalid: 'La validaciÛn fallÛ: %{errors}'
+      record_invalid: 'La validación falló: %{errors}'
       restrict_dependent_destroy:
         one: No se puede eliminar el registro porque existe un %{record} dependiente
         many: No se puede eliminar el registro porque existen %{record} dependientes
-      taken: ya está tomado por vos
+      taken: ya está tomado
       too_long:
-        one: "es demasiado largo (1 car·cter m·ximo)"
-        other: "es demasiado largo (%{count} caracteres m·ximo)"
+        one: "es demasiado largo (1 caracter máximo)"
+        other: "es demasiado largo (%{count} caracteres máximo)"
       too_short:
-        one: "es demasiado corto (1 car·cter mÌnimo)"
-        other: "es demasiado corto (%{count} caracteres mÌnimo)"
+        one: "es demasiado corto (1 carácter mínimo)"
+        other: "es demasiado corto (%{count} caracteres mínimo)"
       wrong_length:
-        one: "no tiene la longitud correcta (1 car·cter exactos)"
+        one: "no tiene la longitud correcta (1 carácter exactos)"
         other: "no tiene la longitud correcta (%{count} caracteres exactos)"
       other_than: debe ser distinto de %{count}
     template:

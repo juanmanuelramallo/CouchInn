@@ -1,24 +1,35 @@
+<script type="text/javascript">
+$(document).ready(function() {
+$(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+  });
+});
+</script>
+
 <body class="default">
+
+<div class="col-md-8 col-centered">
 
   <h2> Notificaciones </h2>
 
   <% if !@messages.blank? %>
 
-    <table class="table table-responsive table-stripped">
+    <table class="table table-responsive table-hover" id="clickable-rows">
 
       <% @messages.each do |m| %>
 
         <% if m.seen %>
-          <tr class="active">
+          <tr class="active clickable-row"  data-href='<%=m.link%>'>
         <% else %>
-          <tr class="info">
+          <tr class="info clickable-row" id="row-info" data-href='<%=m.link%>'>
           <% m.seen = true %>
           <% m.save %>
         <%end%>
-          <td> <span class="<%=m.get_icon%>" aria-hidden="true"></span> </td>
-          <td> <%= m.message %> </td>
-          <td> <%= m.created_at.to_formatted_s(:short) %> </td>
-          <td> <%= link_to "Ir", m.link %> </td>
+          <td> </td>
+          <td> <p class="<%=m.get_icon%> icon-row" aria-hidden="true"></p> </td>
+          <td> <p class="message-row"> <%= m.message %> </p> </br>
+               <p class="date-message"> <%= time_ago_in_words m.created_at%> atrás</p> </td>
+          <td></td>
         </tr>
 
       <% end %>
@@ -30,5 +41,9 @@
     <h4> No tienes novedades </h4>
 
   <% end %>
+
+</div>
+
+<div style="padding-top:40px"></div>
 
 </body>
