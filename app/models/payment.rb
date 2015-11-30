@@ -5,6 +5,17 @@ class Payment < ActiveRecord::Base
 
   belongs_to :user
 
+  after_initialize :init
+
+  def init
+    self.amount ||= 19.99
+  end
+
+  def self.search(from, to)
+    # where(:title, query) -> This would return an exact match of the query
+    where("created_at > ? and created_at < ?", from.to_datetime, to.to_datetime)
+  end
+
   validates :cardNumber, numericality: true, length: { is: 16 }
   validates :cardCVV, numericality: true, length: { is: 3 }
   validate :expiration_date_cannot_be_in_the_past, on: :create

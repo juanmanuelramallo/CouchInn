@@ -1,0 +1,34 @@
+<body class="default">
+
+  <h2> Notificaciones </h2>
+
+  <% if !@messages.blank? %>
+
+    <table class="table table-responsive table-stripped">
+
+      <% @messages.each do |m| %>
+
+        <% if m.seen %>
+          <tr class="active">
+        <% else %>
+          <tr class="info">
+          <% m.seen = true %>
+          <% m.save %>
+        <%end%>
+          <td> <span class="<%=m.get_icon%>" aria-hidden="true"></span> </td>
+          <td> <%= m.message %> </td>
+          <td> <%= m.created_at.to_formatted_s(:short) %> </td>
+          <td> <%= link_to "Ir", m.link %> </td>
+        </tr>
+
+      <% end %>
+
+    </table>
+
+  <% else %>
+
+    <h4> No tienes novedades </h4>
+
+  <% end %>
+
+</body>

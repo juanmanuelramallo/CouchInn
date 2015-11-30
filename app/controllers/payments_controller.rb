@@ -7,6 +7,23 @@ class PaymentsController < ApplicationController
     @payments = Payment.all
   end
 
+  def resumen
+  end
+
+  def main
+
+    if !params[:from].blank? and !params[:to].blank?
+      if Date.parse(params[:from]) < Date.parse(params[:to])
+        @payments = Payment.search(params[:from], params[:to]).order("created_at DESC")
+        @sum = 0
+      else
+        redirect_to payments_resumen_path, alert:"Fecha de inicio debe ser anterior a fecha de fin"
+      end
+    else
+      redirect_to payments_resumen_path, alert: "Debes ingresar las fechas para crear el resumen"
+    end
+  end
+
   # GET /payments/1
   # GET /payments/1.json
   def show
@@ -25,7 +42,8 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
 
-    @payment = Payment.new(params.require(:payment).permit(:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
+    @payment = Payment.new(params.require(:payment).permit(:amount ,:cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear))
+    @payment.user_id = current_user.id
 
     respond_to do |format|
       if @payment.save

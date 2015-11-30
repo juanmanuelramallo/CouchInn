@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125215808) do
+ActiveRecord::Schema.define(version: 20151127224126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,13 @@ ActiveRecord::Schema.define(version: 20151125215808) do
     t.string   "descripcion"
     t.integer  "user_id"
     t.boolean  "reservado"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.boolean  "eliminado"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "fotos", force: :cascade do |t|
@@ -35,13 +39,14 @@ ActiveRecord::Schema.define(version: 20151125215808) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mensajes", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "couch_id"
     t.string   "message"
-    t.boolean  "active"
+    t.string   "object"
+    t.boolean  "seen"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "link"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -50,12 +55,31 @@ ActiveRecord::Schema.define(version: 20151125215808) do
     t.string   "responseMessage"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
   end
 
   create_table "qualifications", force: :cascade do |t|
     t.integer  "couch_id"
     t.integer  "user_id"
     t.string   "percentage"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "couch_id"
+    t.integer  "user_id"
+    t.string   "question"
+    t.string   "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservas", force: :cascade do |t|
+    t.integer  "usuario_id"
+    t.integer  "couch_id"
+    t.integer  "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

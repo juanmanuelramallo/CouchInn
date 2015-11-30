@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  get 'questions/edit'
+
+  get 'questions/index'
+
+  get 'messages/index'
 
   resources :qualifications
 
@@ -26,6 +31,8 @@ Rails.application.routes.draw do
 
 #corregido desde abajo en adelante ---
 
+  resources :questions
+
   get '/contacto' => 'pages#contacto'
 
   get '/acercade' => 'pages#acercade'
@@ -33,6 +40,10 @@ Rails.application.routes.draw do
   resources :searchings
 
   get 'reservations/misreservas'
+
+  get 'reservations/show'
+
+  get 'reservations/main'
 
   get 'reservation/confirm' => 'reservations#confirm'
 
@@ -42,11 +53,20 @@ Rails.application.routes.draw do
 
   get 'tipocs/gestion'
 
+
+
+  get 'payments/resumen'
+
+  get 'payments/main'
+
   resources :payments
 
   resources :couches
 
+  get 'devise/registrations/show'
+
   devise_for :users
+  resources :users, only: [:index]
 
   get 'couches/main'
 

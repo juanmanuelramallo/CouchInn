@@ -38,7 +38,9 @@ class CouchesController < ApplicationController
   end
 
   def show
-
+    @nuevacalif = Qualification.new
+    @questions = Question.where('couch_id = ?', @couch.id)
+    @question = Question.new
   end
 
 
@@ -53,7 +55,7 @@ class CouchesController < ApplicationController
   end
 
   def create
-  @couch = Couch.new(params.require(:couch).permit(:user_id, :tipo,:ubicacion, :descripcion, :capacidad))
+  @couch = Couch.new(params.require(:couch).permit(:user_id, :tipo,:ubicacion, :descripcion, :capacidad, :photo))
   @couch.reservado = false
   @couch.user_id = current_user.id
 
@@ -85,7 +87,7 @@ def edit
 end
 
   def couch_params
-    params.require(:couch).permit(:usuario_id, :tipo,:ubicacion, :descripcion, :capacidad)
+    params.require(:couch).permit(:tipo, :ubicacion, :descripcion, :capacidad, :photo)
   end
 
   def destroy

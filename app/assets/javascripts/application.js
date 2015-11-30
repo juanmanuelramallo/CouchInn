@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-//= require owl.carousel
 //= require bootstrap-datepicker
+
+setTimeout + $.get().
 
 $(document).ready(function() {
   $('a[disabled=disabled]').click(function(event){
@@ -36,5 +37,9 @@ $(document).ready(function() {
     $('[type="date"]').datepicker();
   }
 
-
 });
+
+
+
+
+

@@ -1,0 +1,57 @@
+<body class="default">
+
+<% if current_user.admin? %>
+
+  <div class="col-md-8 col-centered">
+
+    <h2> Resumen de ganancias <span class="label label-default"> $$$ </span> </h2>
+
+
+      <% if !@payments.blank? %>
+
+        <table class="table table-responsive table-striped table-hover">
+
+          <tr>
+            <th> ID </th>
+            <th> Usuario </th>
+            <th> Fecha </th>
+            <th> Monto </th>
+          </tr>
+
+          <% @payments.each do |p| %>
+
+            <% @sum = @sum + p.amount %>
+
+            <tr class="active">
+              <td> <%= p.id %> </td>
+              <td> <%= User.find(p.user_id).nombre %> </td>
+              <td> <%= p.created_at.to_formatted_s(:short) %> </td>
+              <td> <%= p.amount %> </td>
+            </tr>
+
+          <% end %>
+
+          <tr class="info">
+            <th> Total </th>
+            <th></th>
+            <th></th>
+            <th> <%= @sum %> </th>
+          </tr>
+
+        </table>
+
+      <% else %>
+
+          <h4> No hay pagos en estas fechas </h4>
+
+      <% end %>
+
+  </div>
+
+<% else %>
+
+  <h4> No tienes los permisos para ver esta página </h4>
+
+<% end %>
+
+</body>

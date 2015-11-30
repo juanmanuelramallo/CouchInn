@@ -15,11 +15,12 @@
           <div class="panel-heading">
             <h4> Espacio administrador </h4>
           </div>
-          <div class="panel-body">
+
             <ul class="list-group">
-              <%= link_to "Ir a gestión de tipos de Couch", tipocs_path , class:"list-group-item"  %>
+              <%= link_to "Gestión de tipos de Couch", tipocs_path , type: "button", class:"list-group-item"  %>
+              <%= link_to "Resumen de ganancias", payments_resumen_path, type: "button", class:"list-group-item" %>
             </ul>
-          </div>
+
 
         </div>
 
@@ -50,7 +51,7 @@
 
       <% @couches.each do |c| %>
 
-        <% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
+        <% fotoPrincipal = c.photo.url(:medium) %>
 
 
         <% if fotoPrincipal.nil? %>
@@ -59,7 +60,7 @@
 
         <% else %>
 
-          <%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+          <%= image_tag fotoPrincipal, :class=>"img-responsive img-rounded" %>
 
         <% end %>
 

@@ -1,11 +1,14 @@
 <body class="misreservas">
 <!-- LISTADO DE RESERVAS DEL USUARIO ACTUAL -->
 
-<h1>Listado de Reservas</h1>
+<div class="col-md-11 col-centered">
 
-  <table class="table">
+<h1>Listado de mis reservas solicitadas</h1>
+
+  <table class="table table-responsive table-striped table-hover ">
     <tr>
-      <th>Tipo Couch</th>
+      <th>Solicitada el día</th>
+      <th>Couch</th>
       <th>Fecha de inicio</th>
       <th>Fecha de terminado</th>
       <th>Estado de la reserva</th>
@@ -13,8 +16,9 @@
     </tr>
 
     <% @reservas.each do |r| %>
-      <tr>
-        <td><%= Tipoc.find(Couch.find(r.couch_id).tipo).tipo %></td>
+      <tr class="active">
+        <td><%= I18n.l r.created_at, format: :short%></td>
+        <td><%= link_to Couch.find(r.couch_id).get_tipo, Couch.find(r.couch_id) %></td>
         <td><%= r.start_date %></td>
         <td><%= r.end_date %></td>
         <% if r.confirmed == true %>
@@ -29,9 +33,11 @@
       </tr>
     <% end %>
     <% if @reservas.size == 0 %>
-      <tr> <td colspan="3"> No hay Reservas </td> </tr>
+      <tr class="active"> <td colspan="3"> No hay Reservas </td> </tr>
     <% end %>
 
   </table>
+
+</div>
 
 </body>

@@ -1,5 +1,6 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
+  belongs_to :couch
 
   validates :start_date, :presence => true, :on => :create
   validates :end_date, :presence => true, :on => :create
@@ -13,13 +14,18 @@ class Reservation < ActiveRecord::Base
 
   validates_uniqueness_of :couch_id, :scope => :user_id
 
-  default_scope {order('created_at')}
+  default_scope {order('confirmed DESC, created_at DESC')}
 
 
   def valid_date
     if (start_date && end_date) && (end_date < start_date)
       errors.add(:start_date, "debe ser menor a la de finalizacion.")
     end
+  end
+
+  def self.search(from, to)
+    # where(:title, query) -> This would return an exact match of the query
+    where("start_date > ? and start_date < ?", from.to_datetime, to.to_datetime)
   end
 
   def valid_date_actual

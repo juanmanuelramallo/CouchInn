@@ -34,18 +34,20 @@
             <%= link_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, no puede eliminarlo ahora. Desea ocultarlo y que se elimine cuando se completen las reservas actuales?"} , class:"btn btn-danger btn-block" %>
           <% end %>
 
+          <%= link_to "Reservas", reservations_path(cid: c.id) , class:"btn btn-default btn-block"%>
+
       </div>
 
       <div class="col-md-8">
 
       <div class="image" style="padding-top:20px">
 
-    		<% fotoPrincipal = @fotos.where("couch_id=#{c.id}").first %>
+    		<% fotoPrincipal = c.photo.url(:medium) %>
 
        	<% if fotoPrincipal.nil? %>
   			  <%= image_tag "c-ph.jpeg", class:"img-responsive img-rounded" %>
        	<% else %>
-    			<%= image_tag fotoPrincipal.nombre, :class=>"img-responsive img-rounded" %>
+    			<%= image_tag fotoPrincipal, :class=>"img-responsive img-rounded" %>
      		<% end %>
 
   			<div class="containter-info">
@@ -64,7 +66,6 @@
 					</div>
 
    			</div> <!-- container info -->
-
 
       </div> <!-- image -->
 

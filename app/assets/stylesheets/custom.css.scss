@@ -35,6 +35,11 @@ body {
   background: rgba(#E6E6E6, 0.95);
 }
 
+.img-center {
+    display: block;
+    margin: 0 auto;
+
+}
 
 .round-image-50 {
     background-color: white;
@@ -61,16 +66,41 @@ body {
 
 }
 
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  background: none repeat scroll 0 0 #F2F2F2;
+  opacity: 0.9
+}
+
+footer a {
+  color: #000;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 30px;
+  margin-top: 5px;
+}
 
 
 .form-control {
   margin-bottom: 5px;
 }
 
-footer {
-
-  margin-bottom: 2px;
-}
 
 .td-nav {
   padding-top:20px;
@@ -104,6 +134,11 @@ $height-navbar:95px;
 li.texto{
   padding-top:20px;
   font-size:17px;
+}
+
+li.texto2{
+  font-size:17px;
+  font-color:dark;
 }
 
 .dropdown-ingresar{
@@ -153,6 +188,7 @@ select.no-radius-left{
 }
 
 .botonsolicitar {
+  z-index:100;
   position:fixed;
   top:180px;
   left:30px;
@@ -178,32 +214,46 @@ select.no-radius-left{
   height:150px;
 }
 
-.ec-stars-wrapper {
-  /* Espacio entre los inline-block (los hijos, los `a`)
-     http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
-  font-size: 0;
-  /* Podríamos quitarlo,
-    pero de esta manera (siempre que no le demos padding),
-    sólo aplicará la regla .ec-stars-wrapper:hover a cuando
-    también se esté haciendo hover a alguna estrella */
-  display: inline-block;
-}
-.ec-stars-wrapper a {
-  text-decoration: none;
-  display: inline-block;
-  /* Volver a dar tamaño al texto */
-  font-size: 32px;
-  font-size: 2rem;
 
-  color: #888;
+.calificar {
+  position:fixed;
+  top:150px;
+  left:1100px;
+  width:150px;
+  height:150px;
 }
 
-.ec-stars-wrapper:hover a {
-  color: rgb(39, 130, 228);
+
+
+.calificar2 {
+  position:fixed;
+  top:200px;
+  left:1100px;
+  width:150px;
+  height:150px;
 }
-/*
- * El selector de hijo, es necesario para aumentar la especifidad
- */
-.ec-stars-wrapper > a:hover ~ a {
-  color: #888;
+
+.cuadrado {
+     top:200px;
+     width: 100px;
+     height: 100px;
+     background: #428bca;
+}
+
+.cuadrado-3 {
+     position:fixed;
+     top:150px;
+     left:1070px;
+     width:250px;
+     height: 310px;
+     border: 3px solid #555;
+     background: #428bca;
+}
+
+.cuadradocalif {
+     position:fixed;
+     top:150px;
+     left:1070px;
+     width:250px;
+     height: 310px;
 }
