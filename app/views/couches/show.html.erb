@@ -31,6 +31,8 @@
 </div> <!-- row foto -->
 
 
+
+
 <div class="row">
 
 <div style="padding-top:30px"></div>
@@ -38,6 +40,8 @@
 <div class="col-md-4 col-md-offset-4">
 
   <%= render 'couches/couch', show:true %>
+  
+
 
   <% if !current_user.blank? %>
 
@@ -46,6 +50,7 @@
           <div>
               <%= link_to "Gestionar reservas", reservations_path(cid: @couch.id), class:"btn btn-primary btn-block" %>
           </div>
+
 
           <div class="spacer-min">
             <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"btn btn-primary btn-block" %>
@@ -107,15 +112,32 @@
           <div class="panel-heading">Calificar</div>
 
           <div class="panel-body">
-            <%= f.select :percentage, options_for_select(["Seleccione una","Muy malo", "Malo","Regular","Bueno","Muy ueno"]),{}, class:"form-control list-group-item"   %>
+            <%= f.select :percentage, options_for_select(["1", "2","3","4","5","6","7","8","9","10"]),{}, class:"form-control list-group-item"   %>
           </div>
 
           <div class="list-group">
             <%= f.text_area :description, cols: 10, rows: 5, class:"form-control list-group-item", placeholder: 'Describa su experiencia en este couch - máximo 70 caracteres'%>
             <%= f.submit "OK", class:"list-group-item btn btn-block" %>
             <%= link_to "Ver calificaciones", qualifications_show_path(couch_id: @couch.id), class:"list-group-item btn btn-block" %>
-          </div>
 
+          </div>
+          <div style="color:blue", class="panel-heading">Calificacion promedio: <%= @promedio %>
+          </br>
+           <a href="#" style="color:blue" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+        <% if @promedio > 1 %></td>
+            <a href="#" style="color:blue" data-value="1" title="Votar con 2 estrellas">&#9733;</a>
+              <% if @promedio > 3 %></td>
+                <a href="#" style="color:blue" data-value="1" title="Votar con 3 estrellas">&#9733;</a>
+                <% if @promedio > 6 %></td>
+                  <a href="#" style="color:blue" data-value="1" title="Votar con 4 estrellas">&#9733;</a>
+                  <% if @promedio > 9 %></td>
+                    <a href="#" style="color:blue" data-value="1" title="Votar con 5 estrellas">&#9733;</a>
+                  <% end %>
+
+                <% end %>
+              <% end %>
+          <% end %>
+          </div>
       </div>
 
     <% end %> <!-- end form -->

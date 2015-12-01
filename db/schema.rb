@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127224126) do
+ActiveRecord::Schema.define(version: 20151130235922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20151127224126) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "mensajes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "couch_id"
+    t.string   "message"
+    t.boolean  "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "message"
@@ -61,10 +70,10 @@ ActiveRecord::Schema.define(version: 20151127224126) do
   create_table "qualifications", force: :cascade do |t|
     t.integer  "couch_id"
     t.integer  "user_id"
-    t.string   "percentage"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "description"
+    t.integer  "percentage"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -72,14 +81,6 @@ ActiveRecord::Schema.define(version: 20151127224126) do
     t.integer  "user_id"
     t.string   "question"
     t.string   "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "reservas", force: :cascade do |t|
-    t.integer  "usuario_id"
-    t.integer  "couch_id"
-    t.integer  "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
