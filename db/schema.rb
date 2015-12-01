@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20151130235922) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "mensajes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "couch_id"
+    t.string   "message"
+    t.boolean  "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "message"
@@ -92,7 +101,6 @@ ActiveRecord::Schema.define(version: 20151130235922) do
     t.integer  "capacidad"
     t.date     "free_from"
     t.date     "free_to"
-    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
