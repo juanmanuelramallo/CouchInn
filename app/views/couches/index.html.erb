@@ -1,14 +1,19 @@
 <body class="default">
 
-<div style="padding-top:25px"></div>
-
-<div class="row">
+<div style="padding-top:20px"></div>
 
 	<div class="col-md-8 col-centered">
  		<h1><span class="label label-default"> Mis couches</span></h1>
 	</div>
 
+  <div class="col-md-8 col-centered">
+  <% if !params[:page].blank? %>
+    <h2> Página <%= params[:page] %> </h2>
+  <% end %>
 </div>
+
+  <div style="padding-top:20px"></div>
+
 
  	<% if @couches.blank? %>
 
@@ -20,69 +25,20 @@
 
   <% else %>
 
-	  <% @couches.each do |c| %>
 
-<div class="row">
+  <div class="col-md-8 col-centered">
 
-      <div class="col-md-2 action-buttons">
+    <%= render @couches %>
 
-          <%= link_to "Modificar", edit_couch_path(c.id) , class:"btn btn-default btn-block"%>
-
-          <% if Reservation.where('couch_id = ? and confirmed = ?',c.id, true).count == 0 %>
-            <%= link_to "Eliminar", c, method: :delete , data: {confirm: "Esta seguro que desea eliminar este Couch?"} , class:"btn btn-danger btn-block" %>
-          <% else %>
-            <%= link_to "Eliminar", c, method: :delete , data: {confirm: "Usted habia confirmado reservas para este Couch, no puede eliminarlo ahora. Desea ocultarlo y que se elimine cuando se completen las reservas actuales?"} , class:"btn btn-danger btn-block" %>
-          <% end %>
-
-          <%= link_to "Reservas", reservations_path(cid: c.id) , class:"btn btn-default btn-block"%>
-
-      </div>
-
-      <div class="col-md-8">
-
-      <div class="image" style="padding-top:20px">
-
-    		<% fotoPrincipal = c.photo.url(:medium) %>
-
-       	<% if fotoPrincipal.nil? %>
-  			  <%= image_tag "c-ph.jpeg", class:"img-responsive img-rounded" %>
-       	<% else %>
-    			<%= image_tag fotoPrincipal, :class=>"img-responsive img-rounded" %>
-     		<% end %>
-
-  			<div class="containter-info">
-
- 					<div class="cube">
-     					<span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
-     					</br> para <%= c.capacidad %> <%= 'persona'.pluralize(c.capacidad) %> </span>
- 					</div>
-
- 					<div class="cube">
-    					<p class="descripcion"> <%= c.descripcion.first(115) %> </p>
-			     </div>
-
- 					<div>
-  					<%= link_to "Ver más...", c , class:"cube btn"%>
-					</div>
-
-   			</div> <!-- container info -->
-
-      </div> <!-- image -->
-
-      </div> <!-- col md 8 -->
+  </div> <!-- col md 8 -->
 
 
-</div> <!-- row -->
+<div class="col-md-8 col-centered" id="infinite-scrolling">
 
-	  <% end %>
+  <%= will_paginate @couches %>
 
+</div>
 
-
-	<% end %> <!-- if -->
-
-
-
-
+<% end %>
 
 </body>
-

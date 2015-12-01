@@ -77,3 +77,7 @@ gem 'i18n', github: 'svenfuchs/i18n'
 gem 'paperclip'
 
 gem "paperclip-dropbox"
+
+#for infinite scrolling
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

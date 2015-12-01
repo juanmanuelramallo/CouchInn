@@ -23,6 +23,7 @@ casa = Tipoc.find_or_create_by(tipo:"Casa");
 depto = Tipoc.find_or_create_by(tipo:"Departamento");
 choza = Tipoc.find_or_create_by(tipo:"Choza");
 motorh = Tipoc.find_or_create_by(tipo:"Motorhome");
+puts "Tipos - creados"
 
 #------ USERS ---------#
 userA = User.create!(
@@ -98,8 +99,11 @@ esteban = User.create!(
     password_confirmation: "tebis1234",
     genero:'Masculino'
     )
+puts "Users - creados"
 
 #----- COUCHES ---------#
+
+50.times { |c| Couch.create(tipo: casa.id, ubicacion: "Calle #{c}", capacidad:'1', descripcion:"Linda casa en calle #{c}", user_id:esteban.id, reservado:false)}
 
 a = Couch.create(
     tipo: casa.id,
@@ -146,6 +150,7 @@ e = Couch.create(
     reservado:false
     )
 
+puts "Couches - creados"
 #----- RESERVAS ------#
 
 Reservation.create(
@@ -188,4 +193,5 @@ Reservation.create(
     confirmed: false
     )
 
+puts "Reservas - creadas"
 

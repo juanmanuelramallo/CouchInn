@@ -9,7 +9,7 @@ module DevisePermittedParameters
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :nombre << :apellido << :fecnac << :telf << :rol << :pais << :ciudad
-    devise_parameter_sanitizer.for(:account_update) << :nombre << :apellido << :fecnac << :telf << :rol << :pais << :ciudad
+    devise_parameter_sanitizer.for(:account_update) << :nombre << :apellido << :fecnac << :telf << :rol << :pais << :ciudad << :avatar
   end
 
 end

@@ -1,30 +1,17 @@
 class CouchesController < ApplicationController
 
-  before_action :get_couch, only:[:edit, :update, :destroy, :show, :is_owner?]
+  before_action :get_couch, only:[:edit, :update, :destroy, :is_owner?]
   before_action :get_types, only:[:edit, :update, :show, :new]
 
   #attr_accessible :ubicacion, :descripcion, :tipo, :capacidad
 
-  def get_couch
-    @couch = Couch.find(params[:id])
-  end
-
-  def get_types
-    @tipos = Tipoc.pluck(:tipo)
-  end
-
-  def get_id
-    @c_id = Couch.id
-  end
 
   def main
-    @couches = Couch.joins(:user).where('eliminado = ?', false).order('rol desc', 'created_at desc')
-    @fotos = Foto.all
-    @users = User.all
+    @couches = Couch.joins(:user).where('eliminado = ?', false).paginate(page: params[:page], per_page: 15).order('rol desc', 'created_at desc')
   end
 
   def index
-    @couches = Couch.joins(:user).order('rol desc', 'created_at desc').where('user_id = ?', current_user.id)
+    @couches = Couch.joins(:user).where('user_id = ?', current_user.id).paginate(page: params[:page], per_page: 15).order('rol desc', 'created_at desc')
 
     @couches.each do |c|
         if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0
@@ -33,11 +20,10 @@ class CouchesController < ApplicationController
           end
         end
     end
-
-    @fotos = Foto.all
   end
 
   def show
+    @couch = Couch.find(params[:id])
     @nuevacalif = Qualification.new
     @questions = Question.where('couch_id = ?', @couch.id)
     @question = Question.new
@@ -45,7 +31,7 @@ class CouchesController < ApplicationController
     Qualification.where(couch_id: @couch.id).each do |r|
       @total = @total + r.percentage
     end
-    @promedio = @total/Qualification.where(couch_id: @couch.id).size
+    @promedio = @total/(Qualification.where(couch_id: @couch.id).size+1)
   end
 
 
@@ -91,12 +77,8 @@ def edit
 
 end
 
-  def couch_params
-    params.require(:couch).permit(:tipo, :ubicacion, :descripcion, :capacidad, :photo)
-  end
 
   def destroy
-
     #si no tiene reservas confirmadas este couch lo elimino
     if Reservation.where('couch_id = ? and confirmed = ?', @couch.id, true).count == 0
       @couch.destroy
@@ -108,6 +90,25 @@ end
     end
 
       redirect_to couches_path
+  end
+
+  private
+
+  def get_couch
+    @couch = Couch.find(params[:id])
+  end
+
+  def get_types
+    @tipos = Tipoc.pluck(:tipo)
+  end
+
+  def get_id
+    @c_id = Couch.id
+  end
+
+
+  def couch_params
+    params.require(:couch).permit(:tipo, :ubicacion, :descripcion, :capacidad, :photo)
   end
 
 end
