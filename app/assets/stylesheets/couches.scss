@@ -151,10 +151,14 @@ a.vermas:hover{
 }
 
 .action-buttons{
-  z-index:10;
+  z-index:1000;
   position:relative;
-  top:25px;
-  right:-200px;
+  top:-25px;
+  right:-89px;
+}
+
+.action-buttons a{
+  font-weight:bold;
 }
 
 #owl-show .item{
@@ -203,4 +207,9 @@ a.vermas:hover{
     background: white;
     cursor: inherit;
     display: block;
+}
+
+.pagination{
+  position:relative;
+  top:-60px;
 }

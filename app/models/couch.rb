@@ -37,7 +37,11 @@ class Couch < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: ['image/jpeg', 'image/jpg', 'image/png']
 
   def get_tipo
-    return Tipoc.find(tipo).tipo
+    if Tipoc.find(tipo).blank?
+      return "Couch"
+    else
+      return Tipoc.find(tipo).tipo
+    end
   end
 
 

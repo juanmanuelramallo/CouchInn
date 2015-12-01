@@ -16,8 +16,6 @@
 //= require_tree .
 //= require bootstrap-datepicker
 
-setTimeout + $.get().
-
 $(document).ready(function() {
   $('a[disabled=disabled]').click(function(event){
     event.preventDefault(); // Prevent link from following its href

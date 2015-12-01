@@ -4,6 +4,15 @@
 
 <div class="row">
 
+<div class="col-md-8 col-centered">
+  <% if !params[:page].blank? %>
+    <h2> Página <%= params[:page] %> </h2>
+  <% end %>
+</div>
+
+</div>
+
+<div class="row">
 
   <% if !current_user.blank? %>
     <% if current_user.rol == "admin" %>
@@ -26,75 +35,41 @@
 
       </div>
 
-  <div class="col-md-8">
+      <div class="col-md-8">
+
     <% else %>
-  <div class="col-md-8 col-centered">
-  <% end %>
+
+      <div class="col-md-8 col-centered">
+
+    <% end %>
+
   <% else %>
-  <div class="col-md-8 col-centered">
+
+    <div class="col-md-8 col-centered">
+
   <% end %>
 
     <% if !current_user.blank? %>
     <h1 class="label label-primary"> <%= current_user.rol %> </h1>
     <% end %>
+    <div class="spacer-div"></div>
 
+    <% if @couches.blank? %>
+      <h3> No hay couches para mostar </h3>
+    <% else %>
 
-    <div class="image" style="padding-top:20px">
+      <%= render @couches %>
 
-
-      <% if @couches.nil? %>
-
-        <h3> No hay couches para mostrar. Creá uno para ser el primero! </h3>
-
-      <% else %>
-
-
-      <% @couches.each do |c| %>
-
-        <% fotoPrincipal = c.photo.url(:medium) %>
-
-
-        <% if fotoPrincipal.nil? %>
-
-          <%= image_tag "c-ph.jpeg", class:"img-responsive img-rounded" %>
-
-        <% else %>
-
-          <%= image_tag fotoPrincipal, :class=>"img-responsive img-rounded" %>
-
-        <% end %>
-
-
-        <div class="containter-info">
-
-          <% if @users.find(c.user_id).rol == "premium" %>
-          <div class="rol-label"> <span class="label label-success"> Premium </span> </div>
-          <% end %>
-
-          <div class="cube">
-            <span class=""> <strong> <%= tipo_couch_index(c) %> </strong>
-            </br> para <%= c.capacidad %> <%= 'persona'.pluralize(c.capacidad) %> </span>
-          </div>
-
-          <div class="cube">
-            <p class="descripcion"> <%= c.descripcion.first(115) %> </p>
-          </div>
-
-          <div class="cube">
-            <%= link_to "Ver más...", c , class:"btn vermas"%>
-          </div>
-
-      <% end %> <!-- EACH DO -->
-
-      <% end %> <!-- IF -->
-
-
-        </div> <!-- CONTAINER INFO -->
-
-    </div> <!-- IMAGE -->
+    <% end %>
 
   </div> <!-- COL MD 8 -->
 
 </div> <!-- ROW -->
+
+<div class="col-md-8 col-centered" id="infinite-scrolling">
+
+  <%= will_paginate @couches %>
+
+</div>
 
 </body>
