@@ -2,6 +2,7 @@ class Couch < ActiveRecord::Base
   belongs_to :user
   has_many :fotos
   has_many :reservations
+  has_many :qualifications
 
   after_initialize :init
 
