@@ -28,8 +28,10 @@ class CouchesController < ApplicationController
     @questions = Question.where('couch_id = ?', @couch.id)
     @question = Question.new
     total = 0
-    Qualification.where(couch_id: @couch.id).each do |r|
-      @total = total + r.percentage if !r.nil?
+    if @couch.qualifications
+      @couch.qualifications.each do |r|
+        total = total + r.percentage
+      end
     end
     @promedio = total/(Qualification.where(couch_id: @couch.id).size+1)
   end
