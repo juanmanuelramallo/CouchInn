@@ -37,7 +37,15 @@
 
 <div style="padding-top:30px"></div>
 
-<div class="col-md-4 col-md-offset-4">
+
+
+<div class="col-md-3 col-md-offset-1">
+
+  <h4 style="text-align:right">  <span style="font-size:12px"> Publicado por </span> <span>  <%= @couch.get_owner.nombre %> <%= image_tag(@couch.get_owner.avatar.url(:thumb), class:"round-image-50") %> </span></h4>
+
+</div>
+
+<div class="col-md-4">
 
   <%= render 'couches/couchShow', show:true %>
 
