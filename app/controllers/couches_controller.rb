@@ -27,11 +27,11 @@ class CouchesController < ApplicationController
     @nuevacalif = Qualification.new
     @questions = Question.where('couch_id = ?', @couch.id)
     @question = Question.new
-    @total= 0
+    total = 0
     Qualification.where(couch_id: @couch.id).each do |r|
-      @total = @total + r.percentage
+      @total = total + r.percentage if !r.nil?
     end
-    @promedio = @total/(Qualification.where(couch_id: @couch.id).size+1)
+    @promedio = total/(Qualification.where(couch_id: @couch.id).size+1)
   end
 
 
