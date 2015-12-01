@@ -1,7 +1,6 @@
 class CouchesController < ApplicationController
 
-  before_action :get_couch, only:[:edit, :update, :destroy, :is_owner?]
-  before_action :get_types, only:[:edit, :update, :show, :new]
+  before_action :get_couch, only:[:edit, :update, :show, :destroy]
 
   #attr_accessible :ubicacion, :descripcion, :tipo, :capacidad
 
@@ -23,7 +22,6 @@ class CouchesController < ApplicationController
   end
 
   def show
-    @couch = Couch.find(params[:id])
     @nuevacalif = Qualification.new
     @questions = Question.where('couch_id = ?', @couch.id)
     @question = Question.new
@@ -97,12 +95,12 @@ end
   private
 
   def get_couch
-    @couch = Couch.find(params[:id])
+    @couch = Couch.find_by_id(params[:id])
+    if @couch.nil?
+      redirect_to couches_missing_path(back: :back)
+    end
   end
 
-  def get_types
-    @tipos = Tipoc.pluck(:tipo)
-  end
 
   def get_id
     @c_id = Couch.id

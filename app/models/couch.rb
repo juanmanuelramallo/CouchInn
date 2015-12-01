@@ -1,9 +1,9 @@
 class Couch < ActiveRecord::Base
   belongs_to :user
-  has_many :fotos
-  has_many :reservations
-  has_many :qualifications
-  has_many :questions
+
+  has_many :reservations, dependent: :destroy
+  has_many :qualifications, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   after_initialize :init
 

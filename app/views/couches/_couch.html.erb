@@ -8,11 +8,13 @@
 
   <div class="containter-info">
 
-    <% if couch.user.premium? %>
+
       <div class="rol-label">
         <table>
         <tr>
-          <td> <span class="label label-success"> Premium </span> </td>
+          <% if couch.user.premium? %>
+            <td> <span class="label label-success"> Premium </span> </td>
+          <% end %>
 
           <% if user_signed_in? %>
             <% if couch.is_owner?(current_user) %>
@@ -38,7 +40,7 @@
         </tr>
         </table>
       </div>
-    <% end %>
+
 
     <div class="cube">
       <span class=""> <strong> <%= couch.get_tipo %> </strong>

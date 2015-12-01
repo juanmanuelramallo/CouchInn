@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  belongs_to :couch
+  belongs_to :user
 
  after_initialize :init
 

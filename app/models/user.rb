@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
 
   default_scope -> {order("rol")}
 
-  has_many :couches
-  has_many :reservations
-  has_many :searchings
-  has_many :payments
-  has_many :messages
+  has_many :couches, dependent: :destroy
+  has_many :reservations, dependent: :destroy
+  has_many :searchings, dependent: :destroy
+  has_many :payments, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :qualifications
   has_many :questions
 

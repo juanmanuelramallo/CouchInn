@@ -61,6 +61,8 @@ Rails.application.routes.draw do
 
   resources :payments
 
+  get 'couches/missing'
+
   resources :couches
 
   get 'devise/registrations/show'
