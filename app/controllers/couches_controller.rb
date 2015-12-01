@@ -7,11 +7,11 @@ class CouchesController < ApplicationController
 
 
   def main
-    @couches = Couch.joins(:user).where('eliminado = ?', false).paginate(page: params[:page], per_page: 15).order('rol desc', 'created_at desc')
+    @couches = Couch.joins(:user).where('eliminado = ?', false).paginate(page: params[:page], per_page: 10).order('rol desc', 'created_at desc')
   end
 
   def index
-    @couches = Couch.joins(:user).where('user_id = ?', current_user.id).paginate(page: params[:page], per_page: 15).order('rol desc', 'created_at desc')
+    @couches = Couch.joins(:user).where('user_id = ?', current_user.id).paginate(page: params[:page], per_page: 10).order('rol desc', 'created_at desc')
 
     @couches.each do |c|
         if Reservation.where('couch_id = ? and confirmed = ?', c.id, true).count == 0

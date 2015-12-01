@@ -29,9 +29,9 @@ before_action :get_search, only: [:show]
     if @search.free_from.blank?
       if !@search.tipo.blank?
         t = @search.tipo
-        @couches = Couch.where(["tipo = ? and ubicacion LIKE ? AND capacidad >= ?", t ,'%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+        @couches = Couch.where(["tipo = ? and ubicacion LIKE ? AND capacidad >= ?", t ,'%'+u+'%',c ]).joins(:user).paginate(page: params[:page], per_page: 10).order('rol desc', 'created_at desc')
       else
-        @couches = Couch.where(["ubicacion LIKE ? AND capacidad >= ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+        @couches = Couch.where(["ubicacion LIKE ? AND capacidad >= ?", '%'+u+'%',c ]).joins(:user).paginate(page: params[:page], per_page: 10).order('rol desc', 'created_at desc')
       end
 
     else
@@ -52,17 +52,15 @@ before_action :get_search, only: [:show]
 
       if !@search.tipo.blank?
         t = @search.tipo
-        @couches = couchesDisp.where(["tipo = ? and ubicacion LIKE ? AND capacidad > ?", t ,'%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+        @couches = couchesDisp.where(["tipo = ? and ubicacion LIKE ? AND capacidad > ?", t ,'%'+u+'%',c ]).joins(:user).paginate(page: params[:page], per_page: 10).order('rol desc', 'created_at desc')
       else
-        @couches = couchesDisp.where(["ubicacion LIKE ? AND capacidad > ?", '%'+u+'%',c ]).joins(:user).order('rol desc', 'created_at desc')
+        @couches = couchesDisp.where(["ubicacion LIKE ? AND capacidad > ?", '%'+u+'%',c ]).joins(:user).paginate(page: params[:page], per_page: 10).order('rol desc', 'created_at desc')
       end
 
 
     end
 
     #@couches = Couch.where('tipo = ? AND ubicacion LIKE ? AND capacidad = ?', @search.tipo ,'%'+u+'%',c).joins(:user).order('rol desc', 'created_at desc')
-
-    @fotos = Foto.all
 
   end
 

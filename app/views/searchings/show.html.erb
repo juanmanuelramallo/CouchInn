@@ -5,11 +5,20 @@
   <%= link_to "Atrás", :back %>
 <% else %>
 
-<h1>Resultados de la búsqueda</h1>
-
 <div class="col-md-8 col-centered">
 
-  <%= render 'results' %>
+<h1>Resultados de la búsqueda </h1>
+  <% if !params[:page].blank? %>
+    <h4> Página <%= params[:page] %> </h4>
+  <% end %>
+
+  <%= render @couches %>
+
+</div>
+
+<div class="col-md-8 col-centered" id="infinite-scrolling">
+
+  <%= will_paginate @couches %>
 
 </div>
 
