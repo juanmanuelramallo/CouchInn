@@ -1,3 +1,36 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#clickable-rows tr{
+  height: 55px;
+}
+
+td p {
+  margin:0;
+  padding:0;
+}
+
+#clickable-rows td:hover{
+  color:#4D7070;
+}
+
+.icon-row {
+  position: relative;
+  top:20px;
+}
+
+.message-row{
+  position: relative;
+  top:10px;
+  font-size:15px;
+
+}
+
+.date-message{
+  position:relative;
+  top:-10px;
+
+  font-size: 12px;
+
+}
