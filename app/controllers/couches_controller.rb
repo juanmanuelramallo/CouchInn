@@ -28,7 +28,7 @@ class CouchesController < ApplicationController
     @questions = Question.where('couch_id = ?', @couch.id)
     @question = Question.new
     total = 0
-    if @couch.qualifications
+    if @couch.qualifications.count > 0
       @couch.qualifications.each do |r|
         total = total + r.percentage
       end
