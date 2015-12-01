@@ -3,6 +3,7 @@ class Couch < ActiveRecord::Base
   has_many :fotos
   has_many :reservations
   has_many :qualifications
+  has_many :questions
 
   after_initialize :init
 

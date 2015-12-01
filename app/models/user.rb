@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :searchings
   has_many :payments
   has_many :messages
+  has_many :qualifications
+  has_many :questions
 
   has_attached_file :avatar,
     :storage => :dropbox,
