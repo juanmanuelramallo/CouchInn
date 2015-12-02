@@ -26,7 +26,7 @@ class TipocsController < ApplicationController
          format.html { redirect_to tipocs_path, notice: "El tipo fue creado correctamente." }
          format.json { render :show, status: :created, location: tipocs_path }
       else
-         format.html { redirect_to tipocs_path, alert: "El tipo no fue creado, ya existe" }
+         format.html { redirect_to tipocs_path, alert: "El tipo no fue creado. Revisá que el campo no esté vacío, que el tipo no exista previamente y que hayas ingresado letras" }
          format.json { render json: @tipo.errors, status: :unprocessable_entity }
       end
     end
