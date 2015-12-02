@@ -33,9 +33,18 @@ class User < ActiveRecord::Base
   enum genero: [:Masculino, :Femenino, :Secreto]
   enum rol: [:admin, :normal, :premium]
   after_initialize :set_default_rol, :if => :new_record?
+  after_create :send_welcome_message
 
   def set_default_rol
     self.rol ||= :normal
+  end
+
+  def send_welcome_message
+    Message.create(user_id: id,
+      message:"Bienvenido a CouchInn. Disfruta de todos los couches que se publican a diario en nuestra plataforma! Si tienes dudas ve a la sección ayuda, o no pienses dos veces en escribirnos. ",
+      object:"welcome",
+      link:"/ayuda"
+      )
   end
 
   def country_name

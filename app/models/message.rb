@@ -30,6 +30,8 @@ class Message < ActiveRecord::Base
       return "glyphicon glyphicon-search"
     when "tipoc"
       return "glyphicon glyphicon-th-list"
+    when "welcome"
+      return "glyphicon glyphicon-thumbs-up"
     else
       return "glyphicon glyphicon-asterisk"
     end

@@ -33,9 +33,13 @@ Rails.application.routes.draw do
 
   resources :questions
 
+
   get '/contacto' => 'pages#contacto'
 
   get '/acercade' => 'pages#acercade'
+
+  get '/ayuda' => 'pages#ayuda'
+
 
   resources :searchings
 

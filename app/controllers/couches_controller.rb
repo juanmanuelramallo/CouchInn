@@ -36,7 +36,11 @@ class CouchesController < ApplicationController
 
 
   def new
-    @couch = Couch.new
+    if user_signed_in?
+      @couch = Couch.new
+    else
+      redirect_to root_path
+    end
   end
 
   #protected
