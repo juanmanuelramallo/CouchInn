@@ -9,4 +9,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    @user = User.find(params[:id])
+    if current_user.has_confirmed_reservation_with?(@user)
+      @couches = @user.couches
+    else
+      redirect_to root_path, alert: "No tienes los permisos para ver esa página, pero sí para seguir viendo couches!"
+    end
+  end
+
 end

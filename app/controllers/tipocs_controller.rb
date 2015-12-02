@@ -3,8 +3,17 @@ class TipocsController < ApplicationController
 
 
   def index
-    @new = Tipoc.new
-    @tipos = Tipoc.all
+    if user_signed_in?
+      if current_user.admin?
+        @new = Tipoc.new
+        @tipos = Tipoc.all
+      else
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
+
   end
 
   def show

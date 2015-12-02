@@ -75,6 +75,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_confirmed_reservation_with?(user)
+    #A actual, B user
+    couchesB = user.couches
+
+    #reservas confirmadas del usuario actual en couches del usuario B
+    res = []
+
+    couchesB.each do |c|
+      c.reservations.each do |r|
+        if r.end_date > Date.today and r.user.id == id and r.confirmed == true
+          return true
+        end
+      end
+    end
+
+    return false
+
+  end
+
   private
 
 

@@ -72,6 +72,9 @@ Rails.application.routes.draw do
   get 'devise/registrations/show'
 
   devise_for :users
+
+  get '/users/profile' => 'users#profile'
+
   resources :users, only: [:index]
 
   get 'main' => 'couches#main'
