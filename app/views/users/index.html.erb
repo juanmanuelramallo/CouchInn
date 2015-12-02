@@ -7,7 +7,7 @@
 				<div class="spacer-div"></div>
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-					<% avatarFoto = @user.avatar.url(:thumb) %>
+					<% avatarFoto = @user.avatar.url(:medium) %>
 					<%= image_tag avatarFoto, :class=>"img-responsive img-rounded" %>
 
 				</div>
@@ -28,7 +28,7 @@
 
 					<table width="200" align="center">
 						<tr>
-							<td><%= link_to "Editar", edit_user_registration_path , class:"btn btn-success btn-sm" %></td>
+							<td><%= link_to "Editar", edit_user_registration_path, class:"btn btn-success btn-sm" %></td>
 							<td><%= button_to "Eliminar", registration_path(@user), data: { confirm: "Estas seguro que desea eliminar su cuenta?" }, method: :delete, class:"btn btn-danger btn-sm" %></td>
 						</tr>
 					</table>
@@ -75,7 +75,7 @@
 						                      <tr>
 						                      	<tr>
 						                        	<td>Pais</td>
-						                        	<td> Argentina </td>
+						                        	<td> <%= @user.country_name %> </td>
 						                      	</tr>
 						                      <tr>
 						                        <td>Ciudad</td>

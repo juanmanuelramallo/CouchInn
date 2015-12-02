@@ -1,17 +1,18 @@
 class Qualification < ActiveRecord::Base
 	 belongs_to :user
-   	 belongs_to :couch
+   belongs_to :couch
 
+   validate :can_qualify
 	 validates_presence_of :percentage
-	 validates_uniqueness_of :couch_id, :scope => :user_id
-	 validate :was_in
 
-	 def was_in
-	 	r = Reservation.where('couch_id = ? and user_id = ?', couch_id, user_id)
-	 	r.each do |res|
-	 		if ( res.confirmed == false )
-	 			errors.add(:percentage, "el usuario tuvo que estar en ese couch.")
-	 		end
+	 cattr_accessor :current_user
+
+	def can_qualify
+	 	if !(current_user.can_qualify?(couch))
+	 		errors.add(:base, "Solo puedes calificar una vez por visita al couch deseado")
 	 	end
-	 end
+	end
+
+
+
 end

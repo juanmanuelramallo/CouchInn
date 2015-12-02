@@ -9,7 +9,7 @@
 <% if @couch.errors.full_messages.any? %>
     <div class="alert alert-danger">
       <% @couch.errors.full_messages.each do |error_message| %>
-          <%= error_message if @couch.errors.full_messages.first == error_message %> <br />
+          <%= error_message %> <br />
       <% end %>
       </div>
 <% end %>

@@ -28,7 +28,7 @@ class QualificationsController < ApplicationController
 
         format.html {redirect_to Couch.find(@nuevacalif.couch_id), notice:"Tu calificación fue enviada correctamente."}
       else
-        format.html {redirect_to Couch.find(@nuevacalif.couch_id), alert:"Tu calificación no fue enviada."}
+        format.html {redirect_to Couch.find(@nuevacalif.couch_id), alert: "Solo puedes calificar una vez por cada visita al couch"}
       end
     end
   end
