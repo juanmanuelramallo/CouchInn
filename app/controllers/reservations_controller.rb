@@ -162,8 +162,11 @@ private
 
     #eliminar todas las reservas del usuario actual sin confirmar y que ocupan las mismas fechas de la confirmada
 
-    r = Reservation.where('user_id = ? and confirmed = ?', @reserva.user_id, false)
+    #r = Reservation.where('user_id = ? and confirmed = ?', @reserva.user_id, false)
     c = 0
+
+    r = @reserva.user.reservations.where(confirmed:false)
+
     r.each do |res|
       aux = res.start_date..res.end_date
       if aux.overlaps?(rango)
@@ -171,15 +174,17 @@ private
         Message.create(user_id:res.user_id,
           message:"La reserva que hiciste el dia #{res.created_at.to_formatted_s(:short)} al couch con id #{res.couch_id} fue eliminada debido a la aceptación de otra reserva en fechas coincidentes.",
           object: "reservation",
-          link:"/couches/#{@res.couch_id}"
+          link:"/couches/#{res.couch_id}"
           )
-        destroy_coincidente(res)
+        res.destroy
       end
     end
 
     #eliminar las reservas del couch que ocupan las mismas fechas de la aceptada
 
-    r = Reservation.where('couch_id = ? and confirmed = ?', @reserva.couch_id, false)
+    #r = Reservation.where('couch_id = ? and confirmed = ?', @reserva.couch_id, false)
+
+    r = @reserva.couch.reservations.where(confirmed:false)
 
     r.each do |res|
       aux = res.start_date..res.end_date
@@ -190,7 +195,7 @@ private
           object:"reservation",
           link:"/couches/#{res.couch_id}"
           )
-        destroy_coincidente(res)
+        res.destroy
       end
     end
 
