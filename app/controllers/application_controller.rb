@@ -28,12 +28,4 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def after_sign_out_path_for(resource_or_scope)
-    request.referrer
-  end
-
-  def after_update_path_for(resource)
-    stored_location_for(resource) || root_path
-  end
-
 end
