@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def country_name
-    if !pais.nil?
+    if !pais.blank?
       country = ISO3166::Country[pais]
       country.translations[I18n.locale.to_s] || country.name
     else
