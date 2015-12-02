@@ -2,8 +2,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :user
   belongs_to :couch
 
-  validates :start_date, :presence => true, :on => :create
-  validates :end_date, :presence => true, :on => :create
+  validates :start_date, :presence => true
+  validates :end_date, :presence => true
 
   validate :valid_date
   validate :valid_date_actual
@@ -80,9 +80,10 @@ class Reservation < ActiveRecord::Base
   end
 
   def no_eliminado
-    c = Couch.find(couch_id)
-    if c.eliminado
-      errors.add(:base, "El couch ha sido eliminado por su dueño y no puede reservarse")
+    if !couch_id.blank?
+      if couch.eliminado
+        errors.add(:base, "El couch ha sido eliminado por su dueño y no puede reservarse")
+      end
     end
   end
 

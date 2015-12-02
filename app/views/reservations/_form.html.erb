@@ -17,17 +17,11 @@ $(document).ready(function() {
 
 <%= form_for @reserva do |f| %>
 
-  <% if @reserva.errors.full_messages.any? %>
-    <div class="alert alert-danger">
-      <% @reserva.errors.full_messages.each do |error_message| %>
-          <%= error_message if @reserva.errors.full_messages.first == error_message %> <br />
-        <% end %>
-      </div>
-    <% end %>
-
-
-
-  <%= f.hidden_field :couch_id %>
+  <% if !params[:reservation].nil? %>
+    <%= f.hidden_field :couch_id, value: params[:reservation][:couch_id]%>
+  <% else %>
+    <%= f.hidden_field :couch_id, value: params[:couch_id] %>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :start_date,"Fechad de inicio",class:"label label-default", type:"label", :for=>'start_date' %>
@@ -46,7 +40,7 @@ $(document).ready(function() {
 
   <div class="form-actions">
           <%= f.submit "Aceptar", class:"btn btn-primary" %>
-          <%= link_to "Cancelar", couch_path(@reserva.couch_id) , class:"btn btn-default" %>
+          <%= link_to "Cancelar", :back , class:"btn btn-default" %>
     </div>
 
 <% end %>

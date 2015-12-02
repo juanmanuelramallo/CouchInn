@@ -68,6 +68,8 @@ before_action :get_search, only: [:show]
     if params[:searching].nil?
       redirect_to new_searching_path, alert: 'Debes ingresar al menos un parámetro'
 
+    elsif ( !(params[:searching][:free_from].nil?) and params[:searching][:free_to].nil? ) or (params[:searching][:free_from].nil? and !(params[:searching][:free_to].nil?))
+      redirect_to new_searching_path, alert: 'Debes ingresar las dos fechas'
     else
 
       @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad, :free_from, :free_to, :user_id))
@@ -85,7 +87,6 @@ before_action :get_search, only: [:show]
       end
 
     end
-
   end
 
 private

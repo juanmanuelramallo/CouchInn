@@ -1,18 +1,45 @@
 <body class="show-searching">
 
+<script type="text/javascript">
+  $(document).ready(function() {
+  $('[data-toggle=popover]').popover();
+});
+</script>
+
 <% if !@search.user_id == current_user.id %>
   <h3> No tienes los permisos para ver esta página! </h3>
   <%= link_to "Atrás", :back %>
 <% else %>
 
+
 <div class="col-md-8 col-centered">
 
-<h1>Resultados de la búsqueda </h1>
+  <h1>Resultados de la búsqueda </h1>
   <% if !params[:page].blank? %>
     <h4> Página <%= params[:page] %> </h4>
   <% end %>
 
-  <%= render @couches %>
+</div>
+
+<div class="spacer-div"></div>
+
+<div class="row">
+
+  <% @couches.each do |c| %>
+
+  <div class="col-md-8 col-md-offset-1">
+
+    <%= render c %>
+
+  </div>
+
+  <div class="col-md-2">
+
+    <%= render 'moreinfo', c: c %>
+
+  </div>
+
+  <% end %>
 
 </div>
 

@@ -28,12 +28,10 @@ class ReservationsController < ApplicationController
 
   def new
 
-    if ( !tiene_reserva_del_couch )
-      @reserva = Reservation.new(couch_id: params[:couch_id])
-    else
+    @reserva = Reservation.new
+    if ( tiene_reserva_del_couch )
       redirect_to Couch.find(params[:couch_id]), alert: "Ya tenés una reserva para este couch"
     end
-
   end
 
 
@@ -64,8 +62,8 @@ class ReservationsController < ApplicationController
         format.html { redirect_to Couch.find(@reserva.couch_id), notice: "La reserva fue creada correctamente." }
         format.json { render :show, status: :created, location:  Couch.find(@reserva.couch_id) }
       else
-        format.html { render :new }
-        format.json { render json: Couch.find(@reserva.couch_id).errors, status: :unprocessable_entity }
+        @reserva.couch_id = params[:couch_id]
+        format.html { render new_reservation_path(couch_id: params[:couch_id])}
       end
     end
   end

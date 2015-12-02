@@ -3,6 +3,14 @@
 <div class="col-md-8 col-centered">
   <h1> Selección de fechas </h1>
 
+  <% if @reserva.errors.full_messages.any? %>
+    <div class="alert alert-danger">
+      <% @reserva.errors.full_messages.each do |error_message| %>
+          <%= error_message if @reserva.errors.full_messages.first == error_message %> <br />
+      <% end %>
+      </div>
+  <% end %>
+
   <%= render 'form' %>
 
 </div>

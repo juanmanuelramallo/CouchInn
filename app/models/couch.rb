@@ -46,6 +46,34 @@ class Couch < ActiveRecord::Base
     end
   end
 
+  def is_free?
+    hoy = Date.today..Date.today
+    reservations.where('confirmed = ?', true).each do |r|
+      rango = r.start_date..r.end_date
+      if rango.overlaps?(hoy)
+        return false
+      end
+    end
+    return true
+  end
+
+  def get_not_available_dates
+    dates = [] #fechas de reservas confirmadas
+    if reservations.blank?
+      dates << "Ninguna. Todas las fechas están disponibles"
+      return dates
+    else
+      reservations.where('confirmed = ? and end_date > ?', true, Date.today).each_with_index do |r, i|
+        dates << "No.#{i+1} -- del #{I18n.l r.start_date, format: :short} al #{I18n.l r.end_date, format: :short}."
+      end
+
+      return dates if !dates.blank?
+
+      dates << "Ninguna. Todas las fechas están disponibles"
+      return dates
+    end
+  end
+
 
 end
 
