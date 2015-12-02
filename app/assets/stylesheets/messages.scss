@@ -7,8 +7,8 @@
 }
 
 #clickable-rows tr:hover{
-  color:#4D7070;
-  font-weight: bold;
+  color:#2A2C2B;
+  text-shadow: 0px 2px 2px rgba(77, 112, 112, 0.4);
 }
 
 td p {
@@ -16,10 +16,6 @@ td p {
   padding:0;
 }
 
-#clickable-rows td:hover{
-  color:#4D7070;
-  font-weight: bold;
-}
 
 .icon-row {
   position: relative;

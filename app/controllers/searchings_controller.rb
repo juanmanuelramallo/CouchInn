@@ -65,10 +65,11 @@ before_action :get_search, only: [:show]
   end
 
   def create
+
     if params[:searching].nil?
       redirect_to new_searching_path, alert: 'Debes ingresar al menos un parámetro'
 
-    elsif ( !(params[:searching][:free_from].nil?) and params[:searching][:free_to].nil? ) or (params[:searching][:free_from].nil? and !(params[:searching][:free_to].nil?))
+    elsif ( !(params[:searching][:free_from].nil?) and params[:searching][:free_to].blank? ) or (params[:searching][:free_from].blank? and !(params[:searching][:free_to].nil?))
       redirect_to new_searching_path, alert: 'Debes ingresar las dos fechas'
     else
 
