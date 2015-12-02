@@ -71,7 +71,8 @@ class ReservationsController < ApplicationController
 
   def destroy
     #si la reserva no esta confirmada o si el usuario actual es el dueño del couch
-    if !@reserva.confirmed or current_user.is_owner?(Couch.find(@reserva.couch_id))
+
+    if !@reserva.confirmed or @reserva.couch.is_owner?(current_user)
       Message.create(user_id: @reserva.user_id,
         message:"La reserva que tenías confirmada para el couch #{@reserva.couch_id} fue eliminada",
         object:"reservation",
