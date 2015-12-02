@@ -120,25 +120,6 @@
           <div class="panel-body">
 
 
-            <div class="">Puntuación: <%= @promedio%>
-          </br>
-           <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-        <% if @promedio > 1 %></td>
-            <a href="#" data-value="1" title="Votar con 2 estrellas">&#9733;</a>
-              <% if @promedio > 2 %></td>
-                <a href="#" data-value="1" title="Votar con 3 estrellas">&#9733;</a>
-                <% if @promedio > 3 %></td>
-                  <a href="#" data-value="1" title="Votar con 4 estrellas">&#9733;</a>
-                  <% if @promedio > 4 %></td>
-                    <a href="#" data-value="1" title="Votar con 5 estrellas">&#9733;</a>
-                  <% end %>
-
-                <% end %>
-              <% end %>
-          <% end %>
-          </div>
-
-
           <div class="spacer-min"></div>
 
             <%= f.select :percentage, options_for_select(["1", "2","3","4","5"]),{}, class:"form-control list-group-item"   %>

@@ -18,19 +18,19 @@
       <td><%= article.percentage %></td>
          <div class="ec-stars-wrapper">
       <td>
-       <a href="#" style="color:blue" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-        <% if article.percentage < 1 %></td>
+       <a href="#" style="" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+        <% if article.percentage == 1 %></td>
           <% else %>
-            <a href="#" style="color:blue" data-value="1" title="Votar con 2 estrellas">&#9733;</a>
-              <% if article.percentage < 2 %></td>
+            <a href="#" style="" data-value="1" title="Votar con 2 estrellas">&#9733;</a>
+              <% if article.percentage == 2 %></td>
               <% else %>
-                <a href="#" style="color:blue" data-value="1" title="Votar con 3 estrellas">&#9733;</a>
-                <% if article.percentage < 3 %></td>
+                <a href="#" style="" data-value="1" title="Votar con 3 estrellas">&#9733;</a>
+                <% if article.percentage == 3 %></td>
                 <% else %>
-                  <a href="#" style="color:blue" data-value="1" title="Votar con 4 estrellas">&#9733;</a>
-                  <% if article.percentage < 4 %></td>
+                  <a href="#" style="" data-value="1" title="Votar con 4 estrellas">&#9733;</a>
+                  <% if article.percentage == 4 %></td>
                     <% else %>
-                    <a href="#" style="color:blue" data-value="1" title="Votar con 5 estrellas">&#9733;</a>
+                    <a href="#" style="" data-value="1" title="Votar con 5 estrellas">&#9733;</a>
                   <% end %>
 
                 <% end %>
