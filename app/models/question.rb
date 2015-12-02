@@ -6,6 +6,8 @@ class Question < ActiveRecord::Base
 
  validates :question, presence: true
 
+ validates :answer, presence: true, on: :update
+
  default_scope { order('created_at DESC') }
 
   def init

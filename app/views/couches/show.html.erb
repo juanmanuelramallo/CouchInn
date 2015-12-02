@@ -231,9 +231,9 @@
 
     <div class="spacer-min"></div>
 
-      <%= text_field_tag "Pregunta", nil, value:q.question, readonly:true ,class:"form-control" %>
+      <%= text_area_tag "Pregunta", q.question, readonly:true ,class:"form-control" %>
 
-      <%= text_area_tag "Respuesta", q.answer, readonly:true ,class:"form-control" %>
+      <%= text_area_tag "Respuesta", q.answer, readonly:true ,class:"form-control", rows:"4" %>
 
 
       <% if user_signed_in? %>
