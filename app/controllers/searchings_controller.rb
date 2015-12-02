@@ -76,10 +76,12 @@ before_action :get_search, only: [:show]
 
       #si ambas fechas fueron ingresadas
       if !params[:searching][:free_from].blank? and !params[:searching][:free_to].blank?
-        if ( Date.parse(params[:searching][:free_from]) > Date.parse(params[:searching][:free_to]))
-          redirect_to new_searching_path, alert: 'Debes ingresar fechas coherentes, desde menor que hasta'
-        end
-      end
+        if ( Date.parse(params[:searching][:free_from]) > Date.parse(params[:searching][:free_to])) or (Date.parse(params[:searching][:free_from]) < Date.today) or (Date.parse(params[:searching][:free_to]) < Date.today)
+
+          redirect_to new_searching_path, alert: 'Debes ingresar fechas posteriores a la actual y coherentes, desde menor que hasta'
+
+        else #sino crea la busqueda
+
 
       @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad, :free_from, :free_to, :user_id))
 
@@ -93,6 +95,25 @@ before_action :get_search, only: [:show]
           format.html { render :new }
           format.json { render json: @search.errors, status: :unprocessable_entity }
         end
+      end
+
+      end  #end ambas fechas ingresadas, cualquier otro caso
+      else #sino fueron ambas fechas ingresadas crea la busqueda
+
+        @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad, :free_from, :free_to, :user_id))
+
+      @search.user_id = current_user.id
+
+      respond_to do |format|
+        if @search.save
+          format.html { redirect_to @search, notice: 'Mostrando resultados de tu búsqueda' }
+          format.json { render :show, status: :created, location: @search }
+        else
+          format.html { render :new }
+          format.json { render json: @search.errors, status: :unprocessable_entity }
+        end
+      end
+
       end
 
     end
