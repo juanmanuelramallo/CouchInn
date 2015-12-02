@@ -74,6 +74,13 @@ before_action :get_search, only: [:show]
 
     else
 
+      #si ambas fechas fueron ingresadas
+      if !params[:searching][:free_from].blank? and !params[:searching][:free_to].blank?
+        if ( Date.parse(params[:searching][:free_from]) > Date.parse(params[:searching][:free_to]))
+          redirect_to new_searching_path, alert: 'Debes ingresar fechas coherentes, desde menor que hasta'
+        end
+      end
+
       @search = Searching.new(params.require(:searching).permit(:tipo, :ubicacion_cont, :capacidad, :free_from, :free_to, :user_id))
 
       @search.user_id = current_user.id
