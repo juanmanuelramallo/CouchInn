@@ -15,7 +15,8 @@ before_action :get_search, only: [:show]
     #  @search.tipo ,'%'+@search.ubicacion_cont+'%').joins(:user).order('rol desc', 'created_at desc')
 
     if !@search.ubicacion_cont.blank?
-      u = @search.ubicacion_cont.downcase
+      #u = @search.ubicacion_cont.downcase
+      u= @search.ubicacion_cont
     else
       u = ""
     end

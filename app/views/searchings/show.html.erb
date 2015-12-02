@@ -21,6 +21,20 @@
 
 </div>
 
+
+<% if @couches.blank? %>
+
+<div class="col-md-8 col-centered">
+
+  <h4> No hay resultados para tu búsqueda. <%= link_to "Prueba de nuevo", :back %> con otros parámetros</h4>
+
+</div>
+
+<%end %>
+
+
+</div>
+
 <div class="spacer-div"></div>
 
 <div class="row">

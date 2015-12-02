@@ -6,7 +6,7 @@
         <%= f.label :ubicacion, class:"label label-default", type:"label",:for=>'ubicacion'%>
 
         <div class="w-label">
-          <%= f.text_area :ubicacion, class:"form-control", type:"input" ,placeholder: 'Ingrese la ubicacion', required:true, :id=>'ubicacion', readonly:show%>
+          <%= f.text_area :ubicacion, value: @couch.ubicacion, class:"form-control", type:"input" ,placeholder: 'Ingrese la ubicacion', required:true, :id=>'ubicacion', readonly:show%>
         </div>
 
       </div>
@@ -40,7 +40,7 @@
         <%= f.label :descripcion, class:"label label-default", for:"comment" %>
 
         <div class="w-label">
-          <%= f.text_area :descripcion, class:"form-control", placeholder: 'Máximo 115 caracteres', rows:"5", id:"comment", readonly:show %>
+          <%= f.text_area :descripcion, value: @couch.descripcion ,class:"form-control", placeholder: 'Máximo 115 caracteres', rows:"5", id:"comment", readonly:show %>
         </div>
 
       </div>
