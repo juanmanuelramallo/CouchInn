@@ -1,26 +1,29 @@
+<body class="default">
+
+<div class="col-md-10 col-centered">
 
 <h3><span class="label label-default"> Calificaciones del Couch </h3>
 
-<table class="table">
-  <tr>
+<table class="table table-responsive">
+  <tr class="active">
     <th>Nombre</th>
     <th>Calificacion</th>
     <th> Estrellas </th>
     <th> Descripcion</th>
   </tr>
- 
+
   <% @calificacion.each do |article| %>
-    <tr>
+    <tr class="active">
       <td><%= User.find(article.user_id).nombre %></td>
       <td><%= article.percentage %></td>
          <div class="ec-stars-wrapper">
       <td>
        <a href="#" style="color:blue" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
         <% if article.percentage < 1 %></td>
-          <% else %>  
+          <% else %>
             <a href="#" style="color:blue" data-value="1" title="Votar con 2 estrellas">&#9733;</a>
               <% if article.percentage < 2 %></td>
-              <% else %>  
+              <% else %>
                 <a href="#" style="color:blue" data-value="1" title="Votar con 3 estrellas">&#9733;</a>
                 <% if article.percentage < 3 %></td>
                 <% else %>
@@ -40,9 +43,11 @@
     </tr>
   <% end %>
   <% if @calificacion.size == 0 %>
-    <tr> <td colspan="3"> No hay calificaciones </td> </tr>
+    <tr class="active"> <td colspan="3"> No hay calificaciones </td> </tr>
   <% end %>
 
 </table>
 
+  </div>
 
+</body>
