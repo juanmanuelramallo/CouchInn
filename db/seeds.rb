@@ -14,7 +14,7 @@ Message.destroy_all
 Payment.destroy_all
 Qualification.destroy_all
 Question.destroy_all
-Foto.destroy_all
+# Foto.destroy_all
 Tipoc.destroy_all
 
 #----- Tipos de couch ------#
